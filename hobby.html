@@ -1,3 +1,7 @@
+<!-- =========================================================
+LOTUS QUEST — hobby.html
+========================================================= -->
+
 <!DOCTYPE html>
 <html lang="th">
 
@@ -5,25 +9,619 @@
 
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>
-    LOTUS PORTFOLIO | งานอดิเรก
+LOTUS QUEST | Hobby
 </title>
 
-<link
-    rel="stylesheet"
-    href="style.css"
->
+<style>
 
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root{
+    --bg:#05081d;
+    --cyan:#6ffff1;
+    --pink:#ff8edb;
+    --purple:#a978ff;
+    --line:rgba(130,180,255,.15);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Kanit",sans-serif;
+    color:white;
+    background:
+        radial-gradient(
+            circle at 50% -5%,
+            #18245e,
+            #0a1031 35%,
+            #05081d 70%,
+            #02030d
+        );
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+#mouseGlow{
+    position:fixed;
+    width:310px;
+    height:310px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:
+        radial-gradient(circle,
+            rgba(109,255,241,.15),
+            rgba(169,120,255,.08) 35%,
+            transparent 72%);
+    filter:blur(5px);
+    pointer-events:none;
+    z-index:9998;
+}
+
+#mouseDot{
+    position:fixed;
+    width:8px;
+    height:8px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:#fff;
+    box-shadow:
+        0 0 10px #fff,
+        0 0 20px var(--cyan),
+        0 0 30px var(--pink);
+    pointer-events:none;
+    z-index:9999;
+}
+
+.click-ripple{
+    position:fixed;
+    width:10px;
+    height:10px;
+    transform:translate(-50%,-50%);
+    border:2px solid var(--cyan);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9997;
+    animation:click .8s ease-out forwards;
+}
+
+@keyframes click{
+    to{
+        width:180px;
+        height:180px;
+        opacity:0;
+    }
+}
+
+.site-header{
+    position:fixed;
+    top:14px;
+    left:0;
+    right:0;
+    z-index:5000;
+    padding:0 14px;
+}
+
+.navbar{
+    width:min(1200px,94%);
+    min-height:64px;
+    margin:auto;
+    padding:9px 15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    border:1px solid var(--line);
+    border-radius:25px;
+    background:rgba(4,10,31,.70);
+    backdrop-filter:blur(18px);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-mark{
+    width:42px;
+    height:42px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    color:#061629;
+    background:
+        linear-gradient(135deg,var(--cyan),#73dcff,var(--pink));
+}
+
+.logo-text{
+    font:500 18px "Playfair Display";
+}
+
+.logo-text b{
+    display:block;
+    color:var(--pink);
+    font:700 8px "Kanit";
+    letter-spacing:3px;
+}
+
+.nav-links{
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a{
+    position:relative;
+    color:#adbbdf;
+    font-size:12px;
+    transition:.3s;
+}
+
+.nav-links a.active,
+.nav-links a:hover{
+    color:#fff;
+    text-shadow:0 0 12px var(--cyan);
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-8px;
+    width:0;
+    height:2px;
+    transform:translateX(-50%);
+    background:linear-gradient(90deg,var(--pink),var(--cyan));
+    transition:.3s;
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.hero{
+    position:relative;
+    min-height:560px;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            180deg,
+            #14253f,
+            #315b6b 55%,
+            #659ca6
+        );
+}
+
+.hero-glow{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(26px);
+}
+
+.hero-glow.a{
+    width:390px;
+    height:390px;
+    left:-150px;
+    top:12%;
+    background:rgba(75,220,240,.10);
+}
+
+.hero-glow.b{
+    width:400px;
+    height:400px;
+    right:-150px;
+    bottom:-10px;
+    background:rgba(240,150,198,.09);
+}
+
+.stars span{
+    position:absolute;
+    color:rgba(255,255,255,.55);
+    animation:blink 3s ease-in-out infinite;
+}
+
+.stars span:nth-child(1){
+    left:16%;
+    top:20%;
+}
+
+.stars span:nth-child(2){
+    right:16%;
+    top:28%;
+    animation-delay:1s;
+}
+
+.stars span:nth-child(3){
+    right:28%;
+    bottom:23%;
+    animation-delay:1.4s;
+}
+
+@keyframes blink{
+    50%{
+        opacity:1;
+        transform:scale(1.25);
+    }
+}
+
+.lake{
+    position:absolute;
+    left:50%;
+    bottom:-70px;
+    width:760px;
+    height:270px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:
+        repeating-radial-gradient(
+            ellipse at center,
+            rgba(255,255,255,.07) 0 2px,
+            transparent 3px 35px
+        );
+}
+
+.lake span{
+    position:absolute;
+    left:50%;
+    top:22%;
+    transform:translateX(-50%);
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:50%;
+}
+
+.lake span:nth-child(1){
+    width:210px;
+    height:48px;
+}
+
+.lake span:nth-child(2){
+    width:360px;
+    height:84px;
+}
+
+.lake span:nth-child(3){
+    width:540px;
+    height:120px;
+}
+
+.lotus{
+    position:absolute;
+    left:50%;
+    top:13%;
+    transform:translateX(-50%);
+    color:#f1b0cb;
+    font-size:78px;
+    animation:lotus 4s ease-in-out infinite;
+}
+
+@keyframes lotus{
+    50%{
+        transform:translateX(-50%) translateY(-9px);
+    }
+}
+
+.hero-title{
+    position:relative;
+    z-index:10;
+    text-align:center;
+}
+
+.hero-title span{
+    color:#7988aa;
+    font-size:10px;
+    letter-spacing:4px;
+}
+
+.hero-title h1{
+    margin:8px 0;
+    font:500 clamp(48px,7vw,88px) "Playfair Display";
+}
+
+.hero-title p{
+    color:#91a2c5;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.page{
+    position:relative;
+    z-index:2;
+    width:min(1120px,92%);
+    margin:auto;
+    padding:100px 0;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:48px;
+}
+
+.heading span{
+    color:var(--cyan);
+    font-size:10px;
+    letter-spacing:4px;
+}
+
+.heading h2{
+    margin:8px 0;
+    font:500 clamp(35px,5vw,56px) "Playfair Display";
+}
+
+.heading p{
+    color:#8191b8;
+    font-size:13px;
+}
+
+.hobby-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.hobby{
+    position:relative;
+    min-height:300px;
+    padding:30px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:27px;
+    background:rgba(8,15,43,.70);
+    transition:.35s;
+}
+
+.hobby:hover{
+    transform:translateY(-9px);
+    border-color:rgba(115,255,242,.35);
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.25),
+        0 0 25px rgba(115,255,242,.08);
+}
+
+.hobby::after{
+    content:"";
+    position:absolute;
+    left:-100%;
+    top:0;
+    width:70%;
+    height:100%;
+    transform:skewX(-20deg);
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.08),
+            transparent
+        );
+    transition:.8s;
+}
+
+.hobby:hover::after{
+    left:135%;
+}
+
+.icon{
+    width:62px;
+    height:62px;
+    display:grid;
+    place-items:center;
+    border-radius:18px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(115,255,242,.14),
+            rgba(255,143,215,.11)
+        );
+    font-size:25px;
+    margin-bottom:22px;
+}
+
+.hobby small{
+    color:#7486b1;
+    font-size:8px;
+    letter-spacing:2px;
+}
+
+.hobby h3{
+    margin:8px 0;
+    font:500 23px "Playfair Display";
+}
+
+.hobby p{
+    color:#8597be;
+    font-size:12px;
+}
+
+.line{
+    position:absolute;
+    left:30px;
+    right:30px;
+    bottom:22px;
+    height:2px;
+    background:rgba(130,170,240,.08);
+}
+
+.line::after{
+    content:"";
+    display:block;
+    width:38%;
+    height:100%;
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--pink)
+        );
+    transition:.5s;
+}
+
+.hobby:hover .line::after{
+    width:90%;
+}
+
+.passion{
+    position:relative;
+    min-height:420px;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            135deg,
+            #092437,
+            #174d5e,
+            #443d67
+        );
+}
+
+.passion-glow{
+    width:430px;
+    height:430px;
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(246,177,205,.18),
+            transparent 68%
+        );
+    animation:pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+.passion-lotus{
+    position:absolute;
+    left:50%;
+    top:13%;
+    transform:translateX(-50%);
+    color:#f2b0cb;
+    font-size:80px;
+    animation:lotus2 4s ease-in-out infinite;
+}
+
+@keyframes lotus2{
+    50%{
+        transform:translateX(-50%) translateY(-9px);
+    }
+}
+
+.passion-text{
+    position:absolute;
+    top:46%;
+    width:min(680px,92%);
+    text-align:center;
+}
+
+.passion-text span{
+    color:#6a79a0;
+    font-size:9px;
+    letter-spacing:3px;
+}
+
+.passion-text h2{
+    margin:8px 0;
+    font:500 38px "Playfair Display";
+}
+
+.passion-text p{
+    color:#93a4c2;
+    font-size:12px;
+}
+
+.footer{
+    padding:60px 20px 30px;
+    text-align:center;
+    border-top:1px solid rgba(130,170,240,.08);
+    background:#02050f;
+}
+
+.footer-mark{
+    color:var(--pink);
+    font-size:36px;
+}
+
+.footer h3{
+    font:500 22px "Playfair Display";
+}
+
+.footer p,
+.footer small{
+    color:#69789e;
+    font-size:10px;
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:16px 20px;
+    margin:22px 0;
+}
+
+.footer-links a{
+    color:#7586aa;
+    font-size:10px;
+}
+
+@media(max-width:950px){
+
+    .navbar{
+        flex-direction:column;
+    }
+
+    .hobby-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hobby-grid{
+        grid-template-columns:1fr;
+    }
+
+    .page{
+        padding:75px 0;
+    }
+
+    .lake{
+        width:450px;
+    }
+
+}
+
+</style>
 </head>
 
+<body>
 
-<body class="hobby-page">
-
+<div id="mouseGlow"></div>
+<div id="mouseDot"></div>
 
 <header class="site-header">
 
@@ -31,41 +629,37 @@
 
 <a href="index.html" class="logo">
 
-<span class="logo-icon">
-    🪷
+<span class="logo-mark">
+✿
 </span>
 
-<span>
-    LOTUS
-    <strong>PORTFOLIO</strong>
+<span class="logo-text">
+LOTUS
+<b>QUEST</b>
 </span>
 
 </a>
-
 
 <div class="nav-links">
 
 <a href="index.html">
-    หน้าแรก
+หน้าแรก
 </a>
 
 <a href="profile.html">
-    ประวัติส่วนตัว
+ประวัติส่วนตัว
 </a>
 
 <a href="education.html">
-    การศึกษา
+การศึกษา
 </a>
 
-<a
-    href="hobby.html"
-    class="active"
->
-    งานอดิเรก
+<a href="hobby.html" class="active">
+งานอดิเรก
 </a>
 
 <a href="contact.html">
-    ติดต่อ
+ติดต่อ
 </a>
 
 </div>
@@ -75,54 +669,45 @@
 </header>
 
 
-
 <main>
 
+<section class="hero">
 
-<section class="inner-hero hobby-background">
+<div class="hero-glow a"></div>
+<div class="hero-glow b"></div>
 
-<div class="hobby-glow glow-one"></div>
+<div class="stars">
 
-<div class="hobby-glow glow-two"></div>
+<span>✦</span>
+<span>✧</span>
+<span>✦</span>
 
-<div class="hobby-petal petal-a">
-    🌸
 </div>
 
-<div class="hobby-petal petal-b">
-    🌸
-</div>
-
-<div class="hobby-petal petal-c">
-    ✦
-</div>
-
-
-<div class="hobby-lake">
-
-<div class="hobby-lotus">
-    🪷
-</div>
+<div class="lake">
 
 <span></span>
 <span></span>
 <span></span>
 
+<div class="lotus">
+✿
 </div>
 
+</div>
 
-<div class="inner-title">
+<div class="hero-title">
 
 <span>
-    CHAPTER 03
+CHAPTER 03
 </span>
 
 <h1>
-    MY WORLD
+MY WORLD
 </h1>
 
 <p>
-    สิ่งที่ฉันชอบและสนใจ
+สิ่งที่ฉันชอบและสนใจ
 </p>
 
 </div>
@@ -130,21 +715,20 @@
 </section>
 
 
+<section class="page">
 
-<section class="hobby-section">
-
-<div class="section-heading">
+<div class="heading">
 
 <span>
-    MY INTERESTS
+MY INTERESTS
 </span>
 
 <h2>
-    สิ่งที่ฉันชอบ
+สิ่งที่ฉันชอบ
 </h2>
 
 <p>
-    กิจกรรมที่ทำให้เวลาว่างของฉันมีความสุข
+กิจกรรมเล็ก ๆ ที่ทำให้โลกของฉันมีสีสัน
 </p>
 
 </div>
@@ -153,151 +737,149 @@
 <div class="hobby-grid">
 
 
-<article class="hobby-card blue">
+<article class="hobby tilt">
 
-<div class="hobby-icon">
-    🎮
+<div class="icon">
+🎮
 </div>
 
 <small>
-    INTEREST 01
+INTEREST 01
 </small>
 
 <h3>
-    เกม
+เกม
 </h3>
 
 <p>
-    ชอบเล่นเกมเพื่อความสนุก
-    และฝึกการวางแผน
+ชอบเล่นเกมเพื่อความสนุก
+ฝึกการคิดวิเคราะห์
+และการวางแผน
 </p>
 
-<div class="card-shine"></div>
+<div class="line"></div>
 
 </article>
 
 
+<article class="hobby tilt">
 
-<article class="hobby-card purple">
-
-<div class="hobby-icon">
-    ⚽
+<div class="icon">
+⚽
 </div>
 
 <small>
-    INTEREST 02
+INTEREST 02
 </small>
 
 <h3>
-    กีฬา
+กีฬา
 </h3>
 
 <p>
-    ชอบเล่นกีฬา
-    และทำกิจกรรมที่ได้เคลื่อนไหว
+ชอบเล่นกีฬา
+และทำกิจกรรมที่ได้เคลื่อนไหว
 </p>
 
-<div class="card-shine"></div>
+<div class="line"></div>
 
 </article>
 
 
+<article class="hobby tilt">
 
-<article class="hobby-card pink">
-
-<div class="hobby-icon">
-    🎵
+<div class="icon">
+🎵
 </div>
 
 <small>
-    INTEREST 03
+INTEREST 03
 </small>
 
 <h3>
-    เพลง
+เพลง
 </h3>
 
 <p>
-    ฟังเพลงในเวลาว่าง
-    เพื่อผ่อนคลายและสร้างแรงบันดาลใจ
+ฟังเพลงในเวลาว่าง
+เพื่อผ่อนคลาย
+และสร้างแรงบันดาลใจ
 </p>
 
-<div class="card-shine"></div>
+<div class="line"></div>
 
 </article>
 
 
+<article class="hobby tilt">
 
-<article class="hobby-card blue">
-
-<div class="hobby-icon">
-    🎬
+<div class="icon">
+🎬
 </div>
 
 <small>
-    INTEREST 04
+INTEREST 04
 </small>
 
 <h3>
-    ภาพยนตร์
+ภาพยนตร์
 </h3>
 
 <p>
-    ชอบดูภาพยนตร์
-    และเรื่องราวที่น่าสนใจ
+ชอบดูภาพยนตร์
+และเรื่องราวที่น่าสนใจ
 </p>
 
-<div class="card-shine"></div>
+<div class="line"></div>
 
 </article>
 
 
+<article class="hobby tilt">
 
-<article class="hobby-card purple">
-
-<div class="hobby-icon">
-    💻
+<div class="icon">
+💻
 </div>
 
 <small>
-    INTEREST 05
+INTEREST 05
 </small>
 
 <h3>
-    เทคโนโลยี
+เทคโนโลยี
 </h3>
 
 <p>
-    สนใจคอมพิวเตอร์
-    เว็บไซต์ และงานดิจิทัล
+สนใจคอมพิวเตอร์
+เว็บไซต์
+และงานดิจิทัล
 </p>
 
-<div class="card-shine"></div>
+<div class="line"></div>
 
 </article>
 
 
+<article class="hobby tilt">
 
-<article class="hobby-card pink">
-
-<div class="hobby-icon">
-    📷
+<div class="icon">
+📷
 </div>
 
 <small>
-    INTEREST 06
+INTEREST 06
 </small>
 
 <h3>
-    การถ่ายภาพ
+การถ่ายภาพ
 </h3>
 
 <p>
-    ชอบเก็บภาพ
-    และช่วงเวลาที่น่าจดจำ
+ชอบเก็บภาพ
+และช่วงเวลาที่น่าจดจำ
 </p>
 
-<div class="card-shine"></div>
+<div class="line"></div>
 
 </article>
 
@@ -305,55 +887,51 @@
 </div>
 
 </section>
-
 
 
 <section class="passion">
 
-<div class="passion-circle"></div>
+<div class="passion-glow"></div>
 
 <div class="passion-lotus">
-    🪷
+✿
 </div>
 
-
-<div class="passion-content">
+<div class="passion-text">
 
 <span>
-    MY NEXT INTEREST
+NEXT INTEREST
 </span>
 
 <h2>
-    สิ่งที่ฉันอยากพัฒนาต่อ
+สิ่งที่ฉันอยากพัฒนาต่อ
 </h2>
 
 <p>
-    [กรอกความสนใจ]
-    เพราะอยากเรียนรู้เพิ่มเติม
-    และสร้างผลงานของตัวเอง
+[กรอกความสนใจ]
+เพราะฉันอยากเรียนรู้เพิ่มเติม
+และสร้างผลงานของตัวเอง
 </p>
 
 </div>
 
 </section>
 
-
 </main>
-
 
 
 <footer class="footer">
 
-<div class="footer-lotus">
-    🪷
+<div class="footer-mark">
+✿
 </div>
 
 <h3>
-    LOTUS PORTFOLIO
+LOTUS QUEST
 </h3>
 
 <p>
-    Student Portfolio • [กรอกชื่อ]
+Student Portfolio · [กรอกชื่อ]
 </p>
 
 <div class="footer-links">
@@ -372,6 +950,80 @@
 
 </footer>
 
+
+<script>
+
+const glow=document.getElementById("mouseGlow");
+const dot=document.getElementById("mouseDot");
+
+let mx=innerWidth/2;
+let my=innerHeight/2;
+let gx=mx;
+let gy=my;
+
+document.addEventListener("mousemove",e=>{
+
+mx=e.clientX;
+my=e.clientY;
+
+dot.style.left=mx+"px";
+dot.style.top=my+"px";
+
+});
+
+function follow(){
+
+gx+=(mx-gx)*.1;
+gy+=(my-gy)*.1;
+
+glow.style.left=gx+"px";
+glow.style.top=gy+"px";
+
+requestAnimationFrame(follow);
+
+}
+
+follow();
+
+document.addEventListener("click",e=>{
+
+const r=document.createElement("span");
+
+r.className="click-ripple";
+
+r.style.left=e.clientX+"px";
+r.style.top=e.clientY+"px";
+
+document.body.appendChild(r);
+
+setTimeout(()=>r.remove(),800);
+
+});
+
+document.querySelectorAll(".tilt").forEach(card=>{
+
+card.addEventListener("mousemove",e=>{
+
+const r=card.getBoundingClientRect();
+
+const x=(e.clientX-r.left)/r.width-.5;
+const y=(e.clientY-r.top)/r.height-.5;
+
+card.style.transform=
+`perspective(900px)
+rotateX(${y*-5}deg)
+rotateY(${x*5}deg)
+translateY(-9px)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+card.style.transform="";
+});
+
+});
+
+</script>
 
 </body>
 </html>
