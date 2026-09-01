@@ -1,3 +1,7 @@
+<!-- =========================================================
+LOTUS QUEST — education.html
+========================================================= -->
+
 <!DOCTYPE html>
 <html lang="th">
 
@@ -5,25 +9,739 @@
 
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
 
 <title>
-    LOTUS PORTFOLIO | การศึกษา
+LOTUS QUEST | Education
 </title>
 
-<link
-    rel="stylesheet"
-    href="style.css"
->
+<style>
 
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root{
+    --bg:#05081d;
+    --panel:#09173b;
+    --cyan:#6ffff1;
+    --pink:#ff8edb;
+    --purple:#a978ff;
+    --muted:#8fa1c7;
+    --line:rgba(130,180,255,.15);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Kanit",sans-serif;
+    color:#fff;
+    background:
+        radial-gradient(
+            circle at 50% -5%,
+            #17245d,
+            #0a1031 35%,
+            #05081d 70%,
+            #02030d
+        );
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    background:
+        linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);
+    background-size:60px 60px;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+#mouseGlow{
+    position:fixed;
+    width:310px;
+    height:310px;
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    background:
+        radial-gradient(circle,
+            rgba(109,255,241,.15),
+            rgba(169,120,255,.08) 35%,
+            transparent 72%);
+    filter:blur(5px);
+    pointer-events:none;
+    z-index:9998;
+}
+
+#mouseDot{
+    position:fixed;
+    width:8px;
+    height:8px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:white;
+    box-shadow:
+        0 0 10px white,
+        0 0 20px var(--cyan),
+        0 0 30px var(--pink);
+    pointer-events:none;
+    z-index:9999;
+}
+
+.click-ripple{
+    position:fixed;
+    width:10px;
+    height:10px;
+    transform:translate(-50%,-50%);
+    border:2px solid var(--cyan);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9997;
+    animation:click .8s ease-out forwards;
+}
+
+@keyframes click{
+    to{
+        width:180px;
+        height:180px;
+        opacity:0;
+    }
+}
+
+.site-header{
+    position:fixed;
+    left:0;
+    right:0;
+    top:14px;
+    z-index:5000;
+    padding:0 14px;
+}
+
+.navbar{
+    width:min(1200px,94%);
+    min-height:64px;
+    margin:auto;
+    padding:9px 15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    border:1px solid var(--line);
+    border-radius:25px;
+    background:rgba(4,10,31,.70);
+    backdrop-filter:blur(18px);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-mark{
+    width:42px;
+    height:42px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    color:#07182a;
+    background:
+        linear-gradient(135deg,var(--cyan),#73dcff,var(--pink));
+}
+
+.logo-text{
+    font:500 18px "Playfair Display";
+}
+
+.logo-text b{
+    display:block;
+    color:var(--pink);
+    font:700 8px "Kanit";
+    letter-spacing:3px;
+}
+
+.nav-links{
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a{
+    position:relative;
+    color:#adbbdf;
+    font-size:12px;
+    transition:.3s;
+}
+
+.nav-links a.active,
+.nav-links a:hover{
+    color:#fff;
+    text-shadow:0 0 12px var(--cyan);
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-8px;
+    width:0;
+    height:2px;
+    transform:translateX(-50%);
+    background:linear-gradient(90deg,var(--pink),var(--cyan));
+    transition:.3s;
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* HERO */
+
+.hero{
+    position:relative;
+    min-height:560px;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            180deg,
+            #b8e3eb,
+            #74b8ca 55%,
+            #3b7388
+        );
+}
+
+.sun{
+    position:absolute;
+    left:50%;
+    top:10%;
+    width:108px;
+    height:108px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:#fff2b3;
+    box-shadow:0 0 90px rgba(255,239,177,.50);
+    animation:sun 5s ease-in-out infinite;
+}
+
+@keyframes sun{
+    50%{
+        transform:translateX(-50%) scale(1.08);
+    }
+}
+
+.cloud{
+    position:absolute;
+    color:rgba(255,255,255,.75);
+    font-size:55px;
+    animation:cloud 8s ease-in-out infinite;
+}
+
+.cloud.one{
+    left:6%;
+    top:25%;
+}
+
+.cloud.two{
+    right:7%;
+    top:31%;
+    animation-delay:1s;
+}
+
+@keyframes cloud{
+    50%{
+        translate:25px 0;
+    }
+}
+
+.river{
+    position:absolute;
+    left:50%;
+    bottom:-60px;
+    width:800px;
+    height:280px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:
+        repeating-radial-gradient(
+            ellipse at center,
+            rgba(255,255,255,.08) 0 2px,
+            transparent 3px 35px
+        );
+}
+
+.river span{
+    position:absolute;
+    left:50%;
+    top:24%;
+    transform:translateX(-50%);
+    border:1px solid rgba(255,255,255,.19);
+    border-radius:50%;
+}
+
+.river span:nth-child(1){
+    width:200px;
+    height:48px;
+}
+
+.river span:nth-child(2){
+    width:350px;
+    height:84px;
+}
+
+.river span:nth-child(3){
+    width:520px;
+    height:120px;
+}
+
+.hero-lotus{
+    position:absolute;
+    left:50%;
+    bottom:18%;
+    transform:translateX(-50%);
+    color:#f3b3ce;
+    font-size:68px;
+    animation:lotus 4s ease-in-out infinite;
+    text-shadow:0 0 18px rgba(255,133,210,.25);
+}
+
+@keyframes lotus{
+    50%{
+        transform:translateX(-50%) translateY(-9px);
+    }
+}
+
+.hero-content{
+    position:relative;
+    z-index:10;
+    text-align:center;
+}
+
+.hero-content span{
+    color:rgba(20,58,75,.55);
+    font-size:10px;
+    letter-spacing:4px;
+}
+
+.hero-content h1{
+    margin:8px 0;
+    font:500 clamp(46px,7vw,88px) "Playfair Display";
+    color:#17384a;
+}
+
+.hero-content p{
+    color:rgba(17,51,67,.65);
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+/* CONTENT */
+
+.page{
+    position:relative;
+    z-index:2;
+    width:min(1100px,92%);
+    margin:auto;
+    padding:100px 0;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.heading span{
+    color:var(--cyan);
+    font-size:10px;
+    letter-spacing:4px;
+}
+
+.heading h2{
+    font:500 clamp(35px,5vw,56px) "Playfair Display";
+    margin:8px 0;
+}
+
+.heading p{
+    color:#8092b8;
+    font-size:13px;
+}
+
+/* TIMELINE */
+
+.timeline{
+    position:relative;
+    width:min(900px,100%);
+    margin:auto;
+}
+
+.timeline-line{
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:3px;
+    transform:translateX(-50%);
+    background:
+        linear-gradient(
+            var(--cyan),
+            var(--purple),
+            var(--pink)
+        );
+    opacity:.65;
+}
+
+.timeline-item{
+    position:relative;
+    width:50%;
+    padding:0 45px 60px 0;
+}
+
+.timeline-item.right{
+    margin-left:50%;
+    padding:0 0 60px 45px;
+}
+
+.node{
+    position:absolute;
+    right:-19px;
+    top:0;
+    width:38px;
+    height:38px;
+    display:grid;
+    place-items:center;
+    border:4px solid #05081d;
+    border-radius:50%;
+    background:
+        linear-gradient(135deg,var(--cyan),#73dcff,var(--pink));
+    color:#061629;
+    z-index:5;
+    font-size:10px;
+}
+
+.timeline-item.right .node{
+    left:-19px;
+    right:auto;
+}
+
+.timeline-box{
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:24px;
+    background:rgba(8,17,45,.72);
+    transition:.35s;
+}
+
+.timeline-box:hover{
+    transform:translateY(-8px);
+    border-color:rgba(115,255,242,.32);
+    box-shadow:0 25px 60px rgba(0,0,0,.22);
+}
+
+.timeline-box small{
+    color:var(--cyan);
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+.timeline-box h3{
+    font:500 24px "Playfair Display";
+    margin:8px 0;
+}
+
+.timeline-box strong{
+    color:#a0b1d2;
+    font-size:11px;
+}
+
+.timeline-box p{
+    margin-top:10px;
+    color:#8799bb;
+    font-size:12px;
+}
+
+.current{
+    border-color:rgba(115,255,242,.30);
+}
+
+/* FEATURE */
+
+.feature{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:#061d31;
+}
+
+.feature-art{
+    position:relative;
+    min-height:430px;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            180deg,
+            #072235,
+            #0e5263
+        );
+}
+
+.feature-glow{
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,166,206,.20),
+            transparent 68%
+        );
+    animation:pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+.feature-lotus{
+    position:absolute;
+    font-size:88px;
+    color:#f1b0cb;
+    animation:lotusFloat 4s ease-in-out infinite;
+}
+
+@keyframes lotusFloat{
+    50%{
+        transform:translateY(-9px);
+    }
+}
+
+.ripples span{
+    position:absolute;
+    left:50%;
+    top:55%;
+    transform:translate(-50%,-50%);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:50%;
+}
+
+.ripples span:nth-child(1){
+    width:190px;
+    height:45px;
+}
+
+.ripples span:nth-child(2){
+    width:320px;
+    height:75px;
+}
+
+.ripples span:nth-child(3){
+    width:460px;
+    height:110px;
+}
+
+.feature-text{
+    padding:75px 8%;
+}
+
+.feature-text span{
+    color:#7182a9;
+    font-size:9px;
+    letter-spacing:3px;
+}
+
+.feature-text h2{
+    margin:8px 0;
+    font:500 38px "Playfair Display";
+}
+
+.feature-text p{
+    color:#91a2c2;
+    font-size:13px;
+}
+
+.feature-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:25px;
+}
+
+.feature-stats div{
+    padding:14px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.03);
+}
+
+.feature-stats small{
+    display:block;
+    color:#60729a;
+    font-size:8px;
+}
+
+.feature-stats strong{
+    display:block;
+    margin-top:4px;
+    font-size:10px;
+}
+
+/* TABLE */
+
+.table-box{
+    overflow:auto;
+    border:1px solid var(--line);
+    border-radius:20px;
+}
+
+table{
+    width:100%;
+    min-width:680px;
+    border-collapse:collapse;
+}
+
+th,
+td{
+    padding:16px 18px;
+    text-align:left;
+    border-bottom:1px solid rgba(130,170,240,.08);
+}
+
+th{
+    color:white;
+    background:linear-gradient(135deg,#173d59,#342a5d);
+    font-size:10px;
+}
+
+td{
+    color:#8698bb;
+    font-size:10px;
+}
+
+tbody tr:hover{
+    background:rgba(255,255,255,.02);
+}
+
+.status{
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:99px;
+    color:#b3a8eb;
+    background:rgba(170,155,255,.1);
+    font-size:8px;
+}
+
+.status.current{
+    color:#07172b;
+    background:var(--cyan);
+}
+
+/* FOOTER */
+
+.footer{
+    padding:60px 20px 30px;
+    text-align:center;
+    background:#02050f;
+    border-top:1px solid rgba(130,170,240,.08);
+}
+
+.footer-mark{
+    color:var(--pink);
+    font-size:36px;
+}
+
+.footer h3{
+    font:500 22px "Playfair Display";
+}
+
+.footer p,
+.footer small{
+    color:#6a79a0;
+    font-size:10px;
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px 20px;
+    margin:22px 0;
+}
+
+.footer-links a{
+    color:#7787ab;
+    font-size:10px;
+}
+
+@media(max-width:950px){
+
+    .navbar{
+        flex-direction:column;
+    }
+
+    .timeline-item,
+    .timeline-item.right{
+        width:100%;
+        margin-left:0;
+        padding:0 0 55px 48px;
+    }
+
+    .timeline-line{
+        left:15px;
+    }
+
+    .node,
+    .timeline-item.right .node{
+        left:-4px;
+        right:auto;
+    }
+
+    .feature{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .page{
+        padding:75px 0;
+    }
+
+    .feature-stats{
+        grid-template-columns:1fr;
+    }
+
+    .river{
+        width:450px;
+    }
+}
+
+</style>
 </head>
 
+<body>
 
-<body class="education-page">
-
+<div id="mouseGlow"></div>
+<div id="mouseDot"></div>
 
 <header class="site-header">
 
@@ -31,41 +749,37 @@
 
 <a href="index.html" class="logo">
 
-<span class="logo-icon">
-    🪷
+<span class="logo-mark">
+✿
 </span>
 
-<span>
-    LOTUS
-    <strong>PORTFOLIO</strong>
+<span class="logo-text">
+LOTUS
+<b>QUEST</b>
 </span>
 
 </a>
-
 
 <div class="nav-links">
 
 <a href="index.html">
-    หน้าแรก
+หน้าแรก
 </a>
 
 <a href="profile.html">
-    ประวัติส่วนตัว
+ประวัติส่วนตัว
 </a>
 
-<a
-    href="education.html"
-    class="active"
->
-    การศึกษา
+<a href="education.html" class="active">
+การศึกษา
 </a>
 
 <a href="hobby.html">
-    งานอดิเรก
+งานอดิเรก
 </a>
 
 <a href="contact.html">
-    ติดต่อ
+ติดต่อ
 </a>
 
 </div>
@@ -75,26 +789,21 @@
 </header>
 
 
-
 <main>
 
+<section class="hero">
 
-<!-- HERO -->
+<div class="sun"></div>
 
-<section class="inner-hero education-background">
-
-<div class="edu-sun"></div>
-
-<div class="edu-cloud cloud-1">
-    ☁
+<div class="cloud one">
+☁
 </div>
 
-<div class="edu-cloud cloud-2">
-    ☁
+<div class="cloud two">
+☁
 </div>
 
-
-<div class="education-river">
+<div class="river">
 
 <span></span>
 <span></span>
@@ -102,32 +811,22 @@
 
 </div>
 
-
-<div class="edu-lotus lotus-1">
-    🪷
+<div class="hero-lotus">
+✿
 </div>
 
-<div class="edu-lotus lotus-2">
-    🪷
-</div>
-
-<div class="edu-lotus lotus-3">
-    🪷
-</div>
-
-
-<div class="inner-title">
+<div class="hero-content">
 
 <span>
-    CHAPTER 02
+CHAPTER 02
 </span>
 
 <h1>
-    MY JOURNEY
+MY JOURNEY
 </h1>
 
 <p>
-    เส้นทางการเรียนรู้ของฉัน
+เส้นทางการเรียนรู้ของฉัน
 </p>
 
 </div>
@@ -135,56 +834,53 @@
 </section>
 
 
+<section class="page">
 
-<!-- TIMELINE -->
-
-<section class="journey-section">
-
-<div class="section-heading">
+<div class="heading">
 
 <span>
-    EDUCATION JOURNEY
+EDUCATION JOURNEY
 </span>
 
 <h2>
-    เส้นทางการศึกษา
+เส้นทางการศึกษา
 </h2>
 
 <p>
-    ทุกก้าวเล็ก ๆ คือประสบการณ์ที่มีความหมาย
+ทุกก้าวเล็ก ๆ คือประสบการณ์ที่มีความหมาย
 </p>
 
 </div>
 
 
-<div class="journey-timeline">
+<div class="timeline">
 
 <div class="timeline-line"></div>
 
 
 <article class="timeline-item">
 
-<div class="timeline-number">
-    01
+<div class="node">
+01
 </div>
 
-<div class="timeline-card">
+<div class="timeline-box">
 
 <small>
-    FIRST STEP
+FIRST STEP
 </small>
 
 <h3>
-    ประถมศึกษา
+ประถมศึกษา
 </h3>
 
 <strong>
-    [กรอกชื่อโรงเรียน]
+[กรอกชื่อโรงเรียน]
 </strong>
 
 <p>
-    จุดเริ่มต้นของการเรียนรู้
-    และการค้นพบสิ่งใหม่ ๆ
+จุดเริ่มต้นของการเรียนรู้
+และการค้นพบสิ่งใหม่ ๆ
 </p>
 
 </div>
@@ -194,27 +890,27 @@
 
 <article class="timeline-item right">
 
-<div class="timeline-number">
-    02
+<div class="node">
+02
 </div>
 
-<div class="timeline-card">
+<div class="timeline-box">
 
 <small>
-    DISCOVER
+DISCOVER
 </small>
 
 <h3>
-    มัธยมศึกษาตอนต้น
+มัธยมศึกษาตอนต้น
 </h3>
 
 <strong>
-    [กรอกชื่อโรงเรียน]
+[กรอกชื่อโรงเรียน]
 </strong>
 
 <p>
-    ได้ค้นพบความสนใจ
-    และลองทำกิจกรรมใหม่ ๆ
+ได้ทดลองกิจกรรมใหม่ ๆ
+และค้นพบความสนใจของตัวเอง
 </p>
 
 </div>
@@ -224,28 +920,27 @@
 
 <article class="timeline-item">
 
-<div class="timeline-number">
-    03
+<div class="node">
+03
 </div>
 
-<div class="timeline-card current">
+<div class="timeline-box current">
 
 <small>
-    CURRENT
+CURRENT
 </small>
 
 <h3>
-    ม.3/[กรอกห้อง]
+ม.3/[กรอกห้อง]
 </h3>
 
 <strong>
-    [กรอกชื่อโรงเรียน]
+[กรอกชื่อโรงเรียน]
 </strong>
 
 <p>
-    กำลังพัฒนาความรู้
-    ทักษะ และประสบการณ์
-    เพื่อเตรียมพร้อมสำหรับอนาคต
+กำลังพัฒนาความรู้ ทักษะ
+และประสบการณ์เพื่ออนาคต
 </p>
 
 </div>
@@ -257,20 +952,17 @@
 </section>
 
 
+<section class="feature">
 
-<!-- CURRENT -->
+<div class="feature-art">
 
-<section class="current-study">
+<div class="feature-glow"></div>
 
-<div class="study-visual">
-
-<div class="study-glow"></div>
-
-<div class="study-lotus">
-    🪷
+<div class="feature-lotus">
+✿
 </div>
 
-<div class="study-water">
+<div class="ripples">
 
 <span></span>
 <span></span>
@@ -281,39 +973,39 @@
 </div>
 
 
-<div class="study-information">
+<div class="feature-text">
 
 <span>
-    CURRENT CHAPTER
+CURRENT CHAPTER
 </span>
 
 <h2>
-    การเดินทางในปัจจุบัน
+การเดินทางในปัจจุบัน
 </h2>
 
 <p>
-    ปัจจุบันฉันกำลังศึกษาอยู่ที่
-    <strong>[กรอกชื่อโรงเรียน]</strong>
-    ระดับชั้น
-    <strong>ม.3/[กรอกห้อง]</strong>
+ตอนนี้ฉันกำลังศึกษาอยู่ที่
+<strong>[กรอกชื่อโรงเรียน]</strong>
+ระดับชั้น
+<strong>ม.3/[กรอกห้อง]</strong>
 </p>
 
 
-<div class="study-stats">
+<div class="feature-stats">
 
 <div>
-    <small>LEVEL</small>
-    <strong>ม.3</strong>
+<small>LEVEL</small>
+<strong>ม.3</strong>
 </div>
 
 <div>
-    <small>SCHOOL</small>
-    <strong>[กรอกโรงเรียน]</strong>
+<small>SCHOOL</small>
+<strong>[กรอกโรงเรียน]</strong>
 </div>
 
 <div>
-    <small>SUBJECT</small>
-    <strong>[กรอกวิชาที่ชอบ]</strong>
+<small>SUBJECT</small>
+<strong>[กรอกวิชา]</strong>
 </div>
 
 </div>
@@ -323,121 +1015,63 @@
 </section>
 
 
+<section class="page">
 
-<!-- TABLE -->
-
-<section class="record-section">
-
-<div class="section-heading">
+<div class="heading">
 
 <span>
-    EDUCATION RECORD
+EDUCATION RECORD
 </span>
 
 <h2>
-    บันทึกการศึกษา
+บันทึกการศึกษา
 </h2>
 
 </div>
 
 
-<div class="record-table">
+<div class="table-box">
 
 <table>
 
 <thead>
 
 <tr>
-
-<th>
-    ช่วงการศึกษา
-</th>
-
-<th>
-    โรงเรียน
-</th>
-
-<th>
-    ระดับ
-</th>
-
-<th>
-    สถานะ
-</th>
-
+<th>ช่วงการศึกษา</th>
+<th>โรงเรียน</th>
+<th>ระดับ</th>
+<th>สถานะ</th>
 </tr>
 
 </thead>
 
-
 <tbody>
 
 <tr>
-
+<td>ประถมศึกษา</td>
+<td>[กรอกชื่อโรงเรียน]</td>
+<td>ประถมศึกษา</td>
 <td>
-    ประถมศึกษา
+<span class="status">สำเร็จ</span>
 </td>
-
-<td>
-    [กรอกชื่อโรงเรียน]
-</td>
-
-<td>
-    ประถมศึกษา
-</td>
-
-<td>
-    <span>
-        สำเร็จ
-    </span>
-</td>
-
 </tr>
 
-
 <tr>
-
+<td>มัธยมต้น</td>
+<td>[กรอกชื่อโรงเรียน]</td>
+<td>ม.1 - ม.2</td>
 <td>
-    มัธยมต้น
+<span class="status">สำเร็จ</span>
 </td>
-
-<td>
-    [กรอกชื่อโรงเรียน]
-</td>
-
-<td>
-    ม.1 - ม.2
-</td>
-
-<td>
-    <span>
-        สำเร็จ
-    </span>
-</td>
-
 </tr>
 
-
 <tr>
-
+<td>ปัจจุบัน</td>
+<td>[กรอกชื่อโรงเรียน]</td>
+<td>ม.3</td>
 <td>
-    ปัจจุบัน
+<span class="status current">กำลังศึกษา</span>
 </td>
-
-<td>
-    [กรอกชื่อโรงเรียน]
-</td>
-
-<td>
-    ม.3
-</td>
-
-<td>
-    <span class="now">
-        กำลังศึกษา
-    </span>
-</td>
-
 </tr>
 
 </tbody>
@@ -448,23 +1082,21 @@
 
 </section>
 
-
 </main>
-
 
 
 <footer class="footer">
 
-<div class="footer-lotus">
-    🪷
+<div class="footer-mark">
+✿
 </div>
 
 <h3>
-    LOTUS PORTFOLIO
+LOTUS QUEST
 </h3>
 
 <p>
-    Student Portfolio • [กรอกชื่อ]
+Student Portfolio · [กรอกชื่อ]
 </p>
 
 <div class="footer-links">
@@ -478,11 +1110,62 @@
 </div>
 
 <small>
-    © 2026 [กรอกชื่อ]
+© 2026 [กรอกชื่อ]
 </small>
 
 </footer>
 
+
+<script>
+
+const glow=document.getElementById("mouseGlow");
+const dot=document.getElementById("mouseDot");
+
+let mx=innerWidth/2;
+let my=innerHeight/2;
+let gx=mx;
+let gy=my;
+
+document.addEventListener("mousemove",e=>{
+
+mx=e.clientX;
+my=e.clientY;
+
+dot.style.left=mx+"px";
+dot.style.top=my+"px";
+
+});
+
+function follow(){
+
+gx+=(mx-gx)*.1;
+gy+=(my-gy)*.1;
+
+glow.style.left=gx+"px";
+glow.style.top=gy+"px";
+
+requestAnimationFrame(follow);
+
+}
+
+follow();
+
+document.addEventListener("click",e=>{
+
+const r=document.createElement("span");
+
+r.className="click-ripple";
+
+r.style.left=e.clientX+"px";
+r.style.top=e.clientY+"px";
+
+document.body.appendChild(r);
+
+setTimeout(()=>r.remove(),800);
+
+});
+
+</script>
 
 </body>
 </html>
