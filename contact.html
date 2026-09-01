@@ -1,3 +1,7 @@
+<!-- =========================================================
+LOTUS QUEST — contact.html
+========================================================= -->
+
 <!DOCTYPE html>
 <html lang="th">
 
@@ -6,24 +10,646 @@
 <meta charset="UTF-8">
 
 <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+name="viewport"
+content="width=device-width,initial-scale=1.0">
 
 <title>
-    LOTUS PORTFOLIO | ติดต่อ
+LOTUS QUEST | Contact
 </title>
 
-<link
-    rel="stylesheet"
-    href="style.css"
->
+<style>
 
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root{
+    --cyan:#6ffff1;
+    --pink:#ff8edb;
+    --purple:#a978ff;
+    --line:rgba(130,180,255,.15);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Kanit",sans-serif;
+    color:#fff;
+    background:
+        radial-gradient(
+            circle at 50% -5%,
+            #17245c,
+            #0a1031 35%,
+            #05081d 70%,
+            #02030d
+        );
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+#mouseGlow{
+    position:fixed;
+    width:310px;
+    height:310px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    pointer-events:none;
+    background:
+        radial-gradient(
+            circle,
+            rgba(109,255,241,.15),
+            rgba(169,120,255,.08) 35%,
+            transparent 72%
+        );
+    filter:blur(5px);
+    z-index:9998;
+}
+
+#mouseDot{
+    position:fixed;
+    width:8px;
+    height:8px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:#fff;
+    pointer-events:none;
+    z-index:9999;
+    box-shadow:
+        0 0 10px #fff,
+        0 0 20px var(--cyan),
+        0 0 30px var(--pink);
+}
+
+.click-ripple{
+    position:fixed;
+    width:10px;
+    height:10px;
+    transform:translate(-50%,-50%);
+    border:2px solid var(--cyan);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9997;
+    animation:click .8s ease-out forwards;
+}
+
+@keyframes click{
+    to{
+        width:180px;
+        height:180px;
+        opacity:0;
+    }
+}
+
+.site-header{
+    position:fixed;
+    top:14px;
+    left:0;
+    right:0;
+    z-index:5000;
+    padding:0 14px;
+}
+
+.navbar{
+    width:min(1200px,94%);
+    min-height:64px;
+    margin:auto;
+    padding:9px 15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    border:1px solid var(--line);
+    border-radius:25px;
+    background:rgba(4,10,31,.70);
+    backdrop-filter:blur(18px);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    color:#071729;
+    background:
+        linear-gradient(135deg,var(--cyan),#73dcff,var(--pink));
+}
+
+.logo-text{
+    font:500 18px "Playfair Display";
+}
+
+.logo-text b{
+    display:block;
+    color:var(--pink);
+    font:700 8px "Kanit";
+    letter-spacing:3px;
+}
+
+.nav-links{
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a{
+    position:relative;
+    color:#adbbdf;
+    font-size:12px;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:#fff;
+    text-shadow:0 0 12px var(--cyan);
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-8px;
+    width:0;
+    height:2px;
+    transform:translateX(-50%);
+    background:linear-gradient(90deg,var(--pink),var(--cyan));
+    transition:.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after{
+    width:100%;
+}
+
+.hero{
+    position:relative;
+    min-height:560px;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            180deg,
+            #061320,
+            #0f2b42 55%,
+            #174f60
+        );
+}
+
+.moon{
+    position:absolute;
+    left:50%;
+    top:10%;
+    width:115px;
+    height:115px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff,
+            #ddf3f3 58%,
+            #9bbdce
+        );
+    box-shadow:
+        0 0 75px rgba(210,245,248,.22),
+        0 0 110px rgba(100,220,255,.10);
+    animation:moon 5s ease-in-out infinite;
+}
+
+@keyframes moon{
+    50%{
+        transform:translateX(-50%) translateY(-10px);
+    }
+}
+
+.stars span{
+    position:absolute;
+    color:rgba(255,255,255,.55);
+    animation:blink 3s ease-in-out infinite;
+}
+
+.stars span:nth-child(1){
+    left:14%;
+    top:20%;
+}
+
+.stars span:nth-child(2){
+    left:28%;
+    top:32%;
+    animation-delay:.8s;
+}
+
+.stars span:nth-child(3){
+    right:16%;
+    top:20%;
+    animation-delay:1.2s;
+}
+
+.stars span:nth-child(4){
+    right:27%;
+    top:35%;
+    animation-delay:.4s;
+}
+
+@keyframes blink{
+    50%{
+        opacity:1;
+        transform:scale(1.25);
+    }
+}
+
+.mist{
+    position:absolute;
+    width:560px;
+    height:120px;
+    border-radius:50%;
+    filter:blur(28px);
+    background:rgba(190,235,242,.06);
+    animation:mist 11s ease-in-out infinite;
+}
+
+.mist.a{
+    left:-160px;
+    bottom:32%;
+}
+
+.mist.b{
+    right:-160px;
+    bottom:40%;
+    animation-direction:reverse;
+}
+
+@keyframes mist{
+    50%{
+        translate:40px 0;
+    }
+}
+
+.lotus{
+    position:absolute;
+    left:50%;
+    bottom:18%;
+    transform:translateX(-50%);
+    color:#f0b0cb;
+    font-size:80px;
+    animation:lotus 4s ease-in-out infinite;
+}
+
+@keyframes lotus{
+    50%{
+        transform:translateX(-50%) translateY(-9px);
+    }
+}
+
+.water{
+    position:absolute;
+    left:-8%;
+    bottom:-90px;
+    width:116%;
+    height:330px;
+    border-radius:50%;
+    background:
+        repeating-radial-gradient(
+            ellipse at center,
+            rgba(255,255,255,.06) 0 2px,
+            transparent 3px 35px
+        );
+}
+
+.water span{
+    position:absolute;
+    left:50%;
+    top:23%;
+    transform:translateX(-50%);
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:50%;
+}
+
+.water span:nth-child(1){
+    width:200px;
+    height:48px;
+}
+
+.water span:nth-child(2){
+    width:350px;
+    height:84px;
+}
+
+.water span:nth-child(3){
+    width:520px;
+    height:120px;
+}
+
+.title{
+    position:relative;
+    z-index:10;
+    text-align:center;
+}
+
+.title span{
+    color:#7181a8;
+    font-size:10px;
+    letter-spacing:4px;
+}
+
+.title h1{
+    margin:8px 0;
+    font:500 clamp(48px,7vw,88px) "Playfair Display";
+}
+
+.title p{
+    color:#91a2c6;
+    font-size:12px;
+}
+
+.page{
+    position:relative;
+    z-index:2;
+    width:min(1100px,92%);
+    margin:auto;
+    padding:100px 0;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:48px;
+}
+
+.heading span{
+    color:var(--cyan);
+    font-size:10px;
+    letter-spacing:4px;
+}
+
+.heading h2{
+    margin:8px 0;
+    font:500 clamp(35px,5vw,56px) "Playfair Display";
+}
+
+.heading p{
+    color:#8192b8;
+    font-size:13px;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.contact-card{
+    position:relative;
+    min-height:300px;
+    padding:30px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:27px;
+    background:rgba(8,15,43,.72);
+    transition:.35s;
+}
+
+.contact-card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(115,255,242,.34);
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.25),
+        0 0 25px rgba(115,255,242,.07);
+}
+
+.contact-card::after{
+    content:"";
+    position:absolute;
+    left:-100%;
+    top:0;
+    width:70%;
+    height:100%;
+    transform:skewX(-20deg);
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.09),
+            transparent
+        );
+    transition:.8s;
+}
+
+.contact-card:hover::after{
+    left:135%;
+}
+
+.icon{
+    width:62px;
+    height:62px;
+    display:grid;
+    place-items:center;
+    margin-bottom:22px;
+    border-radius:18px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(115,255,242,.14),
+            rgba(255,143,215,.10)
+        );
+    font-size:25px;
+}
+
+.contact-card small{
+    color:#7486b0;
+    font-size:8px;
+    letter-spacing:2px;
+}
+
+.contact-card h3{
+    margin:8px 0;
+    font:500 23px "Playfair Display";
+}
+
+.contact-card strong{
+    color:#b5c1dd;
+    font-size:11px;
+}
+
+.contact-card p{
+    margin-top:12px;
+    color:#7889af;
+    font-size:10px;
+}
+
+.final{
+    position:relative;
+    min-height:430px;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            180deg,
+            #092437,
+            #174c5d,
+            #413e63
+        );
+}
+
+.final-glow{
+    width:430px;
+    height:430px;
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(244,176,203,.18),
+            transparent 68%
+        );
+    animation:pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+.final-lotus{
+    position:absolute;
+    left:50%;
+    top:13%;
+    transform:translateX(-50%);
+    font-size:80px;
+    color:#f1b0cc;
+    animation:lotusFinal 4s ease-in-out infinite;
+}
+
+@keyframes lotusFinal{
+    50%{
+        transform:translateX(-50%) translateY(-9px);
+    }
+}
+
+.final-copy{
+    position:absolute;
+    top:45%;
+    width:min(650px,92%);
+    text-align:center;
+}
+
+.final-copy span{
+    color:#6979a1;
+    font-size:9px;
+    letter-spacing:3px;
+}
+
+.final-copy h2{
+    margin:8px 0;
+    font:500 39px "Playfair Display";
+}
+
+.final-copy p{
+    color:#93a4c0;
+    font-size:12px;
+}
+
+.back{
+    display:inline-flex;
+    margin-top:22px;
+    padding:11px 19px;
+    border:1px solid rgba(255,255,255,.17);
+    border-radius:14px;
+    background:rgba(255,255,255,.05);
+    transition:.3s;
+}
+
+.back:hover{
+    transform:translateY(-4px);
+    border-color:rgba(115,255,242,.33);
+}
+
+.footer{
+    padding:60px 20px 30px;
+    text-align:center;
+    background:#02050f;
+    border-top:1px solid rgba(130,170,240,.08);
+}
+
+.footer-mark{
+    color:var(--pink);
+    font-size:36px;
+}
+
+.footer h3{
+    font:500 22px "Playfair Display";
+}
+
+.footer p,
+.footer small{
+    color:#68789f;
+    font-size:10px;
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px 20px;
+    margin:22px 0;
+}
+
+.footer-links a{
+    color:#7787ab;
+    font-size:10px;
+}
+
+@media(max-width:950px){
+
+    .navbar{
+        flex-direction:column;
+    }
+
+    .contact-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .page{
+        padding:75px 0;
+    }
+
+}
+
+</style>
 </head>
 
+<body>
 
-<body class="contact-page">
-
+<div id="mouseGlow"></div>
+<div id="mouseDot"></div>
 
 <header class="site-header">
 
@@ -32,40 +658,36 @@
 <a href="index.html" class="logo">
 
 <span class="logo-icon">
-    🪷
+✿
 </span>
 
-<span>
-    LOTUS
-    <strong>PORTFOLIO</strong>
+<span class="logo-text">
+LOTUS
+<b>QUEST</b>
 </span>
 
 </a>
-
 
 <div class="nav-links">
 
 <a href="index.html">
-    หน้าแรก
+หน้าแรก
 </a>
 
 <a href="profile.html">
-    ประวัติส่วนตัว
+ประวัติส่วนตัว
 </a>
 
 <a href="education.html">
-    การศึกษา
+การศึกษา
 </a>
 
 <a href="hobby.html">
-    งานอดิเรก
+งานอดิเรก
 </a>
 
-<a
-    href="contact.html"
-    class="active"
->
-    ติดต่อ
+<a href="contact.html" class="active">
+ติดต่อ
 </a>
 
 </div>
@@ -75,36 +697,29 @@
 </header>
 
 
-
 <main>
 
+<section class="hero">
 
-<section class="inner-hero contact-background">
+<div class="moon"></div>
 
-<div class="contact-moon"></div>
-
-
-<div class="contact-stars">
+<div class="stars">
 
 <span>✦</span>
 <span>✧</span>
 <span>✦</span>
 <span>·</span>
-<span>✧</span>
 
 </div>
 
+<div class="mist a"></div>
+<div class="mist b"></div>
 
-<div class="contact-mist cm-one"></div>
-<div class="contact-mist cm-two"></div>
-
-
-<div class="contact-lotus">
-    🪷
+<div class="lotus">
+✿
 </div>
 
-
-<div class="contact-water">
+<div class="water">
 
 <span></span>
 <span></span>
@@ -112,19 +727,18 @@
 
 </div>
 
-
-<div class="inner-title">
+<div class="title">
 
 <span>
-    FINAL CHAPTER
+FINAL CHAPTER
 </span>
 
 <h1>
-    CONTACT
+CONTACT
 </h1>
 
 <p>
-    ขอบคุณที่แวะเข้ามาเยี่ยมชม
+ขอบคุณที่แวะเข้ามาเยี่ยมชม
 </p>
 
 </div>
@@ -132,21 +746,20 @@
 </section>
 
 
+<section class="page">
 
-<section class="contact-section">
-
-<div class="section-heading">
+<div class="heading">
 
 <span>
-    LET'S CONNECT
+LET'S CONNECT
 </span>
 
 <h2>
-    ติดต่อฉัน
+ติดต่อฉัน
 </h2>
 
 <p>
-    สามารถติดต่อฉันผ่านช่องทางต่าง ๆ
+เลือกช่องทางที่สะดวกสำหรับการติดต่อ
 </p>
 
 </div>
@@ -156,80 +769,77 @@
 
 
 <a
-    href="mailto:example@email.com"
-    class="contact-card"
->
+href="mailto:example@email.com"
+class="contact-card tilt">
 
-<div class="contact-icon">
-    ✉
+<div class="icon">
+✉
 </div>
 
 <small>
-    CONTACT 01
+CONTACT 01
 </small>
 
 <h3>
-    EMAIL
+EMAIL
 </h3>
 
 <strong>
-    example@email.com
+example@email.com
 </strong>
 
 <p>
-    ส่งข้อความถึงฉัน →
+ส่งข้อความถึงฉัน →
 </p>
 
 </a>
 
 
+<article class="contact-card tilt">
 
-<article class="contact-card">
-
-<div class="contact-icon">
-    🌐
+<div class="icon">
+🌐
 </div>
 
 <small>
-    CONTACT 02
+CONTACT 02
 </small>
 
 <h3>
-    WEBSITE
+WEBSITE
 </h3>
 
 <strong>
-    My Student Portfolio
+My Student Portfolio
 </strong>
 
 <p>
-    เว็บไซต์แนะนำตัวของฉัน
+เว็บไซต์แนะนำตัวของฉัน
 </p>
 
 </article>
 
 
+<article class="contact-card tilt">
 
-<article class="contact-card">
-
-<div class="contact-icon">
-    📱
+<div class="icon">
+📱
 </div>
 
 <small>
-    CONTACT 03
+CONTACT 03
 </small>
 
 <h3>
-    SOCIAL
+SOCIAL
 </h3>
 
 <strong>
-    [กรอกช่องทางติดต่อ]
+[กรอกช่องทางติดต่อ]
 </strong>
 
 <p>
-    [กรอกข้อมูลเพิ่มเติม]
+[กรอกข้อมูลเพิ่มเติม]
 </p>
 
 </article>
@@ -240,63 +850,52 @@
 </section>
 
 
+<section class="final">
 
-<section class="final-message">
+<div class="final-glow"></div>
 
 <div class="final-lotus">
-    🪷
+✿
 </div>
 
-<div class="final-water">
-
-<span></span>
-<span></span>
-<span></span>
-
-</div>
-
-
-<div class="final-content">
+<div class="final-copy">
 
 <span>
-    THANK YOU
+THANK YOU
 </span>
 
 <h2>
-    ขอบคุณที่เยี่ยมชม
+ขอบคุณที่เยี่ยมชม
 </h2>
 
 <p>
-    หวังว่า Portfolio นี้
-    จะทำให้คุณรู้จักฉันมากขึ้น
+หวังว่า Portfolio นี้
+จะทำให้คุณรู้จักฉันมากขึ้น
 </p>
 
-
-<a href="index.html">
-    ← กลับหน้าแรก
+<a href="index.html" class="back">
+← กลับหน้าแรก
 </a>
 
 </div>
 
 </section>
-
 
 </main>
 
 
-
 <footer class="footer">
 
-<div class="footer-lotus">
-    🪷
+<div class="footer-mark">
+✿
 </div>
 
 <h3>
-    LOTUS PORTFOLIO
+LOTUS QUEST
 </h3>
 
 <p>
-    Student Portfolio • [กรอกชื่อ]
+Student Portfolio · [กรอกชื่อ]
 </p>
 
 <div class="footer-links">
@@ -315,6 +914,80 @@
 
 </footer>
 
+
+<script>
+
+const glow=document.getElementById("mouseGlow");
+const dot=document.getElementById("mouseDot");
+
+let mx=innerWidth/2;
+let my=innerHeight/2;
+let gx=mx;
+let gy=my;
+
+document.addEventListener("mousemove",e=>{
+
+mx=e.clientX;
+my=e.clientY;
+
+dot.style.left=mx+"px";
+dot.style.top=my+"px";
+
+});
+
+function follow(){
+
+gx+=(mx-gx)*.1;
+gy+=(my-gy)*.1;
+
+glow.style.left=gx+"px";
+glow.style.top=gy+"px";
+
+requestAnimationFrame(follow);
+
+}
+
+follow();
+
+document.addEventListener("click",e=>{
+
+const r=document.createElement("span");
+
+r.className="click-ripple";
+
+r.style.left=e.clientX+"px";
+r.style.top=e.clientY+"px";
+
+document.body.appendChild(r);
+
+setTimeout(()=>r.remove(),800);
+
+});
+
+document.querySelectorAll(".tilt").forEach(card=>{
+
+card.addEventListener("mousemove",e=>{
+
+const r=card.getBoundingClientRect();
+
+const x=(e.clientX-r.left)/r.width-.5;
+const y=(e.clientY-r.top)/r.height-.5;
+
+card.style.transform=
+`perspective(900px)
+rotateX(${y*-5}deg)
+rotateY(${x*5}deg)
+translateY(-10px)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+card.style.transform="";
+});
+
+});
+
+</script>
 
 </body>
 </html>
