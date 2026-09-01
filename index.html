@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
 
     <meta charset="UTF-8">
@@ -29,9 +28,54 @@
 
 <body class="home-page">
 
+<!-- ==================================================
+     MOUSE EFFECT
+================================================== -->
+
+<div id="mouseGlow"></div>
+
 
 <!-- ==================================================
-     OPENING SCENE
+     FLOATING PETALS
+================================================== -->
+
+<div class="petals-container">
+
+    <span
+        class="floating-petal"
+        style="left:5%;animation-duration:13s;"
+    >✿</span>
+
+    <span
+        class="floating-petal"
+        style="left:18%;animation-duration:16s;animation-delay:2s;"
+    >✧</span>
+
+    <span
+        class="floating-petal"
+        style="left:32%;animation-duration:12s;animation-delay:5s;"
+    >✿</span>
+
+    <span
+        class="floating-petal"
+        style="left:50%;animation-duration:17s;animation-delay:1s;"
+    >✧</span>
+
+    <span
+        class="floating-petal"
+        style="left:67%;animation-duration:14s;animation-delay:5s;"
+    >✿</span>
+
+    <span
+        class="floating-petal"
+        style="left:84%;animation-duration:18s;animation-delay:3s;"
+    >✧</span>
+
+</div>
+
+
+<!-- ==================================================
+     OPENING CONTROL
 ================================================== -->
 
 <input
@@ -41,9 +85,14 @@
 >
 
 
+<!-- ==================================================
+     OPENING SCREEN
+================================================== -->
+
 <section class="opening-screen">
 
     <div class="opening-bg"></div>
+
 
     <div class="opening-stars">
 
@@ -61,33 +110,34 @@
 
 
     <div class="opening-mist mist-left"></div>
-
     <div class="opening-mist mist-right"></div>
 
 
-    <!-- น้ำ -->
-
     <div class="opening-water">
 
-        <div class="opening-ripple ripple-1"></div>
-
-        <div class="opening-ripple ripple-2"></div>
-
-        <div class="opening-ripple ripple-3"></div>
+        <span class="opening-ripple ripple-1"></span>
+        <span class="opening-ripple ripple-2"></span>
+        <span class="opening-ripple ripple-3"></span>
 
     </div>
 
 
-    <!-- ดอกบัว -->
+    <!-- REALISTIC LOTUS -->
 
-    <div class="opening-lotus">
+    <div class="lotus lotus-opening">
 
-        <span class="petal p1"></span>
-        <span class="petal p2"></span>
-        <span class="petal p3"></span>
-        <span class="petal p4"></span>
-        <span class="petal p5"></span>
-        <span class="petal p6"></span>
+        <span class="lotus-petal outer-1"></span>
+        <span class="lotus-petal outer-2"></span>
+        <span class="lotus-petal outer-3"></span>
+        <span class="lotus-petal outer-4"></span>
+        <span class="lotus-petal outer-5"></span>
+        <span class="lotus-petal outer-6"></span>
+
+        <span class="lotus-petal mid-1"></span>
+        <span class="lotus-petal mid-2"></span>
+        <span class="lotus-petal mid-3"></span>
+        <span class="lotus-petal mid-4"></span>
+        <span class="lotus-petal mid-5"></span>
 
         <span class="lotus-center"></span>
 
@@ -122,8 +172,13 @@
         for="opening-control"
         class="enter-button"
     >
+
         ENTER MY WORLD
-        <span>→</span>
+
+        <span>
+            →
+        </span>
+
     </label>
 
 
@@ -132,7 +187,6 @@
     </div>
 
 </section>
-
 
 
 <!-- ==================================================
@@ -149,7 +203,7 @@
         >
 
             <span class="logo-icon">
-                🪷
+                ✿
             </span>
 
             <span>
@@ -192,24 +246,22 @@
 </header>
 
 
-
 <!-- ==================================================
-     HOME HERO
+     HERO
 ================================================== -->
 
 <main>
 
 <section class="home-hero">
 
-    <div class="home-decoration decoration-1"></div>
-    <div class="home-decoration decoration-2"></div>
-
-    <div class="home-bubble bubble-1"></div>
-    <div class="home-bubble bubble-2"></div>
-    <div class="home-bubble bubble-3"></div>
+    <div class="home-light home-light-one"></div>
+    <div class="home-light home-light-two"></div>
 
 
     <div class="home-content">
+
+
+        <!-- TEXT -->
 
         <div class="home-copy">
 
@@ -217,26 +269,34 @@
                 ✦ STUDENT PORTFOLIO
             </span>
 
-            <span class="chapter">
+            <span class="hero-chapter">
                 CHAPTER 00
             </span>
 
             <h2>
+
                 สวัสดีครับ/ค่ะ
+
                 <br>
+
                 ฉันชื่อ
-                <span>[กรอกชื่อ]</span>
+
+                <span>
+                    [กรอกชื่อ]
+                </span>
+
             </h2>
 
-            <p class="role">
+
+            <p class="hero-role">
                 STUDENT • DREAMER • CREATOR
             </p>
 
-            <p class="description">
+
+            <p class="hero-description">
                 ยินดีต้อนรับเข้าสู่ Portfolio ของฉัน
-                ที่รวบรวมเรื่องราวเกี่ยวกับตัวตน
-                การศึกษา งานอดิเรก
-                และความสนใจต่าง ๆ
+                ที่รวบรวมตัวตน เรื่องราว การศึกษา
+                งานอดิเรก และความสนใจ
             </p>
 
 
@@ -249,6 +309,7 @@
                     รู้จักฉันมากขึ้น
                     <span>→</span>
                 </a>
+
 
                 <a
                     href="hobby.html"
@@ -263,18 +324,41 @@
             <div class="home-mini-info">
 
                 <div>
-                    <strong>03</strong>
-                    <span>GRADE</span>
+
+                    <strong>
+                        03
+                    </strong>
+
+                    <span>
+                        GRADE
+                    </span>
+
                 </div>
 
-                <div>
-                    <strong>05</strong>
-                    <span>PAGES</span>
-                </div>
 
                 <div>
-                    <strong>01</strong>
-                    <span>STORY</span>
+
+                    <strong>
+                        05
+                    </strong>
+
+                    <span>
+                        PAGES
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        01
+                    </strong>
+
+                    <span>
+                        STORY
+                    </span>
+
                 </div>
 
             </div>
@@ -282,26 +366,34 @@
         </div>
 
 
-
-        <!-- ฉากบัว -->
+        <!-- LOTUS SCENE -->
 
         <div class="home-lake">
 
             <div class="lake-glow"></div>
 
-            <div class="lake-orbit orbit-one"></div>
 
+            <div class="lake-orbit orbit-one"></div>
             <div class="lake-orbit orbit-two"></div>
 
 
-            <div class="lake-lotus">
+            <div
+                class="lotus lotus-main"
+                id="mainLotus"
+            >
 
-                <span class="petal p1"></span>
-                <span class="petal p2"></span>
-                <span class="petal p3"></span>
-                <span class="petal p4"></span>
-                <span class="petal p5"></span>
-                <span class="petal p6"></span>
+                <span class="lotus-petal outer-1"></span>
+                <span class="lotus-petal outer-2"></span>
+                <span class="lotus-petal outer-3"></span>
+                <span class="lotus-petal outer-4"></span>
+                <span class="lotus-petal outer-5"></span>
+                <span class="lotus-petal outer-6"></span>
+
+                <span class="lotus-petal mid-1"></span>
+                <span class="lotus-petal mid-2"></span>
+                <span class="lotus-petal mid-3"></span>
+                <span class="lotus-petal mid-4"></span>
+                <span class="lotus-petal mid-5"></span>
 
                 <span class="lotus-center"></span>
 
@@ -317,20 +409,19 @@
             </div>
 
 
-            <div class="leaf leaf-left"></div>
+            <div class="leaf leaf-one"></div>
+            <div class="leaf leaf-two"></div>
 
-            <div class="leaf leaf-right"></div>
 
-
-            <div class="lake-light light-1">
+            <div class="lake-light light-one">
                 ✦
             </div>
 
-            <div class="lake-light light-2">
+            <div class="lake-light light-two">
                 ✧
             </div>
 
-            <div class="lake-light light-3">
+            <div class="lake-light light-three">
                 ·
             </div>
 
@@ -338,10 +429,11 @@
             <div class="lake-label">
 
                 <span>
-                    🪷
+                    ✿
                 </span>
 
                 <div>
+
                     <strong>
                         LOTUS LAKE
                     </strong>
@@ -349,6 +441,7 @@
                     <small>
                         my little world
                     </small>
+
                 </div>
 
             </div>
@@ -358,7 +451,6 @@
     </div>
 
 </section>
-
 
 
 <!-- ==================================================
@@ -378,7 +470,7 @@
         </h2>
 
         <p>
-            ลองเปิดดูแต่ละบทของ Portfolio
+            เลือกบทที่อยากทำความรู้จัก
         </p>
 
     </div>
@@ -389,7 +481,7 @@
 
         <a
             href="profile.html"
-            class="chapter-card blue-card"
+            class="chapter-card blue"
         >
 
             <div class="chapter-icon">
@@ -416,10 +508,9 @@
         </a>
 
 
-
         <a
             href="education.html"
-            class="chapter-card purple-card"
+            class="chapter-card purple"
         >
 
             <div class="chapter-icon">
@@ -446,10 +537,9 @@
         </a>
 
 
-
         <a
             href="hobby.html"
-            class="chapter-card pink-card"
+            class="chapter-card pink"
         >
 
             <div class="chapter-icon">
@@ -466,7 +556,7 @@
 
             <p>
                 สิ่งที่ฉันชอบ
-                และสิ่งที่ฉันสนใจ
+                และความสนใจ
             </p>
 
             <strong>
@@ -475,7 +565,6 @@
 
         </a>
 
-
     </div>
 
 </section>
@@ -483,15 +572,10 @@
 </main>
 
 
-
-<!-- ==================================================
-     FOOTER
-================================================== -->
-
 <footer class="footer">
 
     <div class="footer-lotus">
-        🪷
+        ✿
     </div>
 
     <h3>
@@ -501,6 +585,7 @@
     <p>
         Student Portfolio • [กรอกชื่อ]
     </p>
+
 
     <div class="footer-links">
 
@@ -526,12 +611,374 @@
 
     </div>
 
+
     <small>
         © 2026 [กรอกชื่อ]
     </small>
 
 </footer>
 
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+const mouseGlow =
+    document.getElementById("mouseGlow");
+
+const lotus =
+    document.getElementById("mainLotus");
+
+let mouseX = 0;
+let mouseY = 0;
+
+let glowX = 0;
+let glowY = 0;
+
+
+/* mouse position */
+
+document.addEventListener(
+    "mousemove",
+    function(e){
+
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+    }
+);
+
+
+/* smooth glow */
+
+function moveGlow(){
+
+    glowX +=
+        (mouseX - glowX) * .10;
+
+    glowY +=
+        (mouseY - glowY) * .10;
+
+
+    mouseGlow.style.left =
+        glowX + "px";
+
+    mouseGlow.style.top =
+        glowY + "px";
+
+
+    requestAnimationFrame(
+        moveGlow
+    );
+}
+
+moveGlow();
+
+
+/* mouse sparkle */
+
+let lastSpark = 0;
+
+document.addEventListener(
+    "mousemove",
+    function(e){
+
+        const now =
+            Date.now();
+
+        if(
+            now - lastSpark < 90
+        ){
+            return;
+        }
+
+        lastSpark = now;
+
+
+        const spark =
+            document.createElement(
+                "span"
+            );
+
+        spark.className =
+            "mouse-star";
+
+        const symbols = [
+            "✦",
+            "✧",
+            "·",
+            "✿"
+        ];
+
+
+        spark.textContent =
+            symbols[
+                Math.floor(
+                    Math.random()
+                    *
+                    symbols.length
+                )
+            ];
+
+
+        spark.style.left =
+            e.clientX + "px";
+
+        spark.style.top =
+            e.clientY + "px";
+
+
+        spark.style.setProperty(
+            "--mx",
+            ((Math.random()-.5) * 80)
+            + "px"
+        );
+
+
+        spark.style.setProperty(
+            "--my",
+            ((Math.random()-.5) * 80)
+            + "px"
+        );
+
+
+        document.body.appendChild(
+            spark
+        );
+
+
+        setTimeout(
+            () => spark.remove(),
+            800
+        );
+
+    }
+);
+
+
+/* click ripple */
+
+document.addEventListener(
+    "click",
+    function(e){
+
+        const ripple =
+            document.createElement(
+                "span"
+            );
+
+        ripple.className =
+            "click-ripple";
+
+
+        ripple.style.left =
+            e.clientX + "px";
+
+        ripple.style.top =
+            e.clientY + "px";
+
+
+        document.body.appendChild(
+            ripple
+        );
+
+
+        setTimeout(
+            () => ripple.remove(),
+            1000
+        );
+
+    }
+);
+
+
+/* lotus parallax */
+
+document.addEventListener(
+    "mousemove",
+    function(e){
+
+        if(!lotus){
+            return;
+        }
+
+
+        const x =
+            (e.clientX /
+            window.innerWidth
+            - .5)
+            * 14;
+
+
+        const y =
+            (e.clientY /
+            window.innerHeight
+            - .5)
+            * 10;
+
+
+        lotus.style.marginLeft =
+            x + "px";
+
+        lotus.style.marginTop =
+            y + "px";
+
+    }
+);
+
+
+/* chapter card tilt */
+
+document
+.querySelectorAll(
+    ".chapter-card"
+)
+.forEach(
+    card => {
+
+        card.addEventListener(
+            "mousemove",
+            function(e){
+
+                const rect =
+                    card.getBoundingClientRect();
+
+
+                const x =
+                    e.clientX
+                    - rect.left;
+
+
+                const y =
+                    e.clientY
+                    - rect.top;
+
+
+                const rotateX =
+                    ((y / rect.height) - .5)
+                    * -5;
+
+
+                const rotateY =
+                    ((x / rect.width) - .5)
+                    * 5;
+
+
+                card.style.transform =
+                    `perspective(900px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-10px)`;
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            function(){
+
+                card.style.transform =
+                    "";
+
+            }
+        );
+
+    }
+);
+
+
+/* keyboard ENTER */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(
+            e.key === "Enter"
+        ){
+
+            const control =
+                document.getElementById(
+                    "opening-control"
+                );
+
+
+            control.checked =
+                true;
+
+        }
+
+    }
+);
+
+
+/* random bubbles */
+
+function createBubble(){
+
+    const bubble =
+        document.createElement(
+            "span"
+        );
+
+
+    bubble.className =
+        "home-bubble";
+
+
+    const size =
+        Math.random() * 25 + 7;
+
+
+    bubble.style.width =
+        size + "px";
+
+    bubble.style.height =
+        size + "px";
+
+
+    bubble.style.left =
+        Math.random() * 100 + "%";
+
+
+    bubble.style.bottom =
+        "-40px";
+
+
+    bubble.style.animationDuration =
+        (
+            7 +
+            Math.random() * 7
+        )
+        + "s";
+
+
+    document
+        .querySelector(
+            ".home-hero"
+        )
+        .appendChild(
+            bubble
+        );
+
+
+    setTimeout(
+        () => bubble.remove(),
+        15000
+    );
+
+}
+
+
+setInterval(
+    createBubble,
+    1100
+);
+
+</script>
 
 </body>
 </html>
