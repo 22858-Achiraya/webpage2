@@ -1,60 +1,64 @@
 <!-- =========================================================
-1) index.html
+LOTUS QUEST — index.html
+ธีม: น้ำยามค่ำคืน + ดอกบัว + ฟ้า/น้ำเงิน/ม่วง/ชมพู
+ทุกอย่างอยู่ใน HTML ไฟล์เดียว
+ใช้ไฟล์เพลง: audio/lotus-music.mp3
 ========================================================= -->
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="LOTUS QUEST - Student Portfolio">
-<title>LOTUS QUEST | Home</title>
+<title>LOTUS QUEST | Student Portfolio</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 :root{
-    --night:#03051c;
-    --deep:#07102e;
-    --blue:#10285a;
+    --bg:#03051c;
+    --bg2:#07112f;
+    --panel:#09173d;
     --cyan:#6ffff1;
     --aqua:#25dfff;
     --pink:#ff8edb;
-    --pink2:#ff5fc8;
     --purple:#a978ff;
     --gold:#ffd98a;
     --white:#fff;
-    --soft:#dce7ff;
-    --muted:#91a0c8;
-    --panel:rgba(9,18,48,.67);
-    --line:rgba(140,180,255,.17);
+    --muted:#8fa1ca;
+    --line:rgba(130,180,255,.15);
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 html{
     scroll-behavior:smooth;
 }
 
 body{
-    min-height:100vh;
     font-family:"Kanit",sans-serif;
     color:var(--white);
-    overflow-x:hidden;
     background:
-        radial-gradient(circle at 50% -10%,#1d2a69 0%,#0a1031 32%,#05081d 67%,#02030d 100%);
+        radial-gradient(circle at 50% -10%,#1b2865 0,#0b1132 30%,#05081d 65%,#02030d 100%);
+    overflow-x:hidden;
 }
 
 body::before{
     content:"";
     position:fixed;
     inset:0;
+    z-index:0;
     pointer-events:none;
-    z-index:1;
     background:
-        linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
-    background-size:70px 70px;
-    mask-image:linear-gradient(to bottom,rgba(0,0,0,.45),transparent 78%);
+        linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,.45),transparent 70%);
 }
 
 a{
@@ -68,21 +72,21 @@ button{
 
 #mouseGlow{
     position:fixed;
-    width:330px;
-    height:330px;
+    width:320px;
+    height:320px;
     transform:translate(-50%,-50%);
+    border-radius:50%;
     pointer-events:none;
     z-index:9998;
-    border-radius:50%;
     background:
         radial-gradient(
             circle,
-            rgba(109,255,241,.18) 0%,
-            rgba(169,120,255,.10) 30%,
-            rgba(255,105,205,.06) 48%,
+            rgba(109,255,241,.16),
+            rgba(169,120,255,.09) 35%,
+            rgba(255,105,205,.04) 50%,
             transparent 72%
         );
-    filter:blur(7px);
+    filter:blur(6px);
     mix-blend-mode:screen;
 }
 
@@ -91,36 +95,39 @@ button{
     width:8px;
     height:8px;
     transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:white;
     pointer-events:none;
     z-index:9999;
-    border-radius:50%;
-    background:#fff;
     box-shadow:
-        0 0 10px #fff,
+        0 0 10px white,
         0 0 20px var(--cyan),
         0 0 30px var(--pink);
 }
 
 .mouse-star{
     position:fixed;
-    pointer-events:none;
     z-index:9997;
-    color:#fff;
+    pointer-events:none;
+    color:white;
     font-size:11px;
     text-shadow:
-        0 0 7px var(--cyan),
+        0 0 8px var(--cyan),
         0 0 18px var(--pink);
-    animation:mouseTrail .7s ease-out forwards;
+    animation:trail .7s ease-out forwards;
 }
 
-@keyframes mouseTrail{
-    0%{opacity:1;transform:scale(.3)}
-    100%{
+@keyframes trail{
+    from{
+        opacity:1;
+        transform:scale(.3);
+    }
+    to{
         opacity:0;
         transform:
-            translate(var(--tx),var(--ty))
-            scale(1.6)
-            rotate(160deg);
+            translate(var(--x),var(--y))
+            scale(1.5)
+            rotate(150deg);
     }
 }
 
@@ -129,92 +136,90 @@ button{
     width:10px;
     height:10px;
     transform:translate(-50%,-50%);
-    pointer-events:none;
-    z-index:9996;
     border:2px solid var(--cyan);
     border-radius:50%;
-    box-shadow:
-        0 0 12px var(--cyan),
-        0 0 25px var(--pink);
-    animation:rippleClick .9s ease-out forwards;
+    pointer-events:none;
+    z-index:9996;
+    box-shadow:0 0 14px var(--cyan),0 0 25px var(--pink);
+    animation:click .85s ease-out forwards;
 }
 
-@keyframes rippleClick{
+@keyframes click{
     to{
-        width:190px;
-        height:190px;
+        width:180px;
+        height:180px;
         opacity:0;
     }
 }
 
-/* NAV */
+/* ================= NAV ================= */
 
-header{
+.site-header{
     position:fixed;
+    top:14px;
     left:0;
     right:0;
-    top:14px;
     z-index:5000;
-    padding:0 15px;
+    padding:0 14px;
 }
 
-nav{
-    width:min(1180px,94%);
+.navbar{
+    width:min(1200px,94%);
     min-height:64px;
     margin:auto;
     padding:9px 15px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:20px;
-    border-radius:26px;
-    border:1px solid rgba(255,160,230,.18);
+    gap:15px;
     background:rgba(4,10,31,.68);
+    border:1px solid var(--line);
+    border-radius:25px;
     backdrop-filter:blur(20px);
-    box-shadow:0 14px 45px rgba(0,0,0,.23);
+    box-shadow:0 15px 45px rgba(0,0,0,.25);
 }
 
-.brand{
+.logo{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:9px;
+    white-space:nowrap;
 }
 
-.brand-mark{
+.logo-symbol{
     width:42px;
     height:42px;
     display:grid;
     place-items:center;
     border-radius:50%;
-    color:#06162b;
+    color:#07182a;
     background:
         linear-gradient(
             135deg,
             var(--cyan),
-            #72ddff,
+            #72dcff 48%,
             var(--pink)
         );
-    box-shadow:
-        0 0 24px rgba(110,220,255,.25);
-    transition:.4s;
+    box-shadow:0 0 25px rgba(104,231,255,.25);
+    transition:.35s;
 }
 
-.brand:hover .brand-mark{
-    transform:rotate(9deg) scale(1.08);
+.logo:hover .logo-symbol{
+    transform:rotate(10deg) scale(1.08);
 }
 
-.brand-name{
+.logo-name{
     font:500 18px "Playfair Display",serif;
 }
 
-.brand-name b{
+.logo-name b{
     display:block;
     color:var(--pink);
-    font:700 8px "Kanit",sans-serif;
+    font:600 8px "Kanit",sans-serif;
     letter-spacing:3px;
 }
 
-.menu{
+.nav-links{
     display:flex;
     gap:20px;
     align-items:center;
@@ -222,20 +227,20 @@ nav{
     flex-wrap:wrap;
 }
 
-.menu a{
+.nav-links a{
     position:relative;
-    color:#b1bedf;
+    color:#afbddf;
     font-size:12px;
     transition:.3s;
 }
 
-.menu a:hover,
-.menu a.active{
-    color:#fff;
-    text-shadow:0 0 12px rgba(111,255,241,.75);
+.nav-links a:hover,
+.nav-links a.active{
+    color:white;
+    text-shadow:0 0 12px rgba(115,255,242,.7);
 }
 
-.menu a::after{
+.nav-links a::after{
     content:"";
     position:absolute;
     left:50%;
@@ -243,42 +248,37 @@ nav{
     width:0;
     height:2px;
     transform:translateX(-50%);
-    background:
-        linear-gradient(
-            90deg,
-            var(--pink),
-            var(--cyan)
-        );
+    background:linear-gradient(90deg,var(--pink),var(--cyan));
+    box-shadow:0 0 8px var(--cyan);
     transition:.3s;
 }
 
-.menu a:hover::after,
-.menu a.active::after{
+.nav-links a:hover::after,
+.nav-links a.active::after{
     width:100%;
 }
 
-.music{
+.music-button{
     width:42px;
     height:42px;
-    border:none;
     border-radius:50%;
-    cursor:pointer;
-    color:#e6f4ff;
-    border:1px solid rgba(111,255,241,.23);
+    border:1px solid rgba(115,255,242,.22);
+    color:#d9e8ff;
     background:rgba(255,255,255,.035);
-    transition:.35s;
+    cursor:pointer;
+    transition:.3s;
 }
 
-.music:hover,
-.music.playing{
+.music-button:hover,
+.music-button.playing{
     color:var(--pink);
     transform:translateY(-3px);
-    box-shadow:0 0 25px rgba(255,120,210,.27);
+    box-shadow:0 0 25px rgba(255,120,210,.25);
 }
 
-/* INTRO */
+/* ================= INTRO ================= */
 
-#intro{
+.intro-check{
     display:none;
 }
 
@@ -287,16 +287,17 @@ nav{
     inset:0;
     z-index:99999;
     overflow:hidden;
+    background:#02040f;
     transition:
-        opacity 1.1s ease,
-        visibility 1.1s ease,
-        transform 1.1s ease;
+        opacity 1s ease,
+        visibility 1s ease,
+        transform 1s ease;
 }
 
-#intro:checked + .intro{
+.intro-check:checked + .intro{
     opacity:0;
     visibility:hidden;
-    transform:scale(1.05);
+    transform:scale(1.04);
     pointer-events:none;
 }
 
@@ -304,9 +305,28 @@ nav{
     position:absolute;
     inset:0;
     background:
-        radial-gradient(circle at 50% 35%,rgba(111,255,241,.17),transparent 22%),
-        radial-gradient(circle at 25% 65%,rgba(169,120,255,.09),transparent 30%),
-        linear-gradient(180deg,#02040f,#071a3b 53%,#061a30 100%);
+        radial-gradient(circle at 50% 27%,rgba(115,255,242,.15),transparent 22%),
+        radial-gradient(circle at 25% 60%,rgba(169,120,255,.10),transparent 30%),
+        linear-gradient(180deg,#02040f,#071735 55%,#061b2d);
+}
+
+.intro-moon{
+    position:absolute;
+    width:130px;
+    height:130px;
+    left:10%;
+    top:9%;
+    border-radius:50%;
+    background:
+        radial-gradient(circle at 35% 30%,#fff,#e0f8f8 55%,#a4bfd0);
+    box-shadow:
+        0 0 45px rgba(225,250,250,.3),
+        0 0 90px rgba(100,220,255,.12);
+    animation:moon 5s ease-in-out infinite;
+}
+
+@keyframes moon{
+    50%{transform:translateY(-10px);}
 }
 
 .intro-stars span{
@@ -314,86 +334,75 @@ nav{
     color:white;
     text-shadow:
         0 0 10px white,
-        0 0 24px var(--cyan);
-    animation:blink 2.8s ease-in-out infinite;
+        0 0 25px var(--cyan);
+    animation:blink 3s ease-in-out infinite;
 }
 
-.intro-moon{
-    position:absolute;
-    width:125px;
-    height:125px;
-    left:10%;
-    top:9%;
-    border-radius:50%;
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #fff,
-            #dff8f8 57%,
-            #9ebbd0
-        );
-    box-shadow:
-        0 0 45px rgba(225,250,250,.32),
-        0 0 100px rgba(110,220,255,.13);
-    animation:moonFloat 5s ease-in-out infinite;
-}
-
-@keyframes moonFloat{
+@keyframes blink{
+    0%,100%{
+        opacity:.2;
+        transform:scale(.7);
+    }
     50%{
-        transform:translateY(-12px);
+        opacity:1;
+        transform:scale(1.3);
     }
 }
 
 .intro-water{
     position:absolute;
     left:-8%;
-    bottom:-90px;
+    bottom:-100px;
     width:116%;
-    height:46%;
+    height:48%;
     border-radius:50%;
     background:
         repeating-radial-gradient(
             ellipse at center,
-            rgba(255,255,255,.065) 0 2px,
-            transparent 3px 34px
+            rgba(255,255,255,.06) 0 2px,
+            transparent 3px 35px
         ),
-        linear-gradient(
-            180deg,
-            #0b5269,
-            #061b30
-        );
+        linear-gradient(180deg,#0a5068,#061a2d);
+    animation:waterMove 8s ease-in-out infinite;
 }
 
-.intro-water span{
+@keyframes waterMove{
+    50%{
+        transform:translateX(-2%) scaleY(1.04);
+    }
+}
+
+.intro-water span,
+.ripple-lines span{
     position:absolute;
     left:50%;
-    top:20%;
+    top:22%;
     transform:translateX(-50%);
-    border:1px solid rgba(111,255,241,.21);
+    border:1px solid rgba(115,255,242,.2);
     border-radius:50%;
-    animation:waterPulse 5s ease-in-out infinite;
+    animation:ripple 5s ease-in-out infinite;
 }
 
 .intro-water span:nth-child(1){
-    width:220px;
-    height:48px;
+    width:190px;
+    height:45px;
 }
 
 .intro-water span:nth-child(2){
-    width:380px;
-    height:84px;
+    width:340px;
+    height:82px;
     animation-delay:1s;
 }
 
 .intro-water span:nth-child(3){
-    width:560px;
-    height:125px;
+    width:520px;
+    height:120px;
     animation-delay:2s;
 }
 
-@keyframes waterPulse{
+@keyframes ripple{
     0%,100%{
-        opacity:.22;
+        opacity:.2;
         transform:translateX(-50%) scale(.94);
     }
     50%{
@@ -402,23 +411,26 @@ nav{
     }
 }
 
-/* LOTUS */
+/* ================= LOTUS ================= */
 
 .lotus{
     position:absolute;
     width:280px;
-    height:220px;
+    height:215px;
 }
 
 .intro-lotus{
     left:50%;
-    bottom:15%;
+    bottom:16%;
     transform:translateX(-50%);
-    animation:lotusFloat 4.6s ease-in-out infinite;
-    filter:
-        drop-shadow(
-            0 0 24px rgba(255,100,215,.45)
-        );
+    filter:drop-shadow(0 0 25px rgba(255,105,210,.35));
+    animation:lotusFloat 4.5s ease-in-out infinite;
+}
+
+@keyframes lotusFloat{
+    50%{
+        transform:translateX(-50%) translateY(-10px);
+    }
 }
 
 .petal{
@@ -426,21 +438,19 @@ nav{
     left:50%;
     bottom:10px;
     transform-origin:50% 100%;
-    border-radius:
-        72% 72%
-        40% 40%;
+    border-radius:72% 72% 40% 40%;
     background:
         linear-gradient(
             180deg,
             #fffaff 0%,
-            #ffe7f5 24%,
-            #ffa8d7 63%,
-            #c54a98 100%
+            #ffe8f6 24%,
+            #ffabd9 63%,
+            #c64b99 100%
         );
     box-shadow:
         inset 5px 0 12px rgba(255,255,255,.35),
-        inset -8px 0 15px rgba(110,27,89,.18),
-        0 0 14px rgba(255,128,215,.14);
+        inset -8px 0 15px rgba(105,25,88,.18),
+        0 0 14px rgba(255,128,215,.13);
 }
 
 .petal::after{
@@ -452,34 +462,33 @@ nav{
     height:77%;
     transform:translateX(-50%);
     border-radius:20px;
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.33),
-            rgba(126,44,103,.15)
-        );
+    background:linear-gradient(
+        180deg,
+        rgba(255,255,255,.3),
+        rgba(125,43,103,.16)
+    );
 }
 
-.outer{
+.petal.outer{
     width:78px;
     height:128px;
 }
 
-.mid{
+.petal.mid{
     width:66px;
     height:108px;
 }
 
-.inner-petal{
+.petal.inner{
     width:54px;
     height:88px;
     background:
         linear-gradient(
             180deg,
             #fffaff,
-            #ffd7eb 30%,
+            #ffd6ea 30%,
             #ed8ebf 73%,
-            #b8498d
+            #b9498e
         );
 }
 
@@ -500,7 +509,7 @@ nav{
 .i2{transform:translateX(-50%) rotate(138deg) scale(.52)}
 .i3{transform:translateX(-50%) rotate(-102deg) scale(.52)}
 
-.lotus-core{
+.lotus-center{
     position:absolute;
     left:50%;
     bottom:10px;
@@ -511,41 +520,41 @@ nav{
     background:
         radial-gradient(
             circle,
-            #fff9bb 0 18%,
-            #ffd877 20% 41%,
-            #eab34a 42% 67%,
-            #c7842c 68%
+            #fff9bd 0 18%,
+            #ffd879 20% 40%,
+            #ebb64e 42% 67%,
+            #c9852d 68%
         );
-    box-shadow:
-        0 0 25px rgba(255,220,128,.5);
+    box-shadow:0 0 25px rgba(255,220,128,.50);
 }
 
-.lotus-core::before{
+.lotus-center::before{
     content:"";
     position:absolute;
     inset:7px;
     border-radius:50%;
     background:
         repeating-conic-gradient(
-            rgba(145,91,32,.65) 0 7deg,
+            rgba(145,92,33,.65) 0 7deg,
             transparent 7deg 16deg
         );
+    opacity:.55;
 }
 
-/* INTRO TITLE */
+/* ================= INTRO TITLE ================= */
 
 .intro-content{
     position:absolute;
     left:50%;
     top:17%;
+    z-index:25;
     width:min(900px,92%);
     transform:translateX(-50%);
     text-align:center;
-    z-index:30;
-    animation:introReveal 1.2s ease both;
+    animation:introText 1.3s ease both;
 }
 
-@keyframes introReveal{
+@keyframes introText{
     from{
         opacity:0;
         transform:translate(-50%,25px);
@@ -563,62 +572,61 @@ nav{
 }
 
 .intro-content h1{
-    margin:11px 0;
-    font:500 clamp(58px,10vw,115px)/.86 "Playfair Display";
-    letter-spacing:4px;
+    margin:12px 0;
+    font:500 clamp(56px,10vw,115px)/.88 "Playfair Display",serif;
+    letter-spacing:5px;
 }
 
-.intro-content h1 strong{
+.intro-content h1 b{
     display:block;
     color:var(--pink);
-    font-size:.43em;
+    font-size:.42em;
     letter-spacing:12px;
     margin-top:10px;
 }
 
 .intro-content p{
-    margin-top:24px;
-    color:#dfc9eb;
-    font:italic 18px "Playfair Display";
+    margin-top:22px;
+    color:#dfcbed;
+    font:italic 18px "Playfair Display",serif;
 }
 
 .intro-line{
     width:95px;
     height:1px;
     margin:21px auto;
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--pink),
-            transparent
-        );
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--pink),
+        transparent
+    );
 }
 
 .intro-content small{
-    color:#7182aa;
-    letter-spacing:3px;
+    color:#7181aa;
     font-size:9px;
+    letter-spacing:3px;
 }
 
 .enter{
     position:absolute;
     left:50%;
     bottom:10%;
+    z-index:30;
     transform:translateX(-50%);
-    z-index:31;
-    min-width:255px;
+    min-width:250px;
     min-height:62px;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     gap:18px;
-    border:1px solid rgba(111,255,241,.52);
+    border:1px solid rgba(115,255,242,.48);
     border-radius:50px;
-    background:rgba(4,25,45,.56);
-    backdrop-filter:blur(15px);
+    color:white;
+    background:rgba(5,21,42,.55);
+    backdrop-filter:blur(14px);
     cursor:pointer;
-    color:#fff;
     letter-spacing:2px;
     font-size:12px;
     transition:.35s;
@@ -626,10 +634,10 @@ nav{
 
 .enter:hover{
     transform:translateX(-50%) translateY(-5px);
-    box-shadow:0 0 34px rgba(111,255,241,.28);
+    box-shadow:0 0 32px rgba(115,255,242,.3);
 }
 
-.enter strong{
+.enter b{
     color:var(--pink);
     font-size:18px;
 }
@@ -639,32 +647,23 @@ nav{
     left:50%;
     bottom:4%;
     transform:translateX(-50%);
-    color:#51638a;
+    color:#50628a;
     font-size:9px;
     letter-spacing:3px;
 }
 
-/* HERO */
+/* ================= HOME ================= */
 
-.home{
-    min-height:100vh;
-    padding:145px 6% 90px;
+.home-hero{
     position:relative;
-    overflow:hidden;
+    min-height:100vh;
+    padding:145px 6% 80px;
     display:flex;
     align-items:center;
+    overflow:hidden;
 }
 
-.home::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(circle at 74% 28%,rgba(168,101,255,.16),transparent 25%),
-        radial-gradient(circle at 30% 78%,rgba(255,94,196,.12),transparent 24%);
-}
-
-.home-inner{
+.hero-grid{
     position:relative;
     z-index:5;
     width:min(1180px,100%);
@@ -675,8 +674,8 @@ nav{
     align-items:center;
 }
 
-.copy{
-    animation:rise 1s .2s ease both;
+.hero-copy{
+    animation:rise 1s .15s ease both;
 }
 
 @keyframes rise{
@@ -693,96 +692,89 @@ nav{
 .eyebrow{
     display:inline-flex;
     padding:7px 14px;
-    border:1px solid rgba(111,255,241,.22);
-    border-radius:999px;
+    border:1px solid rgba(115,255,242,.23);
+    border-radius:30px;
     color:var(--cyan);
     background:rgba(255,255,255,.025);
     font-size:10px;
 }
 
-.copy .chapter{
+.hero-copy .chapter{
     display:block;
     margin-top:20px;
     color:#6978a5;
-    letter-spacing:4px;
     font-size:9px;
+    letter-spacing:4px;
 }
 
-.copy h2{
+.hero-copy h2{
     margin-top:8px;
-    font-size:clamp(42px,5.8vw,75px);
+    font-size:clamp(44px,5.8vw,77px);
     line-height:1.08;
 }
 
-.copy h2 span{
+.hero-copy h2 span{
     color:var(--pink);
-    text-shadow:0 0 24px rgba(255,120,214,.32);
+    text-shadow:0 0 24px rgba(255,125,215,.27);
 }
 
-.role{
+.hero-role{
     margin-top:18px;
     color:var(--cyan);
-    letter-spacing:3px;
     font-size:11px;
+    letter-spacing:3px;
 }
 
-.description{
-    max-width:570px;
-    margin-top:18px;
-    color:#92a3c9;
-    line-height:2;
+.hero-description{
+    max-width:560px;
+    margin-top:17px;
+    color:#93a3c7;
     font-size:14px;
+    line-height:2;
 }
 
-.buttons{
+.hero-buttons{
     display:flex;
-    gap:12px;
     flex-wrap:wrap;
+    gap:12px;
     margin-top:30px;
 }
 
 .btn{
     min-height:49px;
-    padding:0 22px;
+    padding:0 21px;
     display:inline-flex;
     align-items:center;
     justify-content:center;
     gap:10px;
-    border-radius:17px;
+    border-radius:16px;
     font-size:12px;
     transition:.35s;
 }
 
-.primary{
-    color:#06182c;
-    background:
-        linear-gradient(
-            135deg,
-            #9efff6,
-            #59ddff
-        );
-    box-shadow:
-        0 15px 36px rgba(75,221,255,.17);
+.btn-primary{
+    color:#07182d;
+    background:linear-gradient(135deg,#9efff7,#5edcff);
+    box-shadow:0 16px 34px rgba(64,219,255,.17);
 }
 
-.primary:hover{
+.btn-primary:hover{
     transform:translateY(-4px);
-    box-shadow:
-        0 20px 45px rgba(75,221,255,.27);
+    box-shadow:0 22px 42px rgba(64,219,255,.27);
 }
 
-.secondary{
-    color:#edf3ff;
-    border:1px solid rgba(255,141,216,.25);
+.btn-secondary{
+    color:#e5edff;
+    border:1px solid rgba(255,142,217,.25);
     background:rgba(255,255,255,.03);
 }
 
-.secondary:hover{
+.btn-secondary:hover{
     transform:translateY(-4px);
     box-shadow:0 0 25px rgba(255,110,210,.16);
 }
 
-.stats{
+.metrics{
     display:flex;
     width:max-content;
     max-width:100%;
@@ -794,50 +786,38 @@ nav{
     backdrop-filter:blur(12px);
 }
 
-.stats div{
+.metrics div{
     min-width:85px;
-    padding:0 15px;
+    padding:0 16px;
     text-align:center;
 }
 
-.stats div+div{
+.metrics div+div{
     border-left:1px solid rgba(132,176,255,.11);
 }
 
-.stats strong{
+.metrics strong{
     display:block;
     color:var(--pink);
     font:500 23px "Playfair Display";
 }
 
-.stats small{
-    color:#6679a7;
+.metrics small{
+    color:#6679a8;
     font-size:8px;
     letter-spacing:2px;
 }
 
-/* HERO LOTUS */
+/* ================= HERO VISUAL ================= */
 
-.lotus-stage{
+.hero-visual{
     position:relative;
     min-height:570px;
     display:grid;
     place-items:center;
-    animation:stageIn 1s .25s ease both;
 }
 
-@keyframes stageIn{
-    from{
-        opacity:0;
-        transform:scale(.91);
-    }
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
-.hero-glow{
+.hero-halo{
     position:absolute;
     width:500px;
     height:500px;
@@ -845,83 +825,83 @@ nav{
     background:
         radial-gradient(
             circle,
-            rgba(255,103,215,.17),
-            rgba(80,225,255,.07),
-            transparent 69%
+            rgba(255,101,213,.17),
+            rgba(74,224,255,.07),
+            transparent 68%
         );
-    filter:blur(12px);
-    animation:pulseGlow 5s ease-in-out infinite;
+    filter:blur(10px);
+    animation:halo 5s ease-in-out infinite;
 }
 
-@keyframes pulseGlow{
+@keyframes halo{
     50%{
-        transform:scale(1.08);
+        transform:scale(1.07);
         opacity:1;
     }
 }
 
-.orbit{
+.hero-ring{
     position:absolute;
-    border:1px solid rgba(111,255,241,.18);
+    border:1px solid rgba(115,255,242,.19);
     border-radius:50%;
     transform:rotateX(64deg);
 }
 
-.orbit.one{
+.hero-ring.one{
     width:520px;
     height:190px;
-    animation:orbit 13s linear infinite;
+    animation:spin 13s linear infinite;
 }
 
-.orbit.two{
+.hero-ring.two{
     width:430px;
     height:150px;
-    border-color:rgba(255,140,214,.18);
-    animation:orbit 18s linear infinite reverse;
+    border-color:rgba(255,139,214,.18);
+    animation:spin 18s linear infinite reverse;
 }
 
-@keyframes orbit{
+@keyframes spin{
     to{
         transform:rotateX(64deg) rotateZ(360deg);
     }
 }
 
-.hero-ripples{
+.hero-water{
     position:absolute;
     left:50%;
-    bottom:45px;
-    width:560px;
-    height:130px;
+    bottom:35px;
+    width:550px;
+    height:120px;
     transform:translateX(-50%);
 }
 
-.hero-ripples span{
+.hero-water span{
     position:absolute;
     left:50%;
     transform:translateX(-50%);
-    border:1px solid rgba(111,255,241,.19);
+    border:1px solid rgba(115,255,242,.18);
     border-radius:50%;
-    animation:waterPulse 5s ease-in-out infinite;
+    animation:ripple 5s ease-in-out infinite;
 }
 
-.hero-ripples span:nth-child(1){
+.hero-water span:nth-child(1){
     width:450px;
     height:68px;
 }
 
-.hero-ripples span:nth-child(2){
+.hero-water span:nth-child(2){
     width:325px;
     height:49px;
     animation-delay:1s;
 }
 
-.hero-ripples span:nth-child(3){
+.hero-water span:nth-child(3){
     width:195px;
     height:31px;
     animation-delay:2s;
 }
 
-.main-lotus{
+.hero-lotus{
     left:50%;
     top:50%;
     transform:
@@ -929,18 +909,14 @@ nav{
         perspective(800px)
         rotateX(var(--rx,0))
         rotateY(var(--ry,0));
-    z-index:10;
-    filter:
-        drop-shadow(
-            0 0 22px rgba(255,104,215,.35)
-        );
-    animation:
-        lotusMain 4.7s ease-in-out infinite;
+    z-index:8;
+    filter:drop-shadow(0 0 20px rgba(255,105,210,.32));
+    animation:mainLotus 4.8s ease-in-out infinite;
 }
 
-@keyframes lotusMain{
+@keyframes mainLotus{
     50%{
-        margin-top:-9px;
+        margin-top:-8px;
     }
 }
 
@@ -951,13 +927,14 @@ nav{
     border-radius:85% 15% 85% 15%;
     background:
         radial-gradient(
-            circle at 45% 44%,
-            #78c18a,
-            #2a714d 60%,
+            circle at 45% 45%,
+            #78c38c,
+            #2a704d 60%,
             #0b392a
         );
-    box-shadow:inset 0 0 18px rgba(195,255,212,.10);
-    animation:leafMove 5s ease-in-out infinite;
+    box-shadow:
+        inset 0 0 18px rgba(190,255,205,.10);
+    animation:leaf 5s ease-in-out infinite;
 }
 
 .leaf::before{
@@ -967,65 +944,65 @@ nav{
     top:12%;
     width:2px;
     height:76%;
-    background:rgba(220,255,225,.22);
+    background:rgba(220,255,225,.23);
     transform:rotate(28deg);
 }
 
-.leaf.left{
+.leaf-left{
     left:3%;
     bottom:100px;
     transform:rotate(-18deg);
 }
 
-.leaf.right{
+.leaf-right{
     right:3%;
     bottom:140px;
     transform:rotate(18deg) scale(.8);
     animation-delay:1s;
 }
 
-@keyframes leafMove{
+@keyframes leaf{
     50%{
         translate:0 -9px;
     }
 }
 
-.badge{
+.lake-label{
     position:absolute;
     right:0;
-    bottom:19px;
+    bottom:15px;
     display:flex;
     align-items:center;
-    gap:11px;
+    gap:10px;
     padding:10px 14px;
-    border:1px solid rgba(255,145,219,.22);
+    border:1px solid rgba(255,143,220,.21);
     border-radius:16px;
-    background:rgba(7,13,40,.70);
-    backdrop-filter:blur(13px);
+    background:rgba(7,13,40,.7);
+    backdrop-filter:blur(12px);
 }
 
-.badge>span{
-    font-size:24px;
+.lake-label>span{
     color:var(--pink);
+    font-size:24px;
 }
 
-.badge strong,
-.badge small{
+.lake-label strong,
+.lake-label small{
     display:block;
 }
 
-.badge strong{
+.lake-label strong{
     color:var(--pink);
     font:500 12px "Playfair Display";
     letter-spacing:2px;
 }
 
-.badge small{
-    color:#6879a4;
+.lake-label small{
+    color:#6c7ca7;
     font-size:9px;
 }
 
-/* SECTION */
+/* ================= EXPLORE ================= */
 
 .explore{
     position:relative;
@@ -1040,8 +1017,9 @@ nav{
 }
 
 .section-title{
-    text-align:center;
+    max-width:760px;
     margin:0 auto 48px;
+    text-align:center;
 }
 
 .section-title span{
@@ -1051,16 +1029,16 @@ nav{
 }
 
 .section-title h2{
-    margin:8px 0;
+    margin:9px 0;
     font:500 clamp(35px,5vw,56px) "Playfair Display";
 }
 
 .section-title p{
-    color:#8191b8;
+    color:#8191b9;
     font-size:13px;
 }
 
-.cards{
+.chapter-grid{
     width:min(1120px,100%);
     margin:auto;
     display:grid;
@@ -1068,75 +1046,76 @@ nav{
     gap:20px;
 }
 
-.card{
+.chapter-card{
     position:relative;
-    min-height:285px;
+    min-height:290px;
     padding:30px;
     overflow:hidden;
     border:1px solid var(--line);
-    border-radius:28px;
-    background:var(--panel);
+    border-radius:27px;
+    background:rgba(8,15,43,.72);
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
     backdrop-filter:blur(12px);
-    transition:.4s;
+    transition:.35s;
 }
 
-.card:hover{
-    border-color:rgba(111,255,241,.38);
+.chapter-card:hover{
+    border-color:rgba(115,255,242,.38);
     box-shadow:
-        0 25px 60px rgba(0,0,0,.24),
-        0 0 28px rgba(111,255,241,.08);
+        0 25px 60px rgba(0,0,0,.28),
+        0 0 30px rgba(115,255,242,.08);
 }
 
-.card::before{
+.chapter-card::before{
     content:"";
     position:absolute;
-    width:190px;
-    height:190px;
-    right:-90px;
-    bottom:-90px;
+    width:180px;
+    height:180px;
+    right:-80px;
+    bottom:-80px;
     border-radius:50%;
-    background:rgba(111,255,241,.06);
+    background:rgba(115,255,242,.06);
     transition:.5s;
 }
 
-.card:hover::before{
+.chapter-card:hover::before{
     transform:scale(1.6);
 }
 
-.card-icon{
+.chapter-icon{
     width:60px;
     height:60px;
     display:grid;
     place-items:center;
-    margin-bottom:23px;
+    margin-bottom:24px;
     border-radius:18px;
     color:var(--cyan);
     background:
         linear-gradient(
             135deg,
-            rgba(111,255,241,.14),
-            rgba(255,143,215,.11)
+            rgba(115,255,242,.14),
+            rgba(255,143,215,.10)
         );
     font-size:24px;
 }
 
-.card small{
-    color:#7384af;
+.chapter-card small{
+    color:#7183b0;
     font-size:8px;
     letter-spacing:2px;
 }
 
-.card h3{
+.chapter-card h3{
     margin:8px 0;
-    font:500 23px "Playfair Display";
+    font:500 22px "Playfair Display";
 }
 
-.card p{
-    color:#8597bd;
+.chapter-card p{
+    color:#8596bd;
     font-size:12px;
 }
 
-.card strong{
+.chapter-card strong{
     position:absolute;
     left:30px;
     bottom:24px;
@@ -1144,36 +1123,31 @@ nav{
     font-size:10px;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
-footer{
-    padding:65px 20px 30px;
+.footer{
+    position:relative;
+    z-index:3;
+    padding:60px 20px 30px;
     text-align:center;
     border-top:1px solid rgba(130,170,240,.08);
     background:#02050f;
 }
 
-.footer-lotus{
+.footer-icon{
+    font-size:36px;
     color:var(--pink);
-    font-size:38px;
-    animation:footerFloat 4s ease-in-out infinite;
+    text-shadow:0 0 22px rgba(255,118,210,.3);
 }
 
-@keyframes footerFloat{
-    50%{
-        transform:translateY(-8px);
-    }
-}
-
-footer h3{
+.footer h3{
     margin-top:8px;
     font:500 22px "Playfair Display";
 }
 
-footer p,
-footer small{
-    color:#68789f;
-    font-size:10px;
+.footer p{
+    color:#66779f;
+    font-size:11px;
 }
 
 .footer-links{
@@ -1185,14 +1159,20 @@ footer small{
 }
 
 .footer-links a{
-    color:#7485a9;
+    color:#7282a7;
     font-size:10px;
-    transition:.3s;
 }
 
 .footer-links a:hover{
     color:var(--cyan);
 }
+
+.footer small{
+    color:#3f4c6a;
+    font-size:9px;
+}
+
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:950px){
 
@@ -1200,33 +1180,34 @@ footer small{
         flex-direction:column;
     }
 
-    .home-inner{
+    .hero-grid{
         grid-template-columns:1fr;
     }
 
-    .copy{
+    .hero-copy{
         text-align:center;
         margin:auto;
     }
 
-    .description{
-        margin-left:auto;
-        margin-right:auto;
+    .hero-description{
+        margin-inline:auto;
     }
 
-    .buttons{
+    .hero-buttons{
         justify-content:center;
     }
 
-    .stats{
-        margin-left:auto;
-        margin-right:auto;
+    .metrics{
+        margin-inline:auto;
     }
 
-    .cards{
+    .hero-visual{
+        min-height:480px;
+    }
+
+    .chapter-grid{
         grid-template-columns:repeat(2,1fr);
     }
-
 }
 
 @media(max-width:600px){
@@ -1235,15 +1216,33 @@ footer small{
         display:none;
     }
 
-    .home{
+    .intro-content{
+        top:16%;
+    }
+
+    .intro-content h1{
+        font-size:54px;
+    }
+
+    .intro-moon{
+        width:82px;
+        height:82px;
+    }
+
+    .enter{
+        bottom:11%;
+        min-width:225px;
+    }
+
+    .home-hero{
         padding:120px 18px 65px;
     }
 
-    .copy h2{
+    .hero-copy h2{
         font-size:44px;
     }
 
-    .buttons{
+    .hero-buttons{
         flex-direction:column;
     }
 
@@ -1251,60 +1250,50 @@ footer small{
         width:100%;
     }
 
-    .stats{
+    .metrics{
         width:100%;
     }
 
-    .stats div{
+    .metrics div{
         min-width:0;
         flex:1;
-        padding:0 5px;
+        padding:0 6px;
     }
 
-    .lotus-stage{
+    .hero-visual{
         min-height:400px;
     }
 
-    .hero-glow{
-        width:350px;
-        height:350px;
-    }
-
-    .orbit.one{
+    .hero-ring.one{
         width:350px;
         height:125px;
     }
 
-    .orbit.two{
-        width:290px;
-        height:100px;
+    .hero-ring.two{
+        width:295px;
+        height:98px;
     }
 
-    .main-lotus{
-        scale:.73;
+    .hero-lotus{
+        scale:.72;
     }
 
-    .hero-ripples{
+    .hero-water{
         width:400px;
     }
 
-    .leaf{
-        width:95px;
-        height:60px;
+    .lake-label{
+        right:50%;
+        transform:translateX(50%);
     }
 
-    .leaf.left{
-        left:-2%;
+    .explore{
+        padding:80px 5%;
     }
 
-    .leaf.right{
-        right:-2%;
-    }
-
-    .cards{
+    .chapter-grid{
         grid-template-columns:1fr;
     }
-
 }
 </style>
 </head>
@@ -1318,555 +1307,496 @@ footer small{
     <source src="audio/lotus-music.mp3" type="audio/mpeg">
 </audio>
 
-<input type="checkbox" id="intro">
+<input type="checkbox" id="introToggle" class="intro-check">
 
 <section class="intro">
+    <div class="intro-bg"></div>
 
-<div class="intro-bg"></div>
+    <div class="intro-stars">
+        <span style="left:12%;top:20%">✦</span>
+        <span style="left:25%;top:31%">✧</span>
+        <span style="left:39%;top:14%">✦</span>
+        <span style="right:26%;top:28%">✧</span>
+        <span style="right:12%;top:17%">✦</span>
+        <span style="right:31%;top:18%">·</span>
+    </div>
 
-<div class="intro-stars">
-    <span style="left:12%;top:19%;">✦</span>
-    <span style="left:25%;top:31%;animation-delay:.6s;">✧</span>
-    <span style="left:40%;top:13%;animation-delay:1s;">✦</span>
-    <span style="right:27%;top:30%;animation-delay:1.4s;">✧</span>
-    <span style="right:13%;top:18%;animation-delay:.8s;">✦</span>
-</div>
+    <div class="intro-moon"></div>
 
-<div class="intro-moon"></div>
+    <div class="intro-water">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-<div class="intro-water">
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
+    <div class="lotus intro-lotus">
+        <span class="petal outer o1"></span>
+        <span class="petal outer o2"></span>
+        <span class="petal outer o3"></span>
+        <span class="petal outer o4"></span>
+        <span class="petal outer o5"></span>
+        <span class="petal outer o6"></span>
 
-<div class="lotus intro-lotus">
+        <span class="petal mid m1"></span>
+        <span class="petal mid m2"></span>
+        <span class="petal mid m3"></span>
+        <span class="petal mid m4"></span>
+        <span class="petal mid m5"></span>
 
-    <span class="petal outer o1"></span>
-    <span class="petal outer o2"></span>
-    <span class="petal outer o3"></span>
-    <span class="petal outer o4"></span>
-    <span class="petal outer o5"></span>
-    <span class="petal outer o6"></span>
+        <span class="petal inner i1"></span>
+        <span class="petal inner i2"></span>
+        <span class="petal inner i3"></span>
 
-    <span class="petal mid m1"></span>
-    <span class="petal mid m2"></span>
-    <span class="petal mid m3"></span>
-    <span class="petal mid m4"></span>
-    <span class="petal mid m5"></span>
+        <span class="lotus-center"></span>
+    </div>
 
-    <span class="petal inner-petal i1"></span>
-    <span class="petal inner-petal i2"></span>
-    <span class="petal inner-petal i3"></span>
+    <div class="intro-content">
+        <span>STUDENT PORTFOLIO</span>
+        <h1>
+            LOTUS
+            <b>QUEST</b>
+        </h1>
+        <p>My little world • My little story</p>
+        <div class="intro-line"></div>
+        <small>EXPLORE • LEARN • CREATE</small>
+    </div>
 
-    <span class="lotus-core"></span>
+    <label for="introToggle" class="enter">
+        ENTER MY WORLD
+        <b>→</b>
+    </label>
 
-</div>
-
-<div class="intro-content">
-
-    <span>
-        STUDENT PORTFOLIO
-    </span>
-
-    <h1>
-        LOTUS
-        <strong>
-            QUEST
-        </strong>
-    </h1>
-
-    <p>
-        My little world • My little story
-    </p>
-
-    <div class="intro-line"></div>
-
-    <small>
-        EXPLORE • LEARN • CREATE
-    </small>
-
-</div>
-
-<label for="intro" class="enter">
-    ENTER MY WORLD
-    <strong>→</strong>
-</label>
-
-<div class="intro-hint">
-    CLICK TO BEGIN
-</div>
-
+    <div class="intro-hint">
+        CLICK TO BEGIN
+    </div>
 </section>
 
-<header>
+<header class="site-header">
+    <nav class="navbar">
 
-<nav>
+        <a href="index.html" class="logo">
+            <span class="logo-symbol">✿</span>
 
-<a href="index.html" class="brand">
+            <span class="logo-name">
+                LOTUS
+                <b>QUEST</b>
+            </span>
+        </a>
 
-<span class="brand-mark">
-✿
-</span>
+        <div class="nav-links">
+            <a href="index.html" class="active">หน้าแรก</a>
+            <a href="profile.html">ประวัติส่วนตัว</a>
+            <a href="education.html">การศึกษา</a>
+            <a href="hobby.html">งานอดิเรก</a>
+            <a href="contact.html">ติดต่อ</a>
+        </div>
 
-<span class="brand-name">
-LOTUS
-<b>QUEST</b>
-</span>
+        <button class="music-button" id="musicButton">
+            ♫
+        </button>
 
-</a>
-
-<div class="menu">
-
-<a href="index.html" class="active">หน้าแรก</a>
-<a href="profile.html">ประวัติส่วนตัว</a>
-<a href="education.html">การศึกษา</a>
-<a href="hobby.html">งานอดิเรก</a>
-<a href="contact.html">ติดต่อ</a>
-<a href="gallery.html">ผลงาน</a>
-
-</div>
-
-<button class="music" id="musicButton">
-♫
-</button>
-
-</nav>
-
+    </nav>
 </header>
 
 <main>
 
-<section class="home">
+<section class="home-hero">
 
-<div class="home-inner">
+    <div class="ambient-orb orb-a"></div>
+    <div class="ambient-orb orb-b"></div>
 
-<div class="copy">
+    <div class="hero-grid">
 
-<span class="eyebrow">
-✦ STUDENT PORTFOLIO
-</span>
+        <div class="hero-copy">
 
-<span class="chapter">
-CHAPTER 00 · BEGIN
-</span>
+            <span class="eyebrow">
+                ✦ STUDENT PORTFOLIO
+            </span>
 
-<h2>
-สวัสดีครับ/ค่ะ<br>
-ฉันชื่อ
-<span>
-[กรอกชื่อ]
-</span>
-</h2>
+            <span class="chapter">
+                CHAPTER 00 · BEGIN
+            </span>
 
-<p class="role">
-STUDENT · DREAMER · CREATOR
-</p>
+            <h2>
+                สวัสดีครับ/ค่ะ<br>
+                ฉันชื่อ
+                <span>[กรอกชื่อ]</span>
+            </h2>
 
-<p class="description">
-ยินดีต้อนรับเข้าสู่ Portfolio ของฉัน
-พื้นที่เล็ก ๆ ที่รวบรวมตัวตน
-เรื่องราว การศึกษา งานอดิเรก
-และสิ่งที่ฉันสนใจ
-</p>
+            <p class="hero-role">
+                STUDENT · DREAMER · CREATOR
+            </p>
 
-<div class="buttons">
+            <p class="hero-description">
+                ยินดีต้อนรับเข้าสู่โลกเล็ก ๆ ของฉัน
+                ที่รวบรวมตัวตน เรื่องราว การเรียนรู้
+                งานอดิเรก และสิ่งที่ฉันสนใจ
+            </p>
 
-<a href="profile.html" class="btn primary">
-รู้จักฉันมากขึ้น →
-</a>
+            <div class="hero-buttons">
 
-<a href="hobby.html" class="btn secondary">
-ดูโลกของฉัน
-</a>
+                <a href="profile.html" class="btn btn-primary">
+                    รู้จักฉันมากขึ้น →
+                </a>
 
-</div>
+                <a href="hobby.html" class="btn btn-secondary">
+                    ดูโลกของฉัน
+                </a>
 
-<div class="stats">
+            </div>
 
-<div>
-<strong>03</strong>
-<small>GRADE</small>
-</div>
+            <div class="metrics">
+                <div>
+                    <strong>03</strong>
+                    <small>GRADE</small>
+                </div>
 
-<div>
-<strong>06</strong>
-<small>PAGES</small>
-</div>
+                <div>
+                    <strong>05</strong>
+                    <small>PAGES</small>
+                </div>
 
-<div>
-<strong>01</strong>
-<small>STORY</small>
-</div>
+                <div>
+                    <strong>01</strong>
+                    <small>STORY</small>
+                </div>
+            </div>
 
-</div>
-
-</div>
+        </div>
 
 
-<div class="lotus-stage">
+        <div class="hero-visual">
 
-<div class="hero-glow"></div>
+            <div class="hero-halo"></div>
 
-<div class="orbit one"></div>
-<div class="orbit two"></div>
+            <div class="hero-ring one"></div>
+            <div class="hero-ring two"></div>
 
-<div class="hero-ripples">
-<span></span>
-<span></span>
-<span></span>
-</div>
+            <div class="hero-water">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
 
-<div class="leaf left"></div>
-<div class="leaf right"></div>
+            <div class="leaf leaf-left"></div>
+            <div class="leaf leaf-right"></div>
 
-<div class="lotus main-lotus" id="mainLotus">
+            <div class="lotus hero-lotus" id="mainLotus">
 
-<span class="petal outer o1"></span>
-<span class="petal outer o2"></span>
-<span class="petal outer o3"></span>
-<span class="petal outer o4"></span>
-<span class="petal outer o5"></span>
-<span class="petal outer o6"></span>
+                <span class="petal outer o1"></span>
+                <span class="petal outer o2"></span>
+                <span class="petal outer o3"></span>
+                <span class="petal outer o4"></span>
+                <span class="petal outer o5"></span>
+                <span class="petal outer o6"></span>
 
-<span class="petal mid m1"></span>
-<span class="petal mid m2"></span>
-<span class="petal mid m3"></span>
-<span class="petal mid m4"></span>
-<span class="petal mid m5"></span>
+                <span class="petal mid m1"></span>
+                <span class="petal mid m2"></span>
+                <span class="petal mid m3"></span>
+                <span class="petal mid m4"></span>
+                <span class="petal mid m5"></span>
 
-<span class="petal inner-petal i1"></span>
-<span class="petal inner-petal i2"></span>
-<span class="petal inner-petal i3"></span>
+                <span class="petal inner i1"></span>
+                <span class="petal inner i2"></span>
+                <span class="petal inner i3"></span>
 
-<span class="lotus-core"></span>
+                <span class="lotus-center"></span>
 
-</div>
+            </div>
 
-<div class="badge">
+            <div class="lake-label">
+                <span>✿</span>
+                <div>
+                    <strong>LOTUS LAKE</strong>
+                    <small>my little world</small>
+                </div>
+            </div>
 
-<span>
-✿
-</span>
+        </div>
 
-<div>
-<strong>
-LOTUS LAKE
-</strong>
-
-<small>
-my little world
-</small>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+    </div>
 </section>
 
 
 <section class="explore">
 
-<div class="section-title">
+    <div class="section-title">
+        <span>EXPLORE</span>
+        <h2>เริ่มต้นการเดินทาง</h2>
+        <p>เลือกบทที่อยากทำความรู้จัก</p>
+    </div>
 
-<span>
-EXPLORE
-</span>
+    <div class="chapter-grid">
 
-<h2>
-เรื่องราวของฉัน
-</h2>
+        <a href="profile.html" class="chapter-card tilt">
+            <div class="chapter-icon">✦</div>
+            <small>CHAPTER 01</small>
+            <h3>WHO AM I?</h3>
+            <p>
+                ตัวตน เรื่องราว
+                และข้อมูลเล็ก ๆ ของฉัน
+            </p>
+            <strong>EXPLORE →</strong>
+        </a>
 
-<p>
-เปิดดูแต่ละบทของ Portfolio
-</p>
+        <a href="education.html" class="chapter-card tilt">
+            <div class="chapter-icon">◇</div>
+            <small>CHAPTER 02</small>
+            <h3>MY JOURNEY</h3>
+            <p>
+                เส้นทางการเรียนรู้
+                ที่ค่อย ๆ พาฉันเติบโต
+            </p>
+            <strong>EXPLORE →</strong>
+        </a>
 
-</div>
+        <a href="hobby.html" class="chapter-card tilt">
+            <div class="chapter-icon">✿</div>
+            <small>CHAPTER 03</small>
+            <h3>MY WORLD</h3>
+            <p>
+                งานอดิเรก
+                ความสนใจ และสิ่งที่ฉันชอบ
+            </p>
+            <strong>EXPLORE →</strong>
+        </a>
 
-
-<div class="cards">
-
-<a href="profile.html" class="card tilt">
-<div class="card-icon">✦</div>
-<small>CHAPTER 01</small>
-<h3>WHO AM I?</h3>
-<p>ทำความรู้จักตัวตนและเรื่องราวของฉัน</p>
-<strong>EXPLORE →</strong>
-</a>
-
-<a href="education.html" class="card tilt">
-<div class="card-icon">◇</div>
-<small>CHAPTER 02</small>
-<h3>MY JOURNEY</h3>
-<p>พบกับเส้นทางการเรียนรู้ของฉัน</p>
-<strong>EXPLORE →</strong>
-</a>
-
-<a href="hobby.html" class="card tilt">
-<div class="card-icon">✿</div>
-<small>CHAPTER 03</small>
-<h3>MY WORLD</h3>
-<p>งานอดิเรก ความชอบ และความสนใจ</p>
-<strong>EXPLORE →</strong>
-</a>
-
-<a href="gallery.html" class="card tilt">
-<div class="card-icon">◈</div>
-<small>CHAPTER 04</small>
-<h3>MY WORKS</h3>
-<p>รวมผลงานและสิ่งที่ฉันสร้างขึ้น</p>
-<strong>EXPLORE →</strong>
-</a>
-
-<a href="contact.html" class="card tilt">
-<div class="card-icon">♡</div>
-<small>CHAPTER 05</small>
-<h3>CONTACT</h3>
-<p>ช่องทางสำหรับติดต่อและพูดคุย</p>
-<strong>EXPLORE →</strong>
-</a>
-
-</div>
-
+    </div>
 </section>
 
 </main>
 
-<footer>
+<footer class="footer">
 
-<div class="footer-lotus">
-✿
-</div>
+    <div class="footer-icon">✿</div>
 
-<h3>
-LOTUS QUEST
-</h3>
+    <h3>
+        LOTUS QUEST
+    </h3>
 
-<p>
-Student Portfolio · [กรอกชื่อ]
-</p>
+    <p>
+        Student Portfolio · [กรอกชื่อ]
+    </p>
 
-<div class="footer-links">
-<a href="index.html">หน้าแรก</a>
-<a href="profile.html">ประวัติส่วนตัว</a>
-<a href="education.html">การศึกษา</a>
-<a href="hobby.html">งานอดิเรก</a>
-<a href="contact.html">ติดต่อ</a>
-<a href="gallery.html">ผลงาน</a>
-</div>
+    <div class="footer-links">
+        <a href="index.html">หน้าแรก</a>
+        <a href="profile.html">ประวัติส่วนตัว</a>
+        <a href="education.html">การศึกษา</a>
+        <a href="hobby.html">งานอดิเรก</a>
+        <a href="contact.html">ติดต่อ</a>
+    </div>
 
-<small>
-© 2026 [กรอกชื่อ]
-</small>
+    <small>
+        © 2026 [กรอกชื่อ]
+    </small>
 
 </footer>
 
 <script>
+const glow = document.getElementById("mouseGlow");
+const dot = document.getElementById("mouseDot");
+const music = document.getElementById("music");
+const musicButton = document.getElementById("musicButton");
+const lotus = document.getElementById("mainLotus");
 
-const glow =
-document.getElementById("mouseGlow");
+let mouseX = innerWidth/2;
+let mouseY = innerHeight/2;
+let glowX = mouseX;
+let glowY = mouseY;
+let lastSpark = 0;
 
-const dot =
-document.getElementById("mouseDot");
+document.addEventListener("mousemove", e => {
 
-const lotus =
-document.getElementById("mainLotus");
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 
-const music =
-document.getElementById("music");
+    dot.style.left = mouseX + "px";
+    dot.style.top = mouseY + "px";
 
-const musicButton =
-document.getElementById("musicButton");
+    const rx =
+        ((mouseY / innerHeight) - .5) * -7;
 
-let mx=innerWidth/2;
-let my=innerHeight/2;
-let gx=mx;
-let gy=my;
-let lastTrail=0;
+    const ry =
+        ((mouseX / innerWidth) - .5) * 9;
 
-document.addEventListener("mousemove",e=>{
+    lotus.style.setProperty(
+        "--rx",
+        rx + "deg"
+    );
 
-mx=e.clientX;
-my=e.clientY;
+    lotus.style.setProperty(
+        "--ry",
+        ry + "deg"
+    );
 
-dot.style.left=mx+"px";
-dot.style.top=my+"px";
+    const now = performance.now();
 
-const rx=
-((my/innerHeight)-.5)*-7;
+    if(now - lastSpark > 80){
 
-const ry=
-((mx/innerWidth)-.5)*9;
+        lastSpark = now;
 
-lotus.style.setProperty(
-"--rx",
-rx+"deg"
-);
+        const star =
+            document.createElement("span");
 
-lotus.style.setProperty(
-"--ry",
-ry+"deg"
-);
+        star.className =
+            "mouse-star";
 
-const now=performance.now();
+        star.textContent =
+            Math.random() > .5
+            ? "✦"
+            : "✧";
 
-if(now-lastTrail>80){
+        star.style.left =
+            mouseX + "px";
 
-lastTrail=now;
+        star.style.top =
+            mouseY + "px";
 
-const star=
-document.createElement("span");
+        star.style.setProperty(
+            "--x",
+            ((Math.random()-.5)*70)+"px"
+        );
 
-star.className="mouse-star";
+        star.style.setProperty(
+            "--y",
+            ((Math.random()-.5)*70)+"px"
+        );
 
-star.textContent=
-Math.random()>.5
-?"✦"
-:"✧";
+        document.body.appendChild(star);
 
-star.style.left=mx+"px";
-star.style.top=my+"px";
-
-star.style.setProperty(
-"--tx",
-((Math.random()-.5)*70)+"px"
-);
-
-star.style.setProperty(
-"--ty",
-((Math.random()-.5)*70)+"px"
-);
-
-document.body.appendChild(star);
-
-setTimeout(()=>{
-star.remove();
-},700);
-
-}
-
+        setTimeout(
+            () => star.remove(),
+            700
+        );
+    }
 });
 
-function followMouse(){
 
-gx+=(mx-gx)*.1;
-gy+=(my-gy)*.1;
+function animateGlow(){
 
-glow.style.left=gx+"px";
-glow.style.top=gy+"px";
+    glowX +=
+        (mouseX - glowX) * .10;
 
-requestAnimationFrame(
-followMouse
-);
+    glowY +=
+        (mouseY - glowY) * .10;
 
+    glow.style.left =
+        glowX + "px";
+
+    glow.style.top =
+        glowY + "px";
+
+    requestAnimationFrame(
+        animateGlow
+    );
 }
 
-followMouse();
+animateGlow();
 
-document.addEventListener(
-"click",
-e=>{
 
-const ripple=
-document.createElement("span");
+document.addEventListener("click", e => {
 
-ripple.className=
-"click-ripple";
+    const ripple =
+        document.createElement("span");
 
-ripple.style.left=
-e.clientX+"px";
+    ripple.className =
+        "click-ripple";
 
-ripple.style.top=
-e.clientY+"px";
+    ripple.style.left =
+        e.clientX + "px";
 
-document.body.appendChild(
-ripple
-);
+    ripple.style.top =
+        e.clientY + "px";
 
-setTimeout(
-()=>ripple.remove(),
-900
-);
+    document.body.appendChild(
+        ripple
+    );
+
+    setTimeout(
+        () => ripple.remove(),
+        850
+    );
 
 });
 
 
 document.querySelectorAll(".tilt")
-.forEach(card=>{
+.forEach(card => {
 
-card.addEventListener(
-"mousemove",
-e=>{
+    card.addEventListener(
+        "mousemove",
+        e => {
 
-const r=
-card.getBoundingClientRect();
+            const rect =
+                card.getBoundingClientRect();
 
-const x=
-(e.clientX-r.left)/
-r.width-.5;
+            const x =
+                (e.clientX - rect.left)
+                / rect.width - .5;
 
-const y=
-(e.clientY-r.top)/
-r.height-.5;
+            const y =
+                (e.clientY - rect.top)
+                / rect.height - .5;
 
-card.style.transform=
-`perspective(900px)
-rotateX(${y*-5}deg)
-rotateY(${x*5}deg)
-translateY(-8px)`;
+            card.style.transform =
+                `perspective(900px)
+                 rotateX(${y*-5}deg)
+                 rotateY(${x*5}deg)
+                 translateY(-8px)`;
+        }
+    );
 
-});
-
-card.addEventListener(
-"mouseleave",
-()=>{
-
-card.style.transform="";
-
-});
+    card.addEventListener(
+        "mouseleave",
+        () => {
+            card.style.transform = "";
+        }
+    );
 
 });
 
 
 musicButton.addEventListener(
-"click",
-async ()=>{
+    "click",
+    async () => {
 
-try{
+        try{
 
-if(music.paused){
+            if(music.paused){
 
-await music.play();
+                await music.play();
 
-musicButton.textContent="🔊";
+                musicButton.textContent =
+                    "🔊";
 
-musicButton.classList.add(
-"playing"
+                musicButton.classList.add(
+                    "playing"
+                );
+
+            }else{
+
+                music.pause();
+
+                musicButton.textContent =
+                    "♫";
+
+                musicButton.classList.remove(
+                    "playing"
+                );
+
+            }
+
+        }catch(error){
+
+            console.log(
+                "ไม่สามารถเล่นเสียงได้",
+                error
+            );
+
+        }
+
+    }
 );
-
-}else{
-
-music.pause();
-
-musicButton.textContent="♫";
-
-musicButton.classList.remove(
-"playing"
-);
-
-}
-
-}catch(error){
-
-console.log(error);
-
-}
-
-});
-
 </script>
 
 </body>
