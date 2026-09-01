@@ -1,29 +1,751 @@
+<!-- =========================================================
+LOTUS QUEST — profile.html
+========================================================= -->
+
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LOTUS QUEST | Profile</title>
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<style>
 
-<title>
-    LOTUS PORTFOLIO | ประวัติส่วนตัว
-</title>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-<link
-    rel="stylesheet"
-    href="style.css"
->
+:root{
+    --bg:#05081d;
+    --panel:#0a1537;
+    --cyan:#6ffff1;
+    --pink:#ff8edb;
+    --purple:#a978ff;
+    --muted:#8fa1c7;
+    --line:rgba(130,180,255,.15);
+}
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Kanit",sans-serif;
+    color:white;
+    background:
+        radial-gradient(circle at 50% -5%,#18245d,#0a1031 32%,#05081d 70%,#02030d);
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background:
+        linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);
+    background-size:60px 60px;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+#mouseGlow{
+    position:fixed;
+    width:310px;
+    height:310px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:
+        radial-gradient(circle,
+            rgba(109,255,241,.15),
+            rgba(169,120,255,.08) 35%,
+            transparent 72%);
+    filter:blur(5px);
+    pointer-events:none;
+    z-index:9998;
+}
+
+#mouseDot{
+    position:fixed;
+    width:8px;
+    height:8px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:white;
+    box-shadow:
+        0 0 10px white,
+        0 0 20px var(--cyan),
+        0 0 30px var(--pink);
+    pointer-events:none;
+    z-index:9999;
+}
+
+.click-ripple{
+    position:fixed;
+    width:10px;
+    height:10px;
+    transform:translate(-50%,-50%);
+    border:2px solid var(--cyan);
+    border-radius:50%;
+    box-shadow:0 0 12px var(--cyan),0 0 25px var(--pink);
+    pointer-events:none;
+    z-index:9997;
+    animation:rippleClick .8s ease-out forwards;
+}
+
+@keyframes rippleClick{
+    to{
+        width:175px;
+        height:175px;
+        opacity:0;
+    }
+}
+
+.site-header{
+    position:fixed;
+    left:0;
+    right:0;
+    top:14px;
+    z-index:5000;
+    padding:0 14px;
+}
+
+.navbar{
+    width:min(1200px,94%);
+    min-height:64px;
+    margin:auto;
+    padding:9px 15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    border:1px solid var(--line);
+    border-radius:25px;
+    background:rgba(4,10,31,.7);
+    backdrop-filter:blur(18px);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--cyan),#73ddff,var(--pink));
+    color:#071629;
+    transition:.35s;
+}
+
+.logo:hover .logo-icon{
+    transform:rotate(10deg) scale(1.08);
+}
+
+.logo-text{
+    font:500 18px "Playfair Display",serif;
+}
+
+.logo-text b{
+    display:block;
+    color:var(--pink);
+    font:700 8px "Kanit";
+    letter-spacing:3px;
+}
+
+.nav-links{
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a{
+    position:relative;
+    color:#adbbdf;
+    font-size:12px;
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:white;
+    text-shadow:0 0 12px var(--cyan);
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:2px;
+    left:50%;
+    bottom:-8px;
+    transform:translateX(-50%);
+    background:linear-gradient(90deg,var(--pink),var(--cyan));
+    transition:.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after{
+    width:100%;
+}
+
+.inner-hero{
+    position:relative;
+    min-height:560px;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    background:
+        linear-gradient(180deg,#06101f,#123d52 58%,#1a5567);
+}
+
+.hero-glow{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(30px);
+}
+
+.hero-glow.a{
+    width:380px;
+    height:380px;
+    left:-170px;
+    top:8%;
+    background:rgba(80,220,240,.08);
+}
+
+.hero-glow.b{
+    width:400px;
+    height:400px;
+    right:-170px;
+    bottom:-10%;
+    background:rgba(255,130,210,.08);
+}
+
+.inner-stars span{
+    position:absolute;
+    color:white;
+    opacity:.55;
+    animation:blink 3s ease-in-out infinite;
+}
+
+.inner-stars span:nth-child(1){
+    left:15%;
+    top:20%;
+}
+.inner-stars span:nth-child(2){
+    right:16%;
+    top:28%;
+    animation-delay:.8s;
+}
+.inner-stars span:nth-child(3){
+    left:28%;
+    bottom:23%;
+    animation-delay:1.2s;
+}
+.inner-stars span:nth-child(4){
+    right:28%;
+    bottom:28%;
+    animation-delay:.4s;
+}
+
+@keyframes blink{
+    50%{
+        opacity:1;
+        transform:scale(1.25);
+    }
+}
+
+.inner-water{
+    position:absolute;
+    left:-8%;
+    bottom:-60px;
+    width:116%;
+    height:270px;
+    border-radius:50%;
+    background:
+        repeating-radial-gradient(
+            ellipse at center,
+            rgba(255,255,255,.06) 0 2px,
+            transparent 3px 35px
+        );
+}
+
+.inner-water span{
+    position:absolute;
+    left:50%;
+    top:24%;
+    transform:translateX(-50%);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:50%;
+    animation:water 5s ease-in-out infinite;
+}
+
+.inner-water span:nth-child(1){
+    width:200px;
+    height:48px;
+}
+.inner-water span:nth-child(2){
+    width:350px;
+    height:84px;
+    animation-delay:1s;
+}
+.inner-water span:nth-child(3){
+    width:520px;
+    height:120px;
+    animation-delay:2s;
+}
+
+@keyframes water{
+    50%{
+        transform:translateX(-50%) scale(1.07);
+        opacity:.85;
+    }
+}
+
+.hero-lotus{
+    position:absolute;
+    left:50%;
+    bottom:13%;
+    transform:translateX(-50%);
+    color:#f2b0cb;
+    font-size:76px;
+    text-shadow:0 0 22px rgba(255,120,210,.25);
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    50%{
+        transform:translateX(-50%) translateY(-9px);
+    }
+}
+
+.inner-title{
+    position:relative;
+    z-index:10;
+    text-align:center;
+    animation:showUp .9s ease both;
+}
+
+@keyframes showUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.inner-title>span{
+    color:#798aaf;
+    font-size:10px;
+    letter-spacing:4px;
+}
+
+.inner-title h1{
+    margin:8px 0;
+    font:500 clamp(48px,7vw,88px) "Playfair Display";
+}
+
+.inner-title p{
+    color:#91a2c5;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.page{
+    position:relative;
+    z-index:2;
+    width:min(1100px,92%);
+    margin:auto;
+    padding:100px 0;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.heading span{
+    color:var(--cyan);
+    font-size:10px;
+    letter-spacing:4px;
+}
+
+.heading h2{
+    margin:8px 0;
+    font:500 clamp(35px,5vw,56px) "Playfair Display";
+}
+
+.heading p{
+    color:#8191b6;
+    font-size:13px;
+}
+
+.profile-box{
+    display:grid;
+    grid-template-columns:360px 1fr;
+    gap:55px;
+    align-items:center;
+    padding:45px;
+    border:1px solid var(--line);
+    border-radius:35px;
+    background:rgba(8,17,47,.75);
+    box-shadow:0 25px 70px rgba(0,0,0,.22);
+}
+
+.profile-photo{
+    position:relative;
+    min-height:390px;
+    display:grid;
+    place-items:center;
+}
+
+.profile-halo{
+    position:absolute;
+    width:330px;
+    height:330px;
+    border-radius:50%;
+    background:
+        radial-gradient(circle,
+            rgba(169,120,255,.22),
+            transparent 68%);
+    animation:halo 5s ease-in-out infinite;
+}
+
+.profile-orbit{
+    position:absolute;
+    width:315px;
+    height:315px;
+    border:1px dashed rgba(115,255,242,.28);
+    border-radius:50%;
+    animation:spin 15s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.photo{
+    position:relative;
+    z-index:3;
+    width:245px;
+    height:305px;
+    padding:7px;
+    border-radius:42% 42% 30% 30%;
+    background:
+        linear-gradient(145deg,#74dfeb,#a982e3,#efa7ca);
+    box-shadow:0 25px 55px rgba(0,0,0,.30);
+    transition:.4s;
+}
+
+.photo:hover{
+    transform:
+        translateY(-8px)
+        rotate(-1deg)
+        scale(1.03);
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:39% 39% 27% 27%;
+}
+
+.level{
+    position:absolute;
+    right:3px;
+    bottom:22px;
+    z-index:5;
+    padding:7px 12px;
+    border-radius:99px;
+    color:#08172a;
+    background:
+        linear-gradient(
+            135deg,
+            var(--cyan),
+            #71deff,
+            var(--pink)
+        );
+    font-size:10px;
+}
+
+.profile-content h2{
+    margin-top:8px;
+    font-size:44px;
+}
+
+.nick{
+    color:var(--pink);
+}
+
+.info{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:11px;
+    margin-top:25px;
+}
+
+.info-card{
+    display:grid;
+    grid-template-columns:40px 1fr;
+    gap:9px;
+    padding:12px;
+    border:1px solid rgba(130,175,240,.11);
+    border-radius:16px;
+    background:rgba(255,255,255,.03);
+    transition:.3s;
+}
+
+.info-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(115,255,242,.28);
+}
+
+.info-icon{
+    width:38px;
+    height:38px;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    background:rgba(140,160,255,.1);
+}
+
+.info-card small{
+    display:block;
+    color:#7181a9;
+    font-size:8px;
+}
+
+.info-card strong{
+    color:#d1dcf5;
+    font-size:11px;
+}
+
+.story{
+    position:relative;
+    padding:105px 0;
+    background:
+        linear-gradient(
+            135deg,
+            #0b1232,
+            #101641,
+            #100d2a
+        );
+}
+
+.story-inner{
+    width:min(1020px,92%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:.65fr 1.35fr;
+    gap:70px;
+}
+
+.story-title span{
+    color:var(--cyan);
+    font-size:10px;
+    letter-spacing:3px;
+}
+
+.story-title h2{
+    margin-top:8px;
+    font:500 48px "Playfair Display";
+}
+
+.story-content p{
+    color:#90a1c4;
+    margin-bottom:18px;
+    font-size:14px;
+}
+
+.story-content strong{
+    color:var(--pink);
+}
+
+.quote{
+    display:flex;
+    gap:15px;
+    padding:22px;
+    border-left:3px solid var(--pink);
+    background:rgba(255,255,255,.03);
+}
+
+.quote b{
+    color:var(--pink);
+    font:42px Georgia,serif;
+}
+
+.quote p{
+    margin:0;
+    color:#d6def2;
+}
+
+.values{
+    width:min(1080px,92%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.value-card{
+    min-height:230px;
+    padding:30px;
+    border:1px solid var(--line);
+    border-radius:26px;
+    background:rgba(8,15,43,.7);
+    transition:.35s;
+}
+
+.value-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(115,255,242,.34);
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
+}
+
+.value-icon{
+    width:58px;
+    height:58px;
+    display:grid;
+    place-items:center;
+    border-radius:18px;
+    color:var(--cyan);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(115,255,242,.14),
+            rgba(255,143,215,.10)
+        );
+    font-size:24px;
+}
+
+.value-card small{
+    display:block;
+    margin-top:18px;
+    color:#61729d;
+}
+
+.value-card h3{
+    margin:5px 0;
+    font:500 22px "Playfair Display";
+}
+
+.value-card p{
+    color:#8596bd;
+    font-size:12px;
+}
+
+.footer{
+    padding:60px 20px 30px;
+    text-align:center;
+    background:#02050f;
+    border-top:1px solid rgba(130,170,240,.08);
+}
+
+.footer-mark{
+    color:var(--pink);
+    font-size:36px;
+}
+
+.footer h3{
+    font:500 22px "Playfair Display";
+}
+
+.footer p,
+.footer small{
+    color:#68789f;
+    font-size:10px;
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:16px 20px;
+    margin:22px 0;
+}
+
+.footer-links a{
+    color:#7786aa;
+    font-size:10px;
+}
+
+@media(max-width:950px){
+
+    .navbar{
+        flex-direction:column;
+    }
+
+    .profile-box{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .info{
+        text-align:left;
+    }
+
+    .story-inner{
+        grid-template-columns:1fr;
+    }
+
+    .values{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .profile-box{
+        padding:28px 18px;
+    }
+
+    .info{
+        grid-template-columns:1fr;
+    }
+
+    .values{
+        grid-template-columns:1fr;
+    }
+
+    .page{
+        padding:75px 0;
+    }
+
+    .inner-hero{
+        min-height:560px;
+    }
+}
+
+</style>
 </head>
 
+<body>
 
-<body class="profile-page">
-
+<div id="mouseGlow"></div>
+<div id="mouseDot"></div>
 
 <header class="site-header">
 
@@ -32,40 +754,36 @@
 <a href="index.html" class="logo">
 
 <span class="logo-icon">
-    🪷
+✿
 </span>
 
-<span>
-    LOTUS
-    <strong>PORTFOLIO</strong>
+<span class="logo-text">
+LOTUS
+<b>QUEST</b>
 </span>
 
 </a>
-
 
 <div class="nav-links">
 
 <a href="index.html">
-    หน้าแรก
+หน้าแรก
 </a>
 
-<a
-    href="profile.html"
-    class="active"
->
-    ประวัติส่วนตัว
+<a href="profile.html" class="active">
+ประวัติส่วนตัว
 </a>
 
 <a href="education.html">
-    การศึกษา
+การศึกษา
 </a>
 
 <a href="hobby.html">
-    งานอดิเรก
+งานอดิเรก
 </a>
 
 <a href="contact.html">
-    ติดต่อ
+ติดต่อ
 </a>
 
 </div>
@@ -75,176 +793,154 @@
 </header>
 
 
-
 <main>
 
+<section class="inner-hero">
 
-<!-- HERO -->
-
-<section class="inner-hero profile-background">
-
-<div class="inner-decoration decoration-a"></div>
-
-<div class="inner-decoration decoration-b"></div>
+<div class="hero-glow a"></div>
+<div class="hero-glow b"></div>
 
 <div class="inner-stars">
-    ✦
-    ✧
-    ✦
-    ✧
+<span>✦</span>
+<span>✧</span>
+<span>✦</span>
+<span>·</span>
 </div>
 
-
-<div class="inner-water-bg">
-
+<div class="inner-water">
 <span></span>
 <span></span>
 <span></span>
-
 </div>
 
-
-<div class="inner-lotus">
-    🪷
+<div class="hero-lotus">
+✿
 </div>
-
 
 <div class="inner-title">
 
 <span>
-    CHAPTER 01
+CHAPTER 01
 </span>
 
 <h1>
-    WHO AM I?
+WHO AM I?
 </h1>
 
 <p>
-    ทำความรู้จักตัวตนของฉัน
+ทำความรู้จักตัวตนของฉัน
 </p>
 
 </div>
 
-
 </section>
 
 
+<section class="page">
 
-<!-- PROFILE -->
-
-<section class="profile-section">
-
-<div class="section-heading">
+<div class="heading">
 
 <span>
-    PLAYER PROFILE
+PLAYER PROFILE
 </span>
 
 <h2>
-    นี่คือฉัน
+นี่คือฉัน
 </h2>
 
 <p>
-    ข้อมูลเล็ก ๆ ที่อยากให้ทุกคนได้รู้จัก
+ข้อมูลเล็ก ๆ ที่อยากให้ทุกคนได้รู้จัก
 </p>
 
 </div>
 
 
-<div class="profile-card">
+<div class="profile-box">
 
-<div class="profile-image">
+<div class="profile-photo">
 
-<div class="image-glow"></div>
+<div class="profile-halo"></div>
+<div class="profile-orbit"></div>
 
-<div class="image-ring"></div>
+<div class="photo">
 
 <img
-    src="https://placehold.co/600x750/EAF6FF/5D78B8?text=MY+PHOTO"
-    alt="รูปโปรไฟล์ของฉัน"
+src="https://placehold.co/650x780/EDF8FF/5D78B8?text=MY+PHOTO"
+alt="รูปโปรไฟล์ของฉัน"
 >
 
-<span class="profile-badge">
-    LEVEL 03
-</span>
+</div>
+
+<div class="level">
+LEVEL 03
+</div>
 
 </div>
 
 
-<div class="profile-details">
+<div class="profile-content">
 
-<span class="profile-label">
-    ✦ ABOUT ME
+<span style="color:var(--cyan);font-size:10px;letter-spacing:2px;">
+✦ ABOUT ME
 </span>
 
 <h2>
-    [กรอกชื่อ]
+[กรอกชื่อ]
 </h2>
 
-<p class="nickname">
-    “[กรอกชื่อเล่น]”
+<p class="nick">
+“ [กรอกชื่อเล่น] ”
 </p>
 
 
-<div class="profile-data">
+<div class="info">
 
+<div class="info-card">
+<div class="info-icon">🎂</div>
 <div>
-    <span>🎂</span>
-
-    <section>
-        <small>วันเกิด</small>
-        <strong>[กรอกวันเกิด]</strong>
-    </section>
+<small>วันเกิด</small>
+<strong>[กรอกวันเกิด]</strong>
+</div>
 </div>
 
-
+<div class="info-card">
+<div class="info-icon">✨</div>
 <div>
-    <span>✨</span>
-
-    <section>
-        <small>อายุ</small>
-        <strong>[กรอกอายุ] ปี</strong>
-    </section>
+<small>อายุ</small>
+<strong>[กรอกอายุ] ปี</strong>
+</div>
 </div>
 
-
+<div class="info-card">
+<div class="info-icon">🏫</div>
 <div>
-    <span>🏫</span>
-
-    <section>
-        <small>โรงเรียน</small>
-        <strong>[กรอกชื่อโรงเรียน]</strong>
-    </section>
+<small>โรงเรียน</small>
+<strong>[กรอกชื่อโรงเรียน]</strong>
+</div>
 </div>
 
-
+<div class="info-card">
+<div class="info-icon">📚</div>
 <div>
-    <span>📚</span>
-
-    <section>
-        <small>ระดับชั้น</small>
-        <strong>ม.3/[กรอกห้อง]</strong>
-    </section>
+<small>ระดับชั้น</small>
+<strong>ม.3/[กรอกห้อง]</strong>
+</div>
 </div>
 
-
+<div class="info-card">
+<div class="info-icon">📍</div>
 <div>
-    <span>📍</span>
-
-    <section>
-        <small>จังหวัด</small>
-        <strong>[กรอกจังหวัด]</strong>
-    </section>
+<small>จังหวัด</small>
+<strong>[กรอกจังหวัด]</strong>
+</div>
 </div>
 
-
+<div class="info-card">
+<div class="info-icon">💻</div>
 <div>
-    <span>💻</span>
-
-    <section>
-        <small>ความสนใจ</small>
-        <strong>[กรอกความสนใจ]</strong>
-    </section>
+<small>ความสนใจ</small>
+<strong>[กรอกความสนใจ]</strong>
+</div>
 </div>
 
 </div>
@@ -256,25 +952,18 @@
 </section>
 
 
-
-<!-- ABOUT -->
-
-<section class="profile-story">
-
-<div class="story-decoration">
-    🪷
-</div>
+<section class="story">
 
 <div class="story-inner">
 
-<div class="story-heading">
+<div class="story-title">
 
 <span>
-    MY STORY
+MY STORY
 </span>
 
 <h2>
-    เกี่ยวกับฉัน
+เกี่ยวกับฉัน
 </h2>
 
 </div>
@@ -283,36 +972,33 @@
 <div class="story-content">
 
 <p>
-    สวัสดี! ฉันคือ
-    <strong>[กรอกชื่อ]</strong>
-    นักเรียนชั้นมัธยมศึกษาปีที่ 3
-    ที่ชอบเรียนรู้สิ่งใหม่ ๆ
+ฉันเป็นนักเรียนชั้นมัธยมศึกษาปีที่ 3
+ที่ชอบเรียนรู้สิ่งใหม่ ๆ
+และสนุกกับการทดลองทำสิ่งต่าง ๆ
 </p>
 
 <p>
-    ฉันสนใจเกี่ยวกับ
-    <strong>[กรอกความสนใจ]</strong>
-    และในเวลาว่างฉันชอบ
-    <strong>[กรอกงานอดิเรก]</strong>
+ฉันสนใจด้าน
+<strong>[กรอกความสนใจ]</strong>
+และในเวลาว่างชอบ
+<strong>[กรอกงานอดิเรก]</strong>
 </p>
 
 <p>
-    เว็บไซต์นี้สร้างขึ้นเพื่อรวบรวมเรื่องราว
-    ตัวตน และสิ่งต่าง ๆ
-    ที่สะท้อนความเป็นฉัน
+ฉันเชื่อว่าทุกประสบการณ์
+ช่วยให้เราเติบโตและรู้จักตัวเองมากขึ้น
 </p>
-
 
 <div class="quote">
 
-<span>
-    “
-</span>
+<b>
+“
+</b>
 
 <p>
-    เรียนรู้ทุกวัน
-    เติบโตทุกก้าว
-    และสนุกกับการเป็นตัวเอง
+เรียนรู้ทุกวัน
+เติบโตทุกก้าว
+และสนุกกับการเป็นตัวเอง
 </p>
 
 </div>
@@ -324,145 +1010,161 @@
 </section>
 
 
+<section class="page">
 
-<!-- VALUES -->
-
-<section class="profile-values">
-
-<div class="section-heading">
+<div class="heading">
 
 <span>
-    MY PERSONALITY
+MY PERSONALITY
 </span>
 
 <h2>
-    ตัวตนของฉัน
+ตัวตนของฉัน
 </h2>
 
 </div>
 
 
-<div class="value-grid">
+<div class="values">
 
-<article class="value-card">
-
-<div>
-    🎨
+<div class="value-card tilt">
+<div class="value-icon">🎨</div>
+<small>01</small>
+<h3>Creative</h3>
+<p>
+ชอบสร้างสรรค์และลองทำสิ่งใหม่ ๆ
+</p>
 </div>
 
-<span>
-    01
-</span>
-
-<h3>
-    Creative
-</h3>
-
+<div class="value-card tilt">
+<div class="value-icon">💡</div>
+<small>02</small>
+<h3>Curious</h3>
 <p>
-    ชอบคิดและสร้างสรรค์
-    สิ่งใหม่ ๆ
+ชอบค้นหาและเรียนรู้สิ่งใหม่
 </p>
-
-</article>
-
-
-<article class="value-card">
-
-<div>
-    💡
 </div>
 
-<span>
-    02
-</span>
-
-<h3>
-    Curious
-</h3>
-
+<div class="value-card tilt">
+<div class="value-icon">🚀</div>
+<small>03</small>
+<h3>Explorer</h3>
 <p>
-    ชอบค้นหาและเรียนรู้
-    สิ่งที่ยังไม่เคยรู้
+พร้อมเปิดรับประสบการณ์ใหม่ ๆ
 </p>
-
-</article>
-
-
-<article class="value-card">
-
-<div>
-    🚀
 </div>
-
-<span>
-    03
-</span>
-
-<h3>
-    Explorer
-</h3>
-
-<p>
-    พร้อมเปิดรับประสบการณ์
-    ใหม่ ๆ
-</p>
-
-</article>
 
 </div>
 
 </section>
 
-
-
 </main>
-
 
 
 <footer class="footer">
 
-<div class="footer-lotus">
-    🪷
+<div class="footer-mark">
+✿
 </div>
 
 <h3>
-    LOTUS PORTFOLIO
+LOTUS QUEST
 </h3>
 
 <p>
-    Student Portfolio • [กรอกชื่อ]
+Student Portfolio · [กรอกชื่อ]
 </p>
 
 <div class="footer-links">
 
-<a href="index.html">
-    หน้าแรก
-</a>
-
-<a href="profile.html">
-    ประวัติส่วนตัว
-</a>
-
-<a href="education.html">
-    การศึกษา
-</a>
-
-<a href="hobby.html">
-    งานอดิเรก
-</a>
-
-<a href="contact.html">
-    ติดต่อ
-</a>
+<a href="index.html">หน้าแรก</a>
+<a href="profile.html">ประวัติส่วนตัว</a>
+<a href="education.html">การศึกษา</a>
+<a href="hobby.html">งานอดิเรก</a>
+<a href="contact.html">ติดต่อ</a>
 
 </div>
 
 <small>
-    © 2026 [กรอกชื่อ]
+© 2026 [กรอกชื่อ]
 </small>
 
 </footer>
 
+
+<script>
+
+const glow=document.getElementById("mouseGlow");
+const dot=document.getElementById("mouseDot");
+
+let mx=innerWidth/2;
+let my=innerHeight/2;
+let gx=mx;
+let gy=my;
+
+document.addEventListener("mousemove",e=>{
+
+mx=e.clientX;
+my=e.clientY;
+
+dot.style.left=mx+"px";
+dot.style.top=my+"px";
+
+});
+
+function follow(){
+
+gx+=(mx-gx)*.1;
+gy+=(my-gy)*.1;
+
+glow.style.left=gx+"px";
+glow.style.top=gy+"px";
+
+requestAnimationFrame(follow);
+
+}
+
+follow();
+
+document.addEventListener("click",e=>{
+
+const r=document.createElement("span");
+
+r.className="click-ripple";
+
+r.style.left=e.clientX+"px";
+r.style.top=e.clientY+"px";
+
+document.body.appendChild(r);
+
+setTimeout(()=>r.remove(),800);
+
+});
+
+document.querySelectorAll(".tilt").forEach(card=>{
+
+card.addEventListener("mousemove",e=>{
+
+const r=card.getBoundingClientRect();
+
+const x=(e.clientX-r.left)/r.width-.5;
+const y=(e.clientY-r.top)/r.height-.5;
+
+card.style.transform=
+`perspective(900px)
+rotateX(${y*-5}deg)
+rotateY(${x*5}deg)
+translateY(-8px)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+card.style.transform="";
+});
+
+});
+
+</script>
 
 </body>
 </html>
