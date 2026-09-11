@@ -1,33 +1,77 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ประวัติส่วนตัว | LOTUS PORTFOLIO</title>
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    ประวัติส่วนตัว | LOTUS PORTFOLIO
+</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@import url(
+'https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap'
+);
 
 :root{
+
+    --night:#03051c;
+    --deep:#07102e;
+
     --cyan:#6ffff1;
+    --aqua:#25dfff;
+
     --pink:#ff8edb;
+    --pink2:#ff5fc8;
+
     --purple:#a978ff;
+
+    --gold:#ffd98a;
+
+    --white:#fff;
+
     --muted:#91a0c8;
+
 }
 
 *{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
+
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
+
     font-family:"Kanit",sans-serif;
-    color:white;
-    background:
-        radial-gradient(circle at 50% 0%,#17245a,#070b26 45%,#02030e);
+
+    color:#fff;
+
     min-height:100vh;
+
     overflow-x:hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 0%,
+            #17245a,
+            #070b26 45%,
+            #02030e 100%
+        );
+
 }
 
 ::-webkit-scrollbar{
@@ -35,527 +79,881 @@ body{
 }
 
 ::-webkit-scrollbar-thumb{
-    background:linear-gradient(var(--pink),var(--cyan));
+
+    background:
+        linear-gradient(
+            var(--pink),
+            var(--cyan)
+        );
+
     border-radius:20px;
+
 }
 
-/* MOUSE */
+/* =========================================================
+MOUSE
+========================================================= */
 
 #mouseGlow{
+
     position:fixed;
+
     width:320px;
     height:320px;
+
     border-radius:50%;
+
     pointer-events:none;
+
     z-index:99999;
-    transform:translate(-50%,-50%);
+
+    transform:
+        translate(-50%,-50%);
+
     background:
-        radial-gradient(circle,
-        rgba(109,255,241,.18),
-        rgba(169,120,255,.10) 30%,
-        rgba(255,105,205,.06) 48%,
-        transparent 72%);
+
+        radial-gradient(
+            circle,
+            rgba(109,255,241,.18),
+            rgba(169,120,255,.10) 30%,
+            rgba(255,105,205,.06) 48%,
+            transparent 72%
+        );
+
     filter:blur(5px);
+
+    mix-blend-mode:screen;
+
 }
 
 .mouse-star{
+
     position:fixed;
+
     pointer-events:none;
+
     z-index:99998;
+
     color:white;
+
+    font-size:12px;
+
     text-shadow:
         0 0 8px var(--cyan),
         0 0 15px var(--pink);
-    animation:star .8s ease-out forwards;
+
+    animation:
+        mouseStar
+        .8s
+        ease-out
+        forwards;
+
 }
 
-@keyframes star{
+@keyframes mouseStar{
+
     from{
+
         opacity:1;
-        transform:scale(.4);
+
+        transform:
+            scale(.4)
+            rotate(0);
+
     }
 
     to{
+
         opacity:0;
+
         transform:
-            translate(var(--mx),var(--my))
+            translate(
+                var(--mx),
+                var(--my)
+            )
             scale(1.5)
             rotate(180deg);
+
     }
+
 }
 
 .click-ripple{
+
     position:fixed;
+
     width:10px;
     height:10px;
+
     border:2px solid var(--cyan);
+
     border-radius:50%;
-    transform:translate(-50%,-50%);
+
     pointer-events:none;
+
     z-index:99997;
-    animation:ripple 1s ease-out forwards;
+
+    transform:
+        translate(-50%,-50%);
+
+    animation:
+        ripple
+        1s
+        ease-out
+        forwards;
+
 }
 
 @keyframes ripple{
+
     to{
+
         width:180px;
         height:180px;
+
         opacity:0;
+
     }
+
 }
 
 .firefly{
+
     position:fixed;
+
     width:4px;
     height:4px;
+
     border-radius:50%;
+
     background:#d7fff5;
+
     box-shadow:
-        0 0 8px var(--cyan),
-        0 0 18px var(--cyan);
+        0 0 8px #6ffff1,
+        0 0 18px #6ffff1;
+
     pointer-events:none;
+
     z-index:3;
-    animation:fly var(--duration) ease-in-out infinite alternate;
+
+    animation:
+        firefly
+        var(--duration)
+        ease-in-out
+        infinite
+        alternate;
+
 }
 
-@keyframes fly{
+@keyframes firefly{
+
     from{
-        transform:translate(0,0) scale(.5);
+
+        transform:
+            translate(0,0)
+            scale(.5);
+
         opacity:.2;
+
     }
 
     to{
+
         transform:
-            translate(var(--x),var(--y))
+            translate(
+                var(--x),
+                var(--y)
+            )
             scale(1.5);
+
         opacity:1;
+
     }
+
 }
 
-/* NAV */
+/* =========================================================
+NAVBAR
+========================================================= */
 
 .site-header{
+
     position:fixed;
+
     top:18px;
     left:0;
+
     width:100%;
+
     z-index:1000;
+
 }
 
 .navbar{
+
     width:min(1180px,92%);
+
     margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+
     padding:12px 20px;
-    border:1px solid rgba(255,160,230,.2);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    border:
+        1px solid
+        rgba(255,160,230,.2);
+
     border-radius:30px;
-    background:rgba(5,12,39,.6);
-    backdrop-filter:blur(18px);
+
+    background:
+        rgba(5,12,39,.58);
+
+    backdrop-filter:
+        blur(18px);
+
 }
 
 .logo{
-    text-decoration:none;
-    color:white;
+
     display:flex;
+
     align-items:center;
+
     gap:10px;
-    font-family:"Playfair Display";
+
+    color:white;
+
+    text-decoration:none;
+
+    font-family:
+        "Playfair Display";
+
     font-size:20px;
+
 }
 
 .logo-icon{
+
     width:38px;
     height:38px;
+
     display:grid;
+
     place-items:center;
+
     border-radius:50%;
+
     background:
         linear-gradient(
             135deg,
             #ff9de2,
             #a979ff
         );
-    box-shadow:
-        0 0 20px
-        rgba(255,120,220,.5);
+
+    font-size:22px;
+
 }
 
 .logo strong{
+
     display:block;
-    color:var(--cyan);
+
     font-family:"Kanit";
+
+    color:var(--cyan);
+
     font-size:9px;
+
     letter-spacing:3px;
+
 }
 
 .nav-links{
+
     display:flex;
+
     gap:26px;
+
 }
 
 .nav-links a{
+
     position:relative;
+
     text-decoration:none;
+
     color:#b8c8eb;
+
     font-size:12px;
+
+    transition:.3s;
+
 }
 
-.nav-links a.active,
-.nav-links a:hover{
+.nav-links a:hover,
+.nav-links a.active{
+
     color:white;
+
     text-shadow:
         0 0 12px
         var(--cyan);
+
 }
 
 .nav-links a::after{
+
     content:"";
+
     position:absolute;
+
     left:50%;
     bottom:-8px;
+
     width:0;
     height:2px;
-    transform:translateX(-50%);
+
+    transform:
+        translateX(-50%);
+
     background:
         linear-gradient(
             90deg,
             var(--pink),
             var(--cyan)
         );
+
     transition:.3s;
+
 }
 
-.nav-links a.active::after,
-.nav-links a:hover::after{
+.nav-links a:hover::after,
+.nav-links a.active::after{
+
     width:100%;
+
 }
 
-/* PAGE */
+/* =========================================================
+PAGE
+========================================================= */
 
 .page{
+
     min-height:100vh;
-    padding:150px 6% 100px;
+
     position:relative;
+
+    padding:
+        150px
+        6%
+        100px;
+
 }
 
 .page::before{
+
     content:"";
+
     position:absolute;
+
     inset:0;
+
     background:
+
         radial-gradient(
             circle at 75% 20%,
             rgba(160,90,255,.16),
-            transparent 27%
+            transparent 28%
         ),
+
         radial-gradient(
-            circle at 20% 80%,
+            circle at 20% 75%,
             rgba(255,80,190,.10),
             transparent 25%
         );
+
     pointer-events:none;
+
 }
 
 .page-inner{
-    position:relative;
-    z-index:5;
+
     width:min(1100px,100%);
+
     margin:auto;
-}
 
-.heading{
-    text-align:center;
-    margin-bottom:55px;
-}
-
-.heading span{
-    color:var(--cyan);
-    letter-spacing:4px;
-    font-size:10px;
-}
-
-.heading h1{
-    margin-top:10px;
-    font-family:"Playfair Display";
-    font-size:clamp(42px,6vw,70px);
-}
-
-.heading p{
-    margin-top:8px;
-    color:var(--muted);
-}
-
-/* ORIGINAL LOTUS */
-
-.lotus-box{
     position:relative;
-    width:210px;
-    height:120px;
-    margin:auto;
-    animation:floatLotus 4s ease-in-out infinite;
-    filter:
-        drop-shadow(
-            0 0 20px
-            rgba(255,110,210,.6)
+
+    z-index:5;
+
+}
+
+.page-title{
+
+    text-align:center;
+
+    margin-bottom:55px;
+
+}
+
+.page-title span{
+
+    color:var(--cyan);
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+}
+
+.page-title h1{
+
+    margin-top:10px;
+
+    font-family:
+        "Playfair Display";
+
+    font-size:
+        clamp(
+            42px,
+            6vw,
+            70px
         );
+
 }
 
-.lotus-box .petal{
-    position:absolute;
-    width:70px;
-    height:105px;
-    left:50%;
-    bottom:0;
-    transform-origin:50% 100%;
-    border-radius:70% 70% 25% 25%;
-    background:
-        linear-gradient(
-            180deg,
-            #fff2ff,
-            #ffb8e9 45%,
-            #d95cc4
-        );
-    box-shadow:
-        inset 0 0 15px
-        rgba(255,255,255,.4);
+.page-title p{
+
+    margin-top:10px;
+
+    color:var(--muted);
+
 }
 
-.lotus-box .p1{
-    transform:translateX(-50%);
-}
-
-.lotus-box .p2{
-    transform:translateX(-50%) rotate(-32deg) scale(.9);
-}
-
-.lotus-box .p3{
-    transform:translateX(-50%) rotate(32deg) scale(.9);
-}
-
-.lotus-box .p4{
-    transform:translateX(-50%) rotate(-58deg) scale(.72);
-}
-
-.lotus-box .p5{
-    transform:translateX(-50%) rotate(58deg) scale(.72);
-}
-
-.lotus-box .p6{
-    transform:translateX(-50%) rotate(90deg) scale(.55);
-}
-
-.lotus-box .center{
-    position:absolute;
-    width:42px;
-    height:42px;
-    left:50%;
-    bottom:12px;
-    transform:translateX(-50%);
-    border-radius:50%;
-    background:
-        radial-gradient(
-            circle,
-            #fff7a8,
-            #ffbf6d 55%,
-            #ff78bc
-        );
-    box-shadow:
-        0 0 20px
-        #ffd98a;
-}
-
-@keyframes floatLotus{
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-12px);
-    }
-}
-
-/* PROFILE */
+/* =========================================================
+PROFILE
+========================================================= */
 
 .profile-layout{
+
     display:grid;
-    grid-template-columns:320px 1fr;
+
+    grid-template-columns:
+        330px
+        1fr;
+
     gap:28px;
+
 }
 
 .glass{
-    border:1px solid rgba(150,180,255,.18);
-    background:rgba(10,20,52,.58);
-    backdrop-filter:blur(18px);
-    border-radius:28px;
+
+    border:
+        1px solid
+        rgba(150,180,255,.17);
+
+    background:
+        rgba(10,20,52,.58);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 15px 50px
+        rgba(0,0,0,.18);
+
 }
 
 .profile-card{
-    padding:30px;
+
+    padding:25px;
+
+    border-radius:30px;
+
     text-align:center;
+
+    transition:.4s;
+
+}
+
+.profile-card:hover{
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(124,255,244,.4);
+
+}
+
+.profile-photo{
+
+    width:100%;
+
+    height:360px;
+
+    border-radius:23px;
+
+    overflow:hidden;
+
+    border:
+        1px solid
+        rgba(255,160,230,.2);
+
+    background:
+        linear-gradient(
+            135deg,
+            #1a275f,
+            #331852
+        );
+
+}
+
+.profile-photo img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.7s;
+
+}
+
+.profile-photo:hover img{
+
+    transform:
+        scale(1.06);
+
 }
 
 .profile-card h2{
-    font-family:"Playfair Display";
-    margin-top:22px;
+
+    margin-top:20px;
+
+    font-family:
+        "Playfair Display";
+
+    font-size:27px;
+
 }
 
-.role{
+.profile-role{
+
     color:var(--cyan);
-    margin-top:8px;
-    font-size:10px;
+
     letter-spacing:2px;
+
+    font-size:10px;
+
+    margin-top:6px;
+
 }
 
 .profile-card p{
-    margin-top:14px;
-    color:#91a4ca;
-    font-size:12px;
+
+    color:#91a4cb;
+
     line-height:1.8;
+
+    font-size:12px;
+
+    margin-top:13px;
+
 }
 
+/* INFO */
+
 .info-grid{
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
     gap:20px;
+
 }
 
 .info-card{
+
     padding:27px;
+
+    border-radius:26px;
+
     transition:.4s;
+
 }
 
 .info-card:hover{
+
     transform:
-        translateY(-8px)
-        rotateX(2deg);
+        translateY(-7px);
+
     border-color:
-        rgba(110,255,245,.4);
+        rgba(255,145,220,.35);
+
+}
+
+.info-card.full{
+
+    grid-column:
+        1/-1;
+
 }
 
 .info-card small{
+
     color:var(--cyan);
-    letter-spacing:2px;
+
     font-size:9px;
+
+    letter-spacing:3px;
+
 }
 
 .info-card h3{
-    font-family:"Playfair Display";
-    font-size:24px;
+
     margin-top:8px;
+
+    font-family:
+        "Playfair Display";
+
+    font-size:24px;
+
 }
 
 .info-card p{
-    color:#93a5ca;
-    line-height:1.8;
-    font-size:12px;
-    margin-top:10px;
-}
 
-.full{
-    grid-column:1/-1;
+    margin-top:10px;
+
+    color:#93a5ca;
+
+    font-size:12px;
+
+    line-height:1.8;
+
 }
 
 .quote{
+
     margin-top:20px;
-    padding:26px;
+
+    padding:28px;
+
+    border-radius:26px;
+
     text-align:center;
+
 }
 
 .quote p{
-    font-family:"Playfair Display";
+
     color:#dce3fa;
+
+    font-family:
+        "Playfair Display";
+
     font-style:italic;
-    line-height:1.8;
+
+    line-height:1.9;
+
 }
 
 .quote span{
+
     display:block;
-    color:var(--pink);
+
     margin-top:10px;
+
+    color:var(--pink);
+
     font-size:9px;
-    letter-spacing:2px;
+
+    letter-spacing:3px;
+
 }
 
-/* MUSIC */
-
-.music-button{
-    position:fixed;
-    right:22px;
-    bottom:22px;
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    border:
-        1px solid
-        rgba(124,255,244,.3);
-    color:white;
-    background:
-        rgba(8,23,56,.75);
-    backdrop-filter:blur(15px);
-    z-index:2500;
-    cursor:pointer;
-}
-
-.music-button.playing{
-    animation:
-        pulse
-        1.7s
-        infinite;
-}
-
-@keyframes pulse{
-    50%{
-        box-shadow:
-            0 0 15px
-            rgba(124,255,244,.25),
-            0 0 35px
-            rgba(255,105,210,.18);
-    }
-}
-
-/* FOOTER */
+/* =========================================================
+FOOTER
+========================================================= */
 
 .footer{
+
     text-align:center;
-    padding:75px 20px 30px;
+
+    padding:
+        75px
+        20px
+        30px;
+
     border-top:
         1px solid
         rgba(140,180,255,.12);
+
     background:
         rgba(1,5,20,.8);
+
 }
 
 .footer-lotus{
+
     font-size:45px;
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            rgba(255,100,220,.6)
+        );
+
+    animation:
+        float
+        4s
+        ease-in-out
+        infinite;
+
+}
+
+@keyframes float{
+
+    50%{
+
+        transform:
+            translateY(-8px);
+
+    }
+
 }
 
 .footer h3{
-    font-family:"Playfair Display";
+
     margin-top:10px;
+
+    font-family:
+        "Playfair Display";
+
 }
 
 .footer p{
+
     color:#7585a9;
+
+    font-size:12px;
+
     margin-top:5px;
+
 }
 
 .footer-links{
+
     display:flex;
+
     justify-content:center;
-    gap:25px;
+
+    gap:22px;
+
     flex-wrap:wrap;
+
     margin:25px 0;
+
 }
 
 .footer-links a{
-    text-decoration:none;
+
     color:#91a1c3;
-    font-size:12px;
+
+    text-decoration:none;
+
+    font-size:11px;
+
 }
 
-/* RESPONSIVE */
+.footer-links a:hover{
+
+    color:var(--cyan);
+
+}
+
+.footer small{
+
+    color:#4d5a7c;
+
+    font-size:9px;
+
+}
+
+/* =========================================================
+MUSIC
+========================================================= */
+
+.music-button{
+
+    position:fixed;
+
+    right:22px;
+    bottom:22px;
+
+    width:48px;
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    z-index:2000;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:
+        rgba(8,23,56,.75);
+
+    border:
+        1px solid
+        rgba(124,255,244,.3);
+
+    backdrop-filter:
+        blur(15px);
+
+}
+
+.music-button.playing{
+
+    animation:
+        pulse
+        1.7s
+        ease-in-out
+        infinite;
+
+}
+
+@keyframes pulse{
+
+    50%{
+
+        box-shadow:
+
+            0 0 15px
+            rgba(124,255,244,.25),
+
+            0 0 35px
+            rgba(255,105,210,.18);
+
+    }
+
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
 
 @media(max-width:850px){
 
@@ -575,9 +973,10 @@ body{
         grid-template-columns:1fr;
     }
 
-    .full{
+    .info-card.full{
         grid-column:auto;
     }
+
 }
 
 @media(max-width:600px){
@@ -586,72 +985,107 @@ body{
         display:none;
     }
 
-    .site-header{
-        top:8px;
-    }
-
     .page{
+
         padding:
             120px
             20px
             70px;
+
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
 <div id="mouseGlow"></div>
 
+<div class="petals-container">
+
+    <span
+        class="floating-petal"
+        style="left:8%;animation-duration:13s"
+    >
+        🌸
+    </span>
+
+    <span
+        class="floating-petal"
+        style="left:26%;animation-duration:17s;animation-delay:3s"
+    >
+        ✿
+    </span>
+
+    <span
+        class="floating-petal"
+        style="left:52%;animation-duration:14s;animation-delay:1s"
+    >
+        🌸
+    </span>
+
+    <span
+        class="floating-petal"
+        style="left:78%;animation-duration:18s;animation-delay:5s"
+    >
+        ✿
+    </span>
+
+</div>
+
 <header class="site-header">
 
 <nav class="navbar">
 
-<a
-    href="index.html"
-    class="logo"
->
-
-    <span class="logo-icon">
-        🪷
-    </span>
-
-    <span>
-        LOTUS
-        <strong>
-            PORTFOLIO
-        </strong>
-    </span>
-
-</a>
-
-<div class="nav-links">
-
-    <a href="index.html">
-        หน้าแรก
-    </a>
-
     <a
-        href="profile.html"
-        class="active"
+        href="index.html"
+        class="logo"
     >
-        ประวัติส่วนตัว
+
+        <span class="logo-icon">
+            🪷
+        </span>
+
+        <span>
+            LOTUS
+
+            <strong>
+                PORTFOLIO
+            </strong>
+
+        </span>
+
     </a>
 
-    <a href="education.html">
-        การศึกษา
-    </a>
+    <div class="nav-links">
 
-    <a href="hobby.html">
-        งานอดิเรก
-    </a>
+        <a href="index.html">
+            หน้าแรก
+        </a>
 
-    <a href="contact.html">
-        ติดต่อ
-    </a>
+        <a
+            href="profile.html"
+            class="active"
+        >
+            ประวัติส่วนตัว
+        </a>
 
-</div>
+        <a href="education.html">
+            การศึกษา
+        </a>
+
+        <a href="hobby.html">
+            งานอดิเรก
+        </a>
+
+        <a href="contact.html">
+            ติดต่อ
+        </a>
+
+    </div>
 
 </nav>
 
@@ -661,19 +1095,19 @@ body{
 
 <div class="page-inner">
 
-<div class="heading">
+<div class="page-title">
 
-<span>
-    CHAPTER 01
-</span>
+    <span>
+        CHAPTER 01
+    </span>
 
-<h1>
-    WHO AM I?
-</h1>
+    <h1>
+        WHO AM I?
+    </h1>
 
-<p>
-    ทำความรู้จักตัวตนของฉัน
-</p>
+    <p>
+        ทำความรู้จักตัวตนของฉัน
+    </p>
 
 </div>
 
@@ -681,32 +1115,33 @@ body{
 
 <div class="glass profile-card">
 
-<div class="lotus-box">
+    <div class="profile-photo">
 
-    <span class="petal p1"></span>
-    <span class="petal p2"></span>
-    <span class="petal p3"></span>
-    <span class="petal p4"></span>
-    <span class="petal p5"></span>
-    <span class="petal p6"></span>
+        <img
+            src="images/profile.jpg"
+            alt="รูปโปรไฟล์"
+            onerror="
+                this.src='https://placehold.co/700x900/101a42/ff9ddd?text=YOUR+PHOTO';
+            "
+        >
 
-    <span class="center"></span>
+    </div>
 
-</div>
+    <h2>
+        [กรอกชื่อ]
+    </h2>
 
-<h2>
-    [กรอกชื่อ]
-</h2>
+    <div class="profile-role">
+        STUDENT • DREAMER • CREATOR
+    </div>
 
-<div class="role">
-    STUDENT • DREAMER • CREATOR
-</div>
+    <p>
 
-<p>
-    นักเรียนชั้นมัธยมศึกษาปีที่ 3
-    ที่กำลังค้นหาสิ่งที่ตัวเองชอบ
-    และพัฒนาตัวเองในทุก ๆ วัน
-</p>
+        นักเรียนชั้นมัธยมศึกษาปีที่ 3
+        ที่กำลังค้นหาความสามารถ
+        และพัฒนาตัวเองในทุก ๆ วัน
+
+    </p>
 
 </div>
 
@@ -716,56 +1151,64 @@ body{
 
 <div class="glass info-card">
 
-<small>
-    ABOUT ME
-</small>
+    <small>
+        ABOUT ME
+    </small>
 
-<h3>
-    ตัวฉัน
-</h3>
+    <h3>
+        ตัวฉัน
+    </h3>
 
-<p>
-    ฉันเป็นคนที่ชอบเรียนรู้สิ่งใหม่ ๆ
-    สนใจเทคโนโลยี ความคิดสร้างสรรค์
-    และสิ่งที่สามารถนำมาพัฒนาตัวเองได้
-</p>
+    <p>
+
+        ฉันเป็นคนที่ชอบเรียนรู้สิ่งใหม่ ๆ
+        สนใจเทคโนโลยี
+        ความคิดสร้างสรรค์
+        และสิ่งที่สามารถนำมาพัฒนาตัวเองได้
+
+    </p>
 
 </div>
 
 <div class="glass info-card">
 
-<small>
-    PERSONALITY
-</small>
+    <small>
+        PERSONALITY
+    </small>
 
-<h3>
-    บุคลิก
-</h3>
+    <h3>
+        บุคลิก
+    </h3>
 
-<p>
-    เป็นคนตั้งใจ มีความรับผิดชอบ
-    ชอบลองสิ่งใหม่ ๆ
-    และไม่หยุดพัฒนาตัวเอง
-</p>
+    <p>
+
+        เป็นคนตั้งใจ
+        มีความรับผิดชอบ
+        ชอบลองสิ่งใหม่ ๆ
+        และไม่หยุดพัฒนาตัวเอง
+
+    </p>
 
 </div>
 
 <div class="glass info-card full">
 
-<small>
-    MY DREAM
-</small>
+    <small>
+        MY DREAM
+    </small>
 
-<h3>
-    ความฝันของฉัน
-</h3>
+    <h3>
+        ความฝันของฉัน
+    </h3>
 
-<p>
-    ฉันอยากค้นหาความสามารถของตัวเอง
-    ฝึกฝนทักษะให้เก่งขึ้น
-    และนำสิ่งที่เรียนรู้ไปสร้างผลงาน
-    ที่เป็นประโยชน์และน่าภูมิใจ
-</p>
+    <p>
+
+        ฉันอยากค้นหาความสามารถของตัวเอง
+        ฝึกฝนทักษะให้เก่งขึ้น
+        และนำสิ่งที่เรียนรู้
+        ไปสร้างผลงานที่น่าภูมิใจ
+
+    </p>
 
 </div>
 
@@ -773,14 +1216,17 @@ body{
 
 <div class="glass quote">
 
-<p>
-    “ทุกก้าวเล็ก ๆ ในวันนี้
-    อาจกลายเป็นเรื่องราวที่ยิ่งใหญ่ในวันข้างหน้า”
-</p>
+    <p>
 
-<span>
-    MY LITTLE MOTTO
-</span>
+        “ทุกก้าวเล็ก ๆ ในวันนี้
+        อาจกลายเป็นเรื่องราว
+        ที่ยิ่งใหญ่ในวันข้างหน้า”
+
+    </p>
+
+    <span>
+        MY LITTLE MOTTO
+    </span>
 
 </div>
 
@@ -808,11 +1254,25 @@ body{
 
 <div class="footer-links">
 
-<a href="index.html">หน้าแรก</a>
-<a href="profile.html">ประวัติส่วนตัว</a>
-<a href="education.html">การศึกษา</a>
-<a href="hobby.html">งานอดิเรก</a>
-<a href="contact.html">ติดต่อ</a>
+<a href="index.html">
+    หน้าแรก
+</a>
+
+<a href="profile.html">
+    ประวัติส่วนตัว
+</a>
+
+<a href="education.html">
+    การศึกษา
+</a>
+
+<a href="hobby.html">
+    งานอดิเรก
+</a>
+
+<a href="contact.html">
+    ติดต่อ
+</a>
 
 </div>
 
@@ -844,7 +1304,9 @@ body{
 
 <script>
 
-const mouseGlow=
+/* MOUSE GLOW */
+
+const glow =
     document.getElementById(
         "mouseGlow"
     );
@@ -857,51 +1319,69 @@ let gy=0;
 document.addEventListener(
     "mousemove",
     e=>{
+
         mx=e.clientX;
         my=e.clientY;
+
     }
 );
 
 function animate(){
 
-    gx+=(mx-gx)*.12;
-    gy+=(my-gy)*.12;
+    gx +=
+        (mx-gx)*.12;
 
-    mouseGlow.style.left=
+    gy +=
+        (my-gy)*.12;
+
+    glow.style.left=
         gx+"px";
 
-    mouseGlow.style.top=
+    glow.style.top=
         gy+"px";
 
     requestAnimationFrame(
         animate
     );
+
 }
 
 animate();
 
-let last=0;
+/* STAR TRAIL */
+
+let lastSpark=0;
 
 document.addEventListener(
     "mousemove",
     e=>{
 
-        const now=Date.now();
+        const now=
+            Date.now();
 
-        if(now-last<80)
+        if(
+            now-lastSpark<80
+        ){
             return;
+        }
 
-        last=now;
+        lastSpark=now;
 
         const star=
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
 
         star.className=
             "mouse-star";
 
         star.textContent=
             ["✦","✧","·","✿"]
-            [Math.floor(Math.random()*4)];
+            [
+                Math.floor(
+                    Math.random()*4
+                )
+            ];
 
         star.style.left=
             e.clientX+"px";
@@ -911,12 +1391,18 @@ document.addEventListener(
 
         star.style.setProperty(
             "--mx",
-            ((Math.random()-.5)*80)+"px"
+            (
+                (Math.random()-.5)
+                *80
+            )+"px"
         );
 
         star.style.setProperty(
             "--my",
-            ((Math.random()-.5)*80)+"px"
+            (
+                (Math.random()-.5)
+                *80
+            )+"px"
         );
 
         document.body.appendChild(
@@ -931,12 +1417,16 @@ document.addEventListener(
     }
 );
 
+/* CLICK */
+
 document.addEventListener(
     "click",
     e=>{
 
         const ripple=
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
 
         ripple.className=
             "click-ripple";
@@ -959,12 +1449,17 @@ document.addEventListener(
     }
 );
 
-function firefly(){
+/* FIREFLIES */
+
+function makeFirefly(){
 
     const f=
-        document.createElement("span");
+        document.createElement(
+            "span"
+        );
 
-    f.className="firefly";
+    f.className=
+        "firefly";
 
     f.style.left=
         Math.random()*100+"%";
@@ -974,25 +1469,135 @@ function firefly(){
 
     f.style.setProperty(
         "--x",
-        ((Math.random()-.5)*250)+"px"
+        (
+            (Math.random()-.5)
+            *250
+        )+"px"
     );
 
     f.style.setProperty(
         "--y",
-        ((Math.random()-.5)*250)+"px"
+        (
+            (Math.random()-.5)
+            *250
+        )+"px"
     );
 
     f.style.setProperty(
         "--duration",
-        (3+Math.random()*5)+"s"
+        (
+            3+
+            Math.random()*5
+        )+"s"
     );
 
     document.body.appendChild(f);
+
 }
 
-for(let i=0;i<25;i++){
-    firefly();
+for(
+    let i=0;
+    i<25;
+    i++
+){
+
+    makeFirefly();
+
 }
+
+/* PETALS */
+
+for(
+    let i=0;
+    i<10;
+    i++
+){
+
+    const p=
+        document.createElement(
+            "span"
+        );
+
+    p.className=
+        "floating-petal";
+
+    p.textContent=
+        Math.random()>.5
+        ?"🌸"
+        :"✿";
+
+    p.style.left=
+        Math.random()*100+"%";
+
+    p.style.animationDuration=
+        (
+            10+
+            Math.random()*12
+        )+"s";
+
+    p.style.animationDelay=
+        Math.random()*8+"s";
+
+    document
+        .querySelector(
+            ".petals-container"
+        )
+        .appendChild(p);
+
+}
+
+/* CARD TILT */
+
+document
+    .querySelectorAll(
+        ".info-card,.profile-card,.quote"
+    )
+    .forEach(
+        card=>{
+
+            card.addEventListener(
+                "mousemove",
+                e=>{
+
+                    const r=
+                        card.getBoundingClientRect();
+
+                    const x=
+                        e.clientX-r.left;
+
+                    const y=
+                        e.clientY-r.top;
+
+                    const rx=
+                        ((y/r.height)-.5)
+                        *-4;
+
+                    const ry=
+                        ((x/r.width)-.5)
+                        *4;
+
+                    card.style.transform=
+                        `
+                        perspective(800px)
+                        rotateX(${rx}deg)
+                        rotateY(${ry}deg)
+                        translateY(-7px)
+                        `;
+
+                }
+            );
+
+            card.addEventListener(
+                "mouseleave",
+                ()=>{
+                    card.style.transform="";
+                }
+            );
+
+        }
+    );
+
+/* MUSIC */
 
 const music=
     document.getElementById(
@@ -1017,7 +1622,9 @@ if(saved){
             music.currentTime=
                 Number(saved);
         },
-        {once:true}
+        {
+            once:true
+        }
     );
 
 }
@@ -1038,7 +1645,9 @@ musicBtn.addEventListener(
 
         try{
 
-            if(music.paused){
+            if(
+                music.paused
+            ){
 
                 await music.play();
 
@@ -1049,7 +1658,8 @@ musicBtn.addEventListener(
                     "playing"
                 );
 
-            }else{
+            }
+            else{
 
                 music.pause();
 
@@ -1062,12 +1672,44 @@ musicBtn.addEventListener(
 
             }
 
-        }catch(error){
+        }
+        catch(e){}
 
-            console.log(error);
+    }
+);
+
+document.addEventListener(
+    "click",
+    async function firstPlay(){
+
+        if(
+            music.paused
+        ){
+
+            try{
+
+                await music.play();
+
+                musicBtn.textContent=
+                    "🔊";
+
+                musicBtn.classList.add(
+                    "playing"
+                );
+
+            }
+            catch(e){}
 
         }
 
+        document.removeEventListener(
+            "click",
+            firstPlay
+        );
+
+    },
+    {
+        once:true
     }
 );
 
