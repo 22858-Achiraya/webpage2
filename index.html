@@ -3770,7 +3770,7 @@
     pointer-events:none;
 }
 
-/* ====================== SHOOTING STARS ====================== */
+/* ====================== REALISTIC SHOOTING STARS ====================== */
 .shooting-star-field{
     position:fixed;
     inset:0;
@@ -3779,55 +3779,93 @@
     overflow:hidden;
     opacity:0;
     transition:opacity .8s ease;
+    mix-blend-mode:screen;
 }
 .night-mode .shooting-star-field{opacity:1}
+
+/* A tiny bright head with a tapered, angled trail. The star itself travels
+   diagonally, so the tail stays behind the direction of motion. */
 .shooting-star{
     position:absolute;
-    width:3px;
-    height:3px;
+    left:var(--ss-left);
+    top:var(--ss-top);
+    width:6px;
+    height:6px;
     border-radius:50%;
-    background:#fff;
-    box-shadow:0 0 6px 2px rgba(255,255,255,.95),0 0 16px 4px rgba(140,196,255,.72);
+    background:radial-gradient(circle at 45% 45%,#fff 0 40%,rgba(255,255,255,.98) 48%,rgba(190,225,255,.72) 72%,transparent 100%);
+    box-shadow:0 0 5px 1px rgba(255,255,255,.98),0 0 13px 3px rgba(143,201,255,.66),0 0 28px 7px rgba(111,165,255,.22);
     opacity:0;
-    transform:translate3d(-90px,-90px,0) rotate(-38deg);
-    animation:shootingStar var(--ss-duration) linear infinite;
+    will-change:transform,opacity;
+    animation:realisticMeteor var(--ss-duration) linear infinite;
     animation-delay:var(--ss-delay);
+}
+.shooting-star::before{
+    content:"";
+    position:absolute;
+    left:2px;
+    top:50%;
+    width:var(--ss-tail);
+    height:2px;
+    border-radius:999px;
+    transform:translateY(-50%) rotate(var(--ss-angle));
+    transform-origin:left center;
+    background:linear-gradient(90deg,rgba(255,255,255,.98) 0%,rgba(219,239,255,.9) 18%,rgba(161,208,255,.54) 48%,rgba(116,171,255,.19) 74%,transparent 100%);
+    box-shadow:0 0 5px rgba(175,220,255,.48);
+    filter:blur(.25px);
 }
 .shooting-star::after{
     content:"";
     position:absolute;
+    left:50%;
     top:50%;
-    right:2px;
-    width:var(--ss-tail);
-    height:2px;
-    transform:translateY(-50%);
-    transform-origin:right center;
-    border-radius:999px;
-    background:linear-gradient(90deg,rgba(255,255,255,.92),rgba(166,218,255,.52),transparent);
-    filter:blur(.3px);
+    width:18px;
+    height:18px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.56) 0,rgba(178,218,255,.21) 42%,transparent 72%);
+    filter:blur(1px);
 }
-@keyframes shootingStar{
-    0%{
+
+@keyframes realisticMeteor{
+    0%,68%{
         opacity:0;
-        transform:translate3d(-90px,-90px,0) rotate(-38deg) scale(.55);
+        transform:translate3d(0,0,0) scale(.48);
     }
-    10%{opacity:.15}
-    18%{opacity:1}
-    52%{opacity:.85}
-    78%{opacity:.35}
+    72%{
+        opacity:.28;
+        transform:translate3d(0,0,0) scale(.72);
+    }
+    77%{
+        opacity:1;
+        transform:translate3d(calc(var(--ss-x) * .18),calc(var(--ss-y) * .18),0) scale(1);
+    }
+    84%{
+        opacity:.98;
+        transform:translate3d(calc(var(--ss-x) * .64),calc(var(--ss-y) * .64),0) scale(1.03);
+    }
+    89%{
+        opacity:.72;
+        transform:translate3d(calc(var(--ss-x) * .88),calc(var(--ss-y) * .88),0) scale(1.02);
+    }
+    94%{
+        opacity:0;
+        transform:translate3d(var(--ss-x),var(--ss-y),0) scale(.92);
+    }
     100%{
         opacity:0;
-        transform:translate3d(420px,420px,0) rotate(-38deg) scale(1);
+        transform:translate3d(var(--ss-x),var(--ss-y),0) scale(.92);
     }
 }
-.night-mode .shooting-star:nth-child(3n)::after{
-    background:linear-gradient(90deg,rgba(255,244,190,.95),rgba(181,195,255,.40),transparent);
+
+@media (max-width:700px){
+    .shooting-star{width:5px;height:5px}
+    .shooting-star::before{width:var(--ss-tail-mobile,90px)}
 }
+
 @media (prefers-reduced-motion:reduce){
     .shooting-star{animation:none;opacity:0}
 }
-
-</style></head><body class="page"><canvas id="spaceCanvas"></canvas><div id="mouseGlow"></div><div class="progress"><span></span></div><div class="moon-stars"></div><div class="shooting-star-field" aria-hidden="true"></div><div class="dynamic-cloud-layer"></div><section class="entrance"><div class="entrance-sun"></div><div class="entrance-cloud ec1"><div class="cloud-base"></div></div><div class="entrance-cloud ec2"><div class="cloud-base"></div></div><div class="decoration-line top"></div><div class="decoration-line bottom"></div><div class="floating-dot d1" style="--dx:50px;--dy:-20px"></div><div class="floating-dot d2" style="--dx:-40px;--dy:35px"></div><div class="floating-dot d3" style="--dx:35px;--dy:-22px"></div><div class="floating-dot d4" style="--dx:-28px;--dy:-30px"></div><div class="entrance-title"><small>WELCOME TO MY WORLD</small><h1>SKY<span>DREAM PORTFOLIO</span></h1><p>A little story about me</p><button class="entrance-button" id="enterButton">ENTER MY WORLD →</button><div class="entrance-hint">DAYLIGHT OR MOONLIGHT • YOU DECIDE</div></div></section><header class="site-header"><nav class="navbar"><a class="logo" href="index.html"><span class="logo-mark">☁</span><span class="logo-copy">SKY<strong>DREAM PORTFOLIO</strong></span></a><div class="nav-links"><a href="index.html" class="active">หน้าแรก</a><a href="profile.html" class="">ประวัติส่วนตัว</a><a href="education.html" class="">การศึกษา</a><a href="hobby.html" class="">งานอดิเรก</a><a href="contact.html" class="">ติดต่อ</a></div><div class="theme-area"><span class="theme-label" id="themeLabel">DAY DREAM</span><button class="theme-button" id="themeButton" aria-label="สลับกลางวันและกลางคืน"></button><button class="mobile-button" id="mobileButton">☰</button></div></nav></header><main><section class="hero"><div class="hero-inner"><div class="hero-copy"><span class="eyebrow">✦ STUDENT PORTFOLIO</span><span class="chapter">CHAPTER 00 • A NEW DAY</span><h1>สวัสดีครับ/ค่ะ<br>ฉันชื่อ <span>[กรอกชื่อ]</span></h1><p class="role">STUDENT • DREAMER • CREATOR</p><p class="description">ยินดีต้อนรับเข้าสู่พื้นที่เล็ก ๆ ของฉัน ที่รวมเรื่องราวเกี่ยวกับตัวตน การเรียน สิ่งที่ชอบ งานอดิเรก และความฝันเอาไว้ด้วยกัน ในโลกของท้องฟ้า เมฆ และแสงที่เปลี่ยนไปตามเวลา</p><div class="btn-row"><a class="btn btn-primary" href="profile.html">รู้จักฉันมากขึ้น →</a><a class="btn btn-secondary" href="hobby.html">ดูสิ่งที่ฉันชอบ</a></div><div class="mini-stats glass reveal"><div class="mini-stat"><strong>03</strong><span>GRADE</span></div><div class="mini-stat"><strong>05</strong><span>PAGES</span></div><div class="mini-stat"><strong>01</strong><span>STORY</span></div></div></div><div class="sky-scene reveal"><div class="sun"></div><div class="cloud cloud-a"><div class="cloud-base"></div></div><div class="cloud cloud-b"><div class="cloud-base"></div></div><div class="cloud cloud-c"><div class="cloud-base"></div></div><div class="sky-rainbow"></div><div class="cloud-shadow"></div><div class="sky-label"><div class="sky-label-icon">☁</div><div><strong>MY LITTLE SKY</strong><small>where dreams begin</small></div></div></div></div></section><section class="section"><div class="section-heading reveal"><small>EXPLORE</small><h2>เรื่องราวของฉัน</h2><p>เหมือนท้องฟ้าที่เปลี่ยนสีในแต่ละช่วงเวลา แต่ละหน้าก็จะพาไปรู้จักอีกด้านหนึ่งของฉัน</p></div><div class="chapter-grid"><a class="chapter-card glass tilt reveal sky" href="profile.html"><div class="chapter-icon">☁</div><small>CHAPTER 01</small><h3>WHO AM I?</h3><p>ทำความรู้จักตัวตน นิสัย ความสนใจ และเรื่องเล็ก ๆ ที่เป็นฉัน</p><strong>EXPLORE →</strong></a><a class="chapter-card glass tilt reveal purple" href="education.html"><div class="chapter-icon">✧</div><small>CHAPTER 02</small><h3>MY JOURNEY</h3><p>พบกับเส้นทางการเรียนรู้ ประสบการณ์ และสิ่งที่ฉันกำลังพัฒนา</p><strong>EXPLORE →</strong></a><a class="chapter-card glass tilt reveal pink" href="hobby.html"><div class="chapter-icon">♡</div><small>CHAPTER 03</small><h3>MY WORLD</h3><p>สิ่งที่ฉันชอบ งานอดิเรก เพลง เกม และสิ่งที่ทำให้ฉันมีความสุข</p><strong>EXPLORE →</strong></a></div></section><section class="section"><div class="quote glass reveal"><p>“ความฝันไม่จำเป็นต้องเริ่มจากอะไรที่ยิ่งใหญ่ บางครั้งมันเริ่มจากการมองท้องฟ้าแล้วคิดว่า เราอยากไปไกลแค่ไหน”</p><span>— MY LITTLE DREAM —</span></div></section></main><div class="music-dock"><div class="music-orb">♫</div><div class="music-details"><div class="music-label">DREAM SOUNDTRACK</div><div class="music-title">Sky Dream • YouTube Music</div><div class="music-status" id="musicStatus">● LOADING</div></div><button class="music-action" id="musicToggle" type="button">▶</button></div><div class="youtube-frame-wrap"><div id="youtubePlayer"></div></div><footer class="footer"><div class="footer-mark">☁</div><h3>SKY DREAM PORTFOLIO</h3><p>Student • Dreamer • Creator</p><div class="footer-links"><a href="index.html">หน้าแรก</a><a href="profile.html">ประวัติส่วนตัว</a><a href="education.html">การศึกษา</a><a href="hobby.html">งานอดิเรก</a><a href="contact.html">ติดต่อ</a></div><small>© 2026 [กรอกชื่อ] • Dream big, create gently.</small></footer><script>
+</style></head><body class="page"><canvas id="spaceCanvas"></canvas><div id="mouseGlow"></div><div class="progress"><span></span></div><div class="moon-stars"></div><div class="shooting-star-field" aria-hidden="true"></div><div class="dynamic-cloud-layer"></div><section class="entrance"><div class="entrance-sun"></div><div class="entrance-cloud ec1"><div class="cloud-base"></div></div><div class="entrance-cloud ec2"><div class="cloud-base"></div></div><div class="decoration-line top"></div><div class="decoration-line bottom"></div><div class="floating-dot d1" style="--dx:50px;--dy:-20px"></div><div class="floating-dot d2" style="--dx:-40px;--dy:35px"></div><div class="floating-dot d3" style="--dx:35px;--dy:-22px"></div><div class="floating-dot d4" style="--dx:-28px;--dy:-30px"></div><div class="entrance-title"><small>WELCOME TO MY WORLD</small><h1>SKY<span>DREAM PORTFOLIO</span></h1><p>A little story about me</p><button class="entrance-button" id="enterButton">ENTER MY WORLD →</button><div class="entrance-hint">DAYLIGHT OR MOONLIGHT • YOU DECIDE</div></div></section><header class="site-header"><nav class="navbar"><a class="logo" href="index.html"><span class="logo-mark">☁</span><span class="logo-copy">SKY<strong>DREAM PORTFOLIO</strong></span></a><div class="nav-links"><a href="index.html" class="active">หน้าแรก</a><a href="profile.html" class="">ประวัติส่วนตัว</a><a href="education.html" class="">การศึกษา</a><a href="hobby.html" class="">งานอดิเรก</a><a href="contact.html" class="">ติดต่อ</a></div><div class="theme-area"><span class="theme-label" id="themeLabel">DAY DREAM</span><button class="theme-button" id="themeButton" aria-label="สลับกลางวันและกลางคืน"></button><button class="mobile-button" id="mobileButton">☰</button></div></nav></header><main><section class="hero"><div class="hero-inner"><div class="hero-copy"><span class="eyebrow">✦ STUDENT PORTFOLIO</span><span class="chapter">CHAPTER 00 • A NEW DAY</span><h1>สวัสดีค่ะ<br>ฉันชื่อ <span>อชิรญา สมคำหล้า</span></h1><p class="role">M.3/2 • GSMP • DREAMER • CREATOR</p><p class="description">ยินดีต้อนรับเข้าสู่เว็บไซต์ Portfolio ของฉัน อชิรญา สมคำหล้า หรือ ปั้นหยา นักเรียนชั้น ม.3/2 ห้อง GSMP โรงเรียนจอมทอง ผู้ที่ชอบเรียนรู้สิ่งใหม่ ๆ และสนใจด้านวิทยาศาสตร์ พร้อมแบ่งปันตัวตน ความชอบ งานอดิเรก และความฝันผ่านโลกของท้องฟ้าและความฝัน</p><div class="btn-row"><a class="btn btn-primary" href="profile.html">รู้จักฉันมากขึ้น →</a><a class="btn btn-secondary" href="hobby.html">ดูสิ่งที่ฉันชอบ</a></div><div class="mini-stats glass reveal"><div class="mini-stat"><strong>03</strong><span>GRADE</span></div><div class="mini-stat"><strong>05</strong><span>PAGES</span></div><div class="mini-stat"><strong>01</strong><span>STORY</span></div></div></div><div class="sky-scene reveal"><div class="sun"></div><div class="cloud cloud-a"><div class="cloud-base"></div></div><div class="cloud cloud-b"><div class="cloud-base"></div></div><div class="cloud cloud-c"><div class="cloud-base"></div></div><div class="sky-rainbow"></div><div class="cloud-shadow"></div><div class="sky-label"><div class="sky-label-icon">☁</div><div><strong>MY LITTLE SKY</strong><small>where dreams begin</small></div></div></div></div></section><section class="section"><div class="section-heading reveal"><small>EXPLORE</small><h2>เรื่องราวของฉัน</h2><p>เหมือนท้องฟ้าที่เปลี่ยนสีในแต่ละช่วงเวลา แต่ละหน้าก็จะพาไปรู้จักอีกด้านหนึ่งของฉัน</p></div><div class="chapter-grid"><a class="chapter-card glass tilt reveal sky" href="profile.html"><div class="chapter-icon">☁</div><small>CHAPTER 01</small><h3>WHO AM I?</h3><p>ทำความรู้จักตัวตน นิสัย ความสนใจ และเรื่องเล็ก ๆ ที่เป็นฉัน</p><strong>EXPLORE →</strong></a><a class="chapter-card glass tilt reveal purple" href="education.html"><div class="chapter-icon">✧</div><small>CHAPTER 02</small><h3>MY JOURNEY</h3><p>พบกับเส้นทางการเรียนรู้ ประสบการณ์ และสิ่งที่ฉันกำลังพัฒนา</p><strong>EXPLORE →</strong></a><a class="chapter-card glass tilt reveal pink" href="hobby.html"><div class="chapter-icon">♡</div><small>CHAPTER 03</small><h3>MY WORLD</h3><p>สิ่งที่ฉันชอบ งานอดิเรก เพลง เกม และสิ่งที่ทำให้ฉันมีความสุข</p><strong>EXPLORE →</strong></a></div></section><section class="section"><div class="quote glass reveal"><p>“ความฝันไม่จำเป็นต้องเริ่มจากอะไรที่ยิ่งใหญ่ บางครั้งมันเริ่มจากการมองท้องฟ้าแล้วคิดว่า เราอยากไปไกลแค่ไหน”</p><span>— MY LITTLE DREAM —</span></div></section></main><div class="music-dock"><div class="music-orb">♫</div><div class="music-details"><div class="music-label">DREAM SOUNDTRACK</div><div class="music-title">Sky Dream • YouTube Music</div><div class="music-status" id="musicStatus">● LOADING</div></div><button class="music-action" id="musicToggle" type="button">▶</button></div><div class="youtube-frame-wrap"><div id="youtubePlayer"></div></div><footer class="footer"><div class="footer-mark">☁</div><h3>SKY DREAM PORTFOLIO</h3><p>Student • Dreamer • Science Lover</p><div class="footer-links"><a href="index.html">หน้าแรก</a><a href="profile.html">ประวัติส่วนตัว</a><a href="education.html">การศึกษา</a><a href="hobby.html">งานอดิเรก</a><a href="contact.html">ติดต่อ</a></div><small>© 2026 อชิรญา สมคำหล้า • Dream big, create gently.</small></footer><script>
 (() => {
     "use strict";
     const body=document.body;
@@ -3850,7 +3888,10 @@
         if(themeLabel) themeLabel.textContent=night?"NIGHT DREAM":"DAY DREAM";
     }
     applyTheme(body.classList.contains("night-mode"));
-    if(themeButton) themeButton.addEventListener("click",()=>applyTheme(!body.classList.contains("night-mode")));
+    if(themeButton && !themeButton.dataset.boundTheme){
+        themeButton.dataset.boundTheme="1";
+        themeButton.addEventListener("click",()=>applyTheme(!document.body.classList.contains("night-mode")));
+    }
 
     /* Mouse glow */
     let mx=innerWidth/2,my=innerHeight/2,gx=mx,gy=my;
@@ -3980,18 +4021,39 @@
     addEventListener("pointerdown",startGesture,{once:true});
     addEventListener("keydown",startGesture,{once:true});
     /* Shooting stars appear only in night mode. */
+    function randomizeShootingStar(star, firstRun=false){
+        const left=18+Math.random()*70;
+        const top=3+Math.random()*42;
+        const angle=-(33+Math.random()*14);
+        const travelX=-(300+Math.random()*380);
+        const travelY=170+Math.random()*270;
+        const tail=85+Math.random()*125;
+        const duration=8+Math.random()*5;
+        const delay=firstRun ? (-Math.random()*duration) : 0;
+
+        star.style.setProperty("--ss-left",left+"%");
+        star.style.setProperty("--ss-top",top+"%");
+        star.style.setProperty("--ss-angle",angle+"deg");
+        star.style.setProperty("--ss-x",travelX+"px");
+        star.style.setProperty("--ss-y",travelY+"px");
+        star.style.setProperty("--ss-tail",tail+"px");
+        star.style.setProperty("--ss-tail-mobile",Math.min(tail,105)+"px");
+        star.style.setProperty("--ss-duration",duration+"s");
+        star.style.setProperty("--ss-delay",delay+"s");
+    }
+
     function createShootingStars(){
         const field=document.querySelector(".shooting-star-field");
         if(!field || field.dataset.ready==="1") return;
         field.dataset.ready="1";
-        for(let i=0;i<9;i++){
+
+        for(let i=0;i<4;i++){
             const s=document.createElement("span");
             s.className="shooting-star";
-            s.style.left=(8+Math.random()*86)+"%";
-            s.style.top=(4+Math.random()*62)+"%";
-            s.style.setProperty("--ss-delay",(-Math.random()*12)+"s");
-            s.style.setProperty("--ss-duration",(2.8+Math.random()*3.6)+"s");
-            s.style.setProperty("--ss-tail",(70+Math.random()*120)+"px");
+            randomizeShootingStar(s,true);
+            s.addEventListener("animationiteration",()=>{
+                randomizeShootingStar(s,false);
+            });
             field.appendChild(s);
         }
     }
@@ -4183,8 +4245,8 @@
                 const themeButton = document.getElementById("themeButton");
                 const themeLabel = document.getElementById("themeLabel");
                 if(themeLabel) themeLabel.textContent = document.body.classList.contains("night-mode") ? "NIGHT DREAM" : "DAY DREAM";
-                if(themeButton && !themeButton.dataset.boundContinuity){
-                    themeButton.dataset.boundContinuity = "1";
+                if(themeButton && !themeButton.dataset.boundTheme){
+                    themeButton.dataset.boundTheme = "1";
                     themeButton.addEventListener("click",()=>applyTheme(!document.body.classList.contains("night-mode")));
                 }
 
