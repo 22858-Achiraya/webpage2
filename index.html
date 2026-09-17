@@ -3770,15 +3770,64 @@
     pointer-events:none;
 }
 
-/* DREAM NIGHT — SHOOTING STARS */
-.shooting-star-layer{position:fixed;inset:0;z-index:35;pointer-events:none;overflow:hidden;opacity:0;transition:opacity .7s ease}
-.night-mode .shooting-star-layer{opacity:1}
-.shooting-star{position:absolute;top:0;left:0;width:2px;height:2px;border-radius:50%;background:#fff;box-shadow:0 0 7px 2px rgba(210,238,255,.95);opacity:0;transform:rotate(-35deg);}
-.shooting-star:after{content:'';position:absolute;right:1px;top:0;width:115px;height:2px;border-radius:99px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(188,224,255,.28),rgba(255,255,255,.92));filter:blur(.3px);transform-origin:right center;}
-.shooting-star.fly{animation:shootAcross var(--sd,1.35s) cubic-bezier(.15,.72,.18,1) forwards}
-@keyframes shootAcross{0%{opacity:0;transform:translate3d(0,0,0) rotate(-35deg) scale(.7)}8%{opacity:1}72%{opacity:1}100%{opacity:0;transform:translate3d(var(--sx,260px),var(--sy,190px),0) rotate(-35deg) scale(1.08)}}
-.night-mode .moon-stars .moon-star{animation-duration:var(--t)}
-</style></head><body class="page"><canvas id="spaceCanvas"></canvas><div class="shooting-star-layer" aria-hidden="true"></div><div id="mouseGlow"></div><div class="progress"><span></span></div><div class="moon-stars"></div><div class="dynamic-cloud-layer"></div><section class="entrance"><div class="entrance-sun"></div><div class="entrance-cloud ec1"><div class="cloud-base"></div></div><div class="entrance-cloud ec2"><div class="cloud-base"></div></div><div class="decoration-line top"></div><div class="decoration-line bottom"></div><div class="floating-dot d1" style="--dx:50px;--dy:-20px"></div><div class="floating-dot d2" style="--dx:-40px;--dy:35px"></div><div class="floating-dot d3" style="--dx:35px;--dy:-22px"></div><div class="floating-dot d4" style="--dx:-28px;--dy:-30px"></div><div class="entrance-title"><small>WELCOME TO MY WORLD</small><h1>SKY<span>DREAM PORTFOLIO</span></h1><p>A little story about me</p><button class="entrance-button" id="enterButton">ENTER MY WORLD →</button><div class="entrance-hint">DAYLIGHT OR MOONLIGHT • YOU DECIDE</div></div></section><header class="site-header"><nav class="navbar"><a class="logo" href="index.html"><span class="logo-mark">☁</span><span class="logo-copy">SKY<strong>DREAM PORTFOLIO</strong></span></a><div class="nav-links"><a href="index.html" class="active">หน้าแรก</a><a href="profile.html" class="">ประวัติส่วนตัว</a><a href="education.html" class="">การศึกษา</a><a href="hobby.html" class="">งานอดิเรก</a><a href="contact.html" class="">ติดต่อ</a></div><div class="theme-area"><span class="theme-label" id="themeLabel">DAY DREAM</span><button class="theme-button" id="themeButton" aria-label="สลับกลางวันและกลางคืน"></button><button class="mobile-button" id="mobileButton">☰</button></div></nav></header><main><section class="hero"><div class="hero-inner"><div class="hero-copy"><span class="eyebrow">✦ STUDENT PORTFOLIO</span><span class="chapter">CHAPTER 00 • A NEW DAY</span><h1>สวัสดีครับ/ค่ะ<br>ฉันชื่อ <span>[กรอกชื่อ]</span></h1><p class="role">STUDENT • DREAMER • CREATOR</p><p class="description">ยินดีต้อนรับเข้าสู่พื้นที่เล็ก ๆ ของฉัน ที่รวมเรื่องราวเกี่ยวกับตัวตน การเรียน สิ่งที่ชอบ งานอดิเรก และความฝันเอาไว้ด้วยกัน ในโลกของท้องฟ้า เมฆ และแสงที่เปลี่ยนไปตามเวลา</p><div class="btn-row"><a class="btn btn-primary" href="profile.html">รู้จักฉันมากขึ้น →</a><a class="btn btn-secondary" href="hobby.html">ดูสิ่งที่ฉันชอบ</a></div><div class="mini-stats glass reveal"><div class="mini-stat"><strong>03</strong><span>GRADE</span></div><div class="mini-stat"><strong>05</strong><span>PAGES</span></div><div class="mini-stat"><strong>01</strong><span>STORY</span></div></div></div><div class="sky-scene reveal"><div class="sun"></div><div class="cloud cloud-a"><div class="cloud-base"></div></div><div class="cloud cloud-b"><div class="cloud-base"></div></div><div class="cloud cloud-c"><div class="cloud-base"></div></div><div class="sky-rainbow"></div><div class="cloud-shadow"></div><div class="sky-label"><div class="sky-label-icon">☁</div><div><strong>MY LITTLE SKY</strong><small>where dreams begin</small></div></div></div></div></section><section class="section"><div class="section-heading reveal"><small>EXPLORE</small><h2>เรื่องราวของฉัน</h2><p>เหมือนท้องฟ้าที่เปลี่ยนสีในแต่ละช่วงเวลา แต่ละหน้าก็จะพาไปรู้จักอีกด้านหนึ่งของฉัน</p></div><div class="chapter-grid"><a class="chapter-card glass tilt reveal sky" href="profile.html"><div class="chapter-icon">☁</div><small>CHAPTER 01</small><h3>WHO AM I?</h3><p>ทำความรู้จักตัวตน นิสัย ความสนใจ และเรื่องเล็ก ๆ ที่เป็นฉัน</p><strong>EXPLORE →</strong></a><a class="chapter-card glass tilt reveal purple" href="education.html"><div class="chapter-icon">✧</div><small>CHAPTER 02</small><h3>MY JOURNEY</h3><p>พบกับเส้นทางการเรียนรู้ ประสบการณ์ และสิ่งที่ฉันกำลังพัฒนา</p><strong>EXPLORE →</strong></a><a class="chapter-card glass tilt reveal pink" href="hobby.html"><div class="chapter-icon">♡</div><small>CHAPTER 03</small><h3>MY WORLD</h3><p>สิ่งที่ฉันชอบ งานอดิเรก เพลง เกม และสิ่งที่ทำให้ฉันมีความสุข</p><strong>EXPLORE →</strong></a></div></section><section class="section"><div class="quote glass reveal"><p>“ความฝันไม่จำเป็นต้องเริ่มจากอะไรที่ยิ่งใหญ่ บางครั้งมันเริ่มจากการมองท้องฟ้าแล้วคิดว่า เราอยากไปไกลแค่ไหน”</p><span>— MY LITTLE DREAM —</span></div></section></main><div class="music-dock"><div class="music-orb">♫</div><div class="music-details"><div class="music-label">DREAM SOUNDTRACK</div><div class="music-title">Sky Dream • YouTube Music</div><div class="music-status" id="musicStatus">● LOADING</div></div><button class="music-action" id="musicToggle" type="button">▶</button></div><div class="youtube-frame-wrap"><div id="youtubePlayer"></div></div><footer class="footer"><div class="footer-mark">☁</div><h3>SKY DREAM PORTFOLIO</h3><p>Student • Dreamer • Creator</p><div class="footer-links"><a href="index.html">หน้าแรก</a><a href="profile.html">ประวัติส่วนตัว</a><a href="education.html">การศึกษา</a><a href="hobby.html">งานอดิเรก</a><a href="contact.html">ติดต่อ</a></div><small>© 2026 [กรอกชื่อ] • Dream big, create gently.</small></footer><script>
+/* ====================== SHOOTING STARS ====================== */
+.shooting-star-field{
+    position:fixed;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+    overflow:hidden;
+    opacity:0;
+    transition:opacity .8s ease;
+}
+.night-mode .shooting-star-field{opacity:1}
+.shooting-star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 0 6px 2px rgba(255,255,255,.95),0 0 16px 4px rgba(140,196,255,.72);
+    opacity:0;
+    transform:translate3d(-90px,-90px,0) rotate(-38deg);
+    animation:shootingStar var(--ss-duration) linear infinite;
+    animation-delay:var(--ss-delay);
+}
+.shooting-star::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    right:2px;
+    width:var(--ss-tail);
+    height:2px;
+    transform:translateY(-50%);
+    transform-origin:right center;
+    border-radius:999px;
+    background:linear-gradient(90deg,rgba(255,255,255,.92),rgba(166,218,255,.52),transparent);
+    filter:blur(.3px);
+}
+@keyframes shootingStar{
+    0%{
+        opacity:0;
+        transform:translate3d(-90px,-90px,0) rotate(-38deg) scale(.55);
+    }
+    10%{opacity:.15}
+    18%{opacity:1}
+    52%{opacity:.85}
+    78%{opacity:.35}
+    100%{
+        opacity:0;
+        transform:translate3d(420px,420px,0) rotate(-38deg) scale(1);
+    }
+}
+.night-mode .shooting-star:nth-child(3n)::after{
+    background:linear-gradient(90deg,rgba(255,244,190,.95),rgba(181,195,255,.40),transparent);
+}
+@media (prefers-reduced-motion:reduce){
+    .shooting-star{animation:none;opacity:0}
+}
+
+</style></head><body class="page"><canvas id="spaceCanvas"></canvas><div id="mouseGlow"></div><div class="progress"><span></span></div><div class="moon-stars"></div><div class="shooting-star-field" aria-hidden="true"></div><div class="dynamic-cloud-layer"></div><section class="entrance"><div class="entrance-sun"></div><div class="entrance-cloud ec1"><div class="cloud-base"></div></div><div class="entrance-cloud ec2"><div class="cloud-base"></div></div><div class="decoration-line top"></div><div class="decoration-line bottom"></div><div class="floating-dot d1" style="--dx:50px;--dy:-20px"></div><div class="floating-dot d2" style="--dx:-40px;--dy:35px"></div><div class="floating-dot d3" style="--dx:35px;--dy:-22px"></div><div class="floating-dot d4" style="--dx:-28px;--dy:-30px"></div><div class="entrance-title"><small>WELCOME TO MY WORLD</small><h1>SKY<span>DREAM PORTFOLIO</span></h1><p>A little story about me</p><button class="entrance-button" id="enterButton">ENTER MY WORLD →</button><div class="entrance-hint">DAYLIGHT OR MOONLIGHT • YOU DECIDE</div></div></section><header class="site-header"><nav class="navbar"><a class="logo" href="index.html"><span class="logo-mark">☁</span><span class="logo-copy">SKY<strong>DREAM PORTFOLIO</strong></span></a><div class="nav-links"><a href="index.html" class="active">หน้าแรก</a><a href="profile.html" class="">ประวัติส่วนตัว</a><a href="education.html" class="">การศึกษา</a><a href="hobby.html" class="">งานอดิเรก</a><a href="contact.html" class="">ติดต่อ</a></div><div class="theme-area"><span class="theme-label" id="themeLabel">DAY DREAM</span><button class="theme-button" id="themeButton" aria-label="สลับกลางวันและกลางคืน"></button><button class="mobile-button" id="mobileButton">☰</button></div></nav></header><main><section class="hero"><div class="hero-inner"><div class="hero-copy"><span class="eyebrow">✦ STUDENT PORTFOLIO</span><span class="chapter">CHAPTER 00 • A NEW DAY</span><h1>สวัสดีครับ/ค่ะ<br>ฉันชื่อ <span>[กรอกชื่อ]</span></h1><p class="role">STUDENT • DREAMER • CREATOR</p><p class="description">ยินดีต้อนรับเข้าสู่พื้นที่เล็ก ๆ ของฉัน ที่รวมเรื่องราวเกี่ยวกับตัวตน การเรียน สิ่งที่ชอบ งานอดิเรก และความฝันเอาไว้ด้วยกัน ในโลกของท้องฟ้า เมฆ และแสงที่เปลี่ยนไปตามเวลา</p><div class="btn-row"><a class="btn btn-primary" href="profile.html">รู้จักฉันมากขึ้น →</a><a class="btn btn-secondary" href="hobby.html">ดูสิ่งที่ฉันชอบ</a></div><div class="mini-stats glass reveal"><div class="mini-stat"><strong>03</strong><span>GRADE</span></div><div class="mini-stat"><strong>05</strong><span>PAGES</span></div><div class="mini-stat"><strong>01</strong><span>STORY</span></div></div></div><div class="sky-scene reveal"><div class="sun"></div><div class="cloud cloud-a"><div class="cloud-base"></div></div><div class="cloud cloud-b"><div class="cloud-base"></div></div><div class="cloud cloud-c"><div class="cloud-base"></div></div><div class="sky-rainbow"></div><div class="cloud-shadow"></div><div class="sky-label"><div class="sky-label-icon">☁</div><div><strong>MY LITTLE SKY</strong><small>where dreams begin</small></div></div></div></div></section><section class="section"><div class="section-heading reveal"><small>EXPLORE</small><h2>เรื่องราวของฉัน</h2><p>เหมือนท้องฟ้าที่เปลี่ยนสีในแต่ละช่วงเวลา แต่ละหน้าก็จะพาไปรู้จักอีกด้านหนึ่งของฉัน</p></div><div class="chapter-grid"><a class="chapter-card glass tilt reveal sky" href="profile.html"><div class="chapter-icon">☁</div><small>CHAPTER 01</small><h3>WHO AM I?</h3><p>ทำความรู้จักตัวตน นิสัย ความสนใจ และเรื่องเล็ก ๆ ที่เป็นฉัน</p><strong>EXPLORE →</strong></a><a class="chapter-card glass tilt reveal purple" href="education.html"><div class="chapter-icon">✧</div><small>CHAPTER 02</small><h3>MY JOURNEY</h3><p>พบกับเส้นทางการเรียนรู้ ประสบการณ์ และสิ่งที่ฉันกำลังพัฒนา</p><strong>EXPLORE →</strong></a><a class="chapter-card glass tilt reveal pink" href="hobby.html"><div class="chapter-icon">♡</div><small>CHAPTER 03</small><h3>MY WORLD</h3><p>สิ่งที่ฉันชอบ งานอดิเรก เพลง เกม และสิ่งที่ทำให้ฉันมีความสุข</p><strong>EXPLORE →</strong></a></div></section><section class="section"><div class="quote glass reveal"><p>“ความฝันไม่จำเป็นต้องเริ่มจากอะไรที่ยิ่งใหญ่ บางครั้งมันเริ่มจากการมองท้องฟ้าแล้วคิดว่า เราอยากไปไกลแค่ไหน”</p><span>— MY LITTLE DREAM —</span></div></section></main><div class="music-dock"><div class="music-orb">♫</div><div class="music-details"><div class="music-label">DREAM SOUNDTRACK</div><div class="music-title">Sky Dream • YouTube Music</div><div class="music-status" id="musicStatus">● LOADING</div></div><button class="music-action" id="musicToggle" type="button">▶</button></div><div class="youtube-frame-wrap"><div id="youtubePlayer"></div></div><footer class="footer"><div class="footer-mark">☁</div><h3>SKY DREAM PORTFOLIO</h3><p>Student • Dreamer • Creator</p><div class="footer-links"><a href="index.html">หน้าแรก</a><a href="profile.html">ประวัติส่วนตัว</a><a href="education.html">การศึกษา</a><a href="hobby.html">งานอดิเรก</a><a href="contact.html">ติดต่อ</a></div><small>© 2026 [กรอกชื่อ] • Dream big, create gently.</small></footer><script>
 (() => {
     "use strict";
     const body=document.body;
@@ -3799,8 +3848,6 @@
         body.classList.toggle("night-mode",night);
         localStorage.setItem("skyDreamTheme",night?"night":"day");
         if(themeLabel) themeLabel.textContent=night?"NIGHT DREAM":"DAY DREAM";
-        if(typeof scheduleShootingStars==='function') scheduleShootingStars();
-        if(night && typeof spawnShootingStar==='function') setTimeout(spawnShootingStar,650);
     }
     applyTheme(body.classList.contains("night-mode"));
     if(themeButton) themeButton.addEventListener("click",()=>applyTheme(!body.classList.contains("night-mode")));
@@ -3888,34 +3935,6 @@
     /* Dream particles */
     for(let i=0;i<28;i++){const p=document.createElement("span");p.className="dream-particle";p.style.left=Math.random()*100+"%";p.style.top=Math.random()*100+"%";p.style.setProperty("--dx",((Math.random()-.5)*220)+"px");p.style.setProperty("--dy",((Math.random()-.5)*220)+"px");p.style.setProperty("--dur",(3+Math.random()*6)+"s");document.body.appendChild(p)}
 
-
-    /* Shooting stars — only while the sky is in night mode */
-    const shootingLayer=document.querySelector('.shooting-star-layer');
-    let shootingTimer=null;
-    function spawnShootingStar(){
-      if(!shootingLayer || !document.body.classList.contains('night-mode')) return;
-      const s=document.createElement('span');
-      s.className='shooting-star';
-      const startX=8+Math.random()*72;
-      const startY=8+Math.random()*42;
-      const travelX=190+Math.random()*330;
-      const travelY=110+Math.random()*230;
-      s.style.left=startX+'%'; s.style.top=startY+'%';
-      s.style.setProperty('--sx',travelX+'px');
-      s.style.setProperty('--sy',travelY+'px');
-      s.style.setProperty('--sd',(1.05+Math.random()*.75)+'s');
-      shootingLayer.appendChild(s);
-      requestAnimationFrame(()=>s.classList.add('fly'));
-      setTimeout(()=>s.remove(),2200);
-    }
-    function scheduleShootingStars(){
-      clearTimeout(shootingTimer);
-      if(!shootingLayer || !document.body.classList.contains('night-mode')) return;
-      const wait=3200+Math.random()*5200;
-      shootingTimer=setTimeout(()=>{spawnShootingStar(); if(Math.random()>.72) setTimeout(spawnShootingStar,500+Math.random()*900); scheduleShootingStars();},wait);
-    }
-    scheduleShootingStars();
-    
     /* Night stars */
     const ms=document.querySelector(".moon-stars");
     if(ms){for(let i=0;i<55;i++){const s=document.createElement("span");s.className="moon-star";s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";s.style.setProperty("--t",(1.5+Math.random()*4)+"s");s.style.animationDelay=(-Math.random()*4)+"s";ms.appendChild(s)}}
@@ -3947,22 +3966,11 @@
     if(form)form.addEventListener("submit",e=>{e.preventDefault();const s=document.getElementById("formStatus");if(s)s.textContent="ส่งข้อความตัวอย่างเรียบร้อยแล้ว ✦";form.reset()});
 
     /* YouTube background soundtrack. The requested YouTube video is embedded via the official IFrame API. */
-    const MUSIC_KEY="skyDreamMusicTime";
-    let musicSaveTimer=null;
-    function rememberMusicTime(){
-      try{
-        if(ytPlayer&&ytReady&&typeof ytPlayer.getCurrentTime==='function'){
-          const t=ytPlayer.getCurrentTime();
-          if(Number.isFinite(t)) localStorage.setItem(MUSIC_KEY,String(t));
-        }
-      }catch(_){}
-    }
-    window.addEventListener("pagehide",rememberMusicTime);
-    window.addEventListener("beforeunload",rememberMusicTime);
-    window.onYouTubeIframeAPIReady=function(){ytPlayer=new YT.Player("youtubePlayer",{videoId:VIDEO_ID,playerVars:{autoplay:1,controls:0,loop:1,playlist:VIDEO_ID,playsinline:1,rel:0},events:{onReady:e=>{ytReady=true;try{const saved=parseFloat(localStorage.getItem(MUSIC_KEY)||"0");e.target.setVolume(18);if(Number.isFinite(saved)&&saved>0)e.target.seekTo(saved,true);e.target.mute();e.target.playVideo();setMusicUI("PLAYING (QUIET)",true);musicSaveTimer=setInterval(rememberMusicTime,900)}catch(_){setMusicUI("CLICK TO PLAY",false)}},onStateChange:e=>{if(window.YT&&e.data===YT.PlayerState.PLAYING)setMusicUI("DREAMING",true);else if(window.YT&&e.data===YT.PlayerState.PAUSED){rememberMusicTime();setMusicUI("PAUSED",false)}},onAutoplayBlocked:()=>setMusicUI("CLICK TO PLAY",false)}})};
+    window.onYouTubeIframeAPIReady=function(){ytPlayer=new YT.Player("youtubePlayer",{videoId:VIDEO_ID,playerVars:{autoplay:1,controls:0,loop:1,playlist:VIDEO_ID,playsinline:1,rel:0,enablejsapi:1},events:{onReady:e=>{ytReady=true;try{e.target.setVolume(18);e.target.mute();e.target.playVideo();setMusicUI("PLAYING (QUIET)",true)}catch(_){setMusicUI("CLICK TO PLAY",false)}},onStateChange:e=>{if(window.YT&&e.data===YT.PlayerState.PLAYING)setMusicUI("DREAMING",true);else if(window.YT&&e.data===YT.PlayerState.PAUSED)setMusicUI("PAUSED",false)},onAutoplayBlocked:()=>setMusicUI("CLICK TO PLAY",false)}})};
     function setMusicUI(label,playing){if(musicStatus)musicStatus.textContent="● "+label;if(musicToggle)musicToggle.textContent=playing?"❚❚":"▶"}
     if(musicToggle)musicToggle.addEventListener("click",()=>{if(!ytReady||!ytPlayer)return;if(ytPlayer.getPlayerState()===YT.PlayerState.PLAYING){ytPlayer.pauseVideo()}else{ytPlayer.unMute();ytPlayer.setVolume(18);ytPlayer.playVideo()}});
     const api=document.createElement("script");api.src="https://www.youtube.com/iframe_api";document.head.appendChild(api);
+
 
     /* Opening */
     const enter=document.getElementById("enterButton");
@@ -3971,5 +3979,267 @@
     const startGesture=()=>{if(ytReady&&ytPlayer){try{ytPlayer.unMute();ytPlayer.setVolume(18);ytPlayer.playVideo();setMusicUI("DREAMING",true)}catch(_){}}};
     addEventListener("pointerdown",startGesture,{once:true});
     addEventListener("keydown",startGesture,{once:true});
+    /* Shooting stars appear only in night mode. */
+    function createShootingStars(){
+        const field=document.querySelector(".shooting-star-field");
+        if(!field || field.dataset.ready==="1") return;
+        field.dataset.ready="1";
+        for(let i=0;i<9;i++){
+            const s=document.createElement("span");
+            s.className="shooting-star";
+            s.style.left=(8+Math.random()*86)+"%";
+            s.style.top=(4+Math.random()*62)+"%";
+            s.style.setProperty("--ss-delay",(-Math.random()*12)+"s");
+            s.style.setProperty("--ss-duration",(2.8+Math.random()*3.6)+"s");
+            s.style.setProperty("--ss-tail",(70+Math.random()*120)+"px");
+            field.appendChild(s);
+        }
+    }
+    createShootingStars();
+
+    /* Rebind page-only interactions after seamless navigation. */
+    window.initDynamicFeatures = function(){
+        const observer=new IntersectionObserver(entries=>{
+            entries.forEach(e=>{
+                if(e.isIntersecting){
+                    e.target.classList.add("visible");
+                    observer.unobserve(e.target);
+                }
+            });
+        },{threshold:.12});
+        document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+        document.querySelectorAll(".tilt").forEach(card=>{
+            if(card.dataset.tiltBound==="1") return;
+            card.dataset.tiltBound="1";
+            card.addEventListener("pointermove",e=>{
+                if(matchMedia("(max-width:900px)").matches)return;
+                const r=card.getBoundingClientRect();
+                const px=(e.clientX-r.left)/r.width-.5;
+                const py=(e.clientY-r.top)/r.height-.5;
+                card.style.transform=`perspective(900px) rotateX(${py*-5.5}deg) rotateY(${px*5.5}deg) translateY(-7px)`;
+            });
+            card.addEventListener("pointerleave",()=>card.style.transform="");
+        });
+
+        document.querySelectorAll("img[data-fallback]").forEach(img=>{
+            if(img.dataset.fallbackBound==="1") return;
+            img.dataset.fallbackBound="1";
+            img.addEventListener("error",()=>{
+                img.style.display="none";
+                const fb=img.parentElement.querySelector(".image-fallback");
+                if(fb)fb.hidden=false;
+            });
+        });
+
+        const form=document.getElementById("contactForm");
+        if(form && form.dataset.bound==="1") form=null;
+        if(form){
+            form.dataset.bound="1";
+            form.addEventListener("submit",e=>{
+                e.preventDefault();
+                const s=document.getElementById("formStatus");
+                if(s)s.textContent="ส่งข้อความตัวอย่างเรียบร้อยแล้ว ✦";
+                form.reset();
+            });
+        }
+    };
+    initDynamicFeatures();
+
+
+/* ====================== SEAMLESS MUSIC CONTINUITY ====================== */
+(() => {
+    const MUSIC_STATE_KEY = "skyDreamMusicStateV4";
+    const MUSIC_VIDEO_ID = "ukGjGHr1Ft8";
+    const MUSIC_VOLUME = 18;
+    let lastKnownTime = 0;
+    let musicStateInterval = null;
+
+    function readMusicState(){
+        try{
+            const raw = localStorage.getItem(MUSIC_STATE_KEY);
+            return raw ? JSON.parse(raw) : null;
+        }catch(_){ return null; }
+    }
+
+    function saveMusicState(){
+        try{
+            if(!ytPlayer || !ytReady || typeof ytPlayer.getCurrentTime !== "function") return;
+            const playerState = typeof ytPlayer.getPlayerState === "function" ? ytPlayer.getPlayerState() : -1;
+            const currentTime = Number(ytPlayer.getCurrentTime() || 0);
+            if(currentTime >= 0){
+                lastKnownTime = currentTime;
+                localStorage.setItem(MUSIC_STATE_KEY, JSON.stringify({
+                    time: currentTime,
+                    savedAt: Date.now(),
+                    playing: playerState === YT.PlayerState.PLAYING
+                }));
+            }
+        }catch(_){}
+    }
+
+    function restoreMusicState(player){
+        try{
+            const state = readMusicState();
+            if(!state || typeof state.time !== "number") return;
+            const elapsed = Math.max(0, (Date.now() - Number(state.savedAt || Date.now())) / 1000);
+            const duration = typeof player.getDuration === "function" ? Number(player.getDuration() || 0) : 0;
+            let target = state.time;
+            if(state.playing && duration > 0) target += Math.min(elapsed, 60 * 60);
+            if(duration > 0){
+                target = target % duration;
+            }
+            player.seekTo(Math.max(0, target), true);
+            lastKnownTime = target;
+        }catch(_){}
+    }
+
+    if(!window.__skyDreamMusicContinuityInstalled){
+        window.__skyDreamMusicContinuityInstalled = true;
+
+        const oldReady = window.onYouTubeIframeAPIReady;
+        window.onYouTubeIframeAPIReady = function(){
+            if(typeof oldReady === "function") oldReady();
+            setTimeout(()=>{
+                if(ytPlayer && ytReady){
+                    restoreMusicState(ytPlayer);
+                    try{
+                        ytPlayer.setVolume(MUSIC_VOLUME);
+                        ytPlayer.playVideo();
+                    }catch(_){}
+                }
+            }, 250);
+        };
+
+        musicStateInterval = setInterval(saveMusicState, 1000);
+        window.addEventListener("pagehide", saveMusicState);
+        window.addEventListener("beforeunload", saveMusicState);
+
+        function normalizeTarget(link){
+            try{
+                return new URL(link.href, location.href);
+            }catch(_){
+                return null;
+            }
+        }
+
+        async function seamlessNavigate(url, push=true){
+            const target = normalizeTarget({href:url});
+            if(!target || target.origin !== location.origin) return;
+            if(!/\.html?$/i.test(target.pathname)) return;
+
+            const currentPath = location.pathname.split("/").pop() || "index.html";
+            const targetPath = target.pathname.split("/").pop() || "index.html";
+            if(currentPath === targetPath && !target.search && !target.hash){
+                return;
+            }
+
+            try{
+                saveMusicState();
+
+                const response = await fetch(target.href, {
+                    credentials:"same-origin",
+                    cache:"no-store"
+                });
+                if(!response.ok) throw new Error("Navigation failed");
+
+                const text = await response.text();
+                const parser = new DOMParser();
+                const nextDoc = parser.parseFromString(text, "text/html");
+                const nextMain = nextDoc.querySelector("main");
+                const currentMain = document.querySelector("main");
+                if(!nextMain || !currentMain) throw new Error("Main content missing");
+
+                currentMain.replaceWith(nextMain.cloneNode(true));
+
+                const nextTitle = nextDoc.querySelector("title");
+                if(nextTitle) document.title = nextTitle.textContent;
+
+                const nextHeader = nextDoc.querySelector(".nav-links");
+                const currentHeader = document.querySelector(".nav-links");
+                if(nextHeader && currentHeader){
+                    currentHeader.innerHTML = nextHeader.innerHTML;
+                }
+
+                document.querySelectorAll(".nav-links a, .footer-links a").forEach(a=>{
+                    try{
+                        const p = new URL(a.href, location.href).pathname.split("/").pop() || "index.html";
+                        const active = p === targetPath;
+                        a.classList.toggle("active", active && a.classList.contains("nav-links-link"));
+                    }catch(_){}
+                });
+
+                if(push){
+                    history.pushState({skyDream:true}, "", target.href);
+                }
+
+                window.scrollTo({top:0,behavior:"smooth"});
+
+                /* Re-run only page features. The YouTube iframe is intentionally NOT recreated. */
+                if(typeof initDynamicFeatures === "function"){
+                    initDynamicFeatures();
+                }
+
+                const themeButton = document.getElementById("themeButton");
+                const themeLabel = document.getElementById("themeLabel");
+                if(themeLabel) themeLabel.textContent = document.body.classList.contains("night-mode") ? "NIGHT DREAM" : "DAY DREAM";
+                if(themeButton && !themeButton.dataset.boundContinuity){
+                    themeButton.dataset.boundContinuity = "1";
+                    themeButton.addEventListener("click",()=>applyTheme(!document.body.classList.contains("night-mode")));
+                }
+
+                const mobile = document.getElementById("mobileButton");
+                const nav = document.querySelector(".nav-links");
+                if(mobile && nav && !mobile.dataset.boundContinuity){
+                    mobile.dataset.boundContinuity = "1";
+                    mobile.addEventListener("click",()=>{
+                        const open = nav.dataset.open==="1";
+                        nav.dataset.open = open ? "0" : "1";
+                        if(open) nav.removeAttribute("style");
+                        else {
+                            nav.style.display="flex";
+                            nav.style.position="absolute";
+                            nav.style.left="10px";
+                            nav.style.right="10px";
+                            nav.style.top="62px";
+                            nav.style.padding="15px";
+                            nav.style.flexDirection="column";
+                            nav.style.alignItems="stretch";
+                            nav.style.borderRadius="18px";
+                            nav.style.background=document.body.classList.contains("night-mode")?"rgba(8,18,47,.95)":"rgba(255,255,255,.95)";
+                            nav.style.backdropFilter="blur(18px)";
+                        }
+                    });
+                }
+            }catch(error){
+                /* Fallback to the browser's normal full-page navigation. */
+                location.href = target.href;
+            }
+        }
+
+        document.addEventListener("click",(event)=>{
+            const link = event.target.closest("a[href]");
+            if(!link) return;
+            if(link.target && link.target !== "_self") return;
+            if(link.hasAttribute("download")) return;
+            if(event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+
+            const target = normalizeTarget(link);
+            if(!target || target.origin !== location.origin) return;
+            if(!/\.html?$/i.test(target.pathname)) return;
+
+            const samePageHash = target.pathname === location.pathname && target.hash;
+            if(target.hash && samePageHash) return;
+
+            event.preventDefault();
+            seamlessNavigate(target.href, true);
+        });
+
+        window.addEventListener("popstate",()=>{
+            seamlessNavigate(location.href, false);
+        });
+    }
+})();
+
 })();
 </script></body></html>
